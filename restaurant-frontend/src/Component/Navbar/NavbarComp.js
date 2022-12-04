@@ -10,7 +10,7 @@ function NavbarComp() {
   return (
     
       <Navbar className="navbar" variant='dark' expand="lg">
-        <Container>
+        <Container className ="navbarContainer">
           <Navbar.Brand href="#home"><h2>MacFood</h2></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
