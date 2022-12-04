@@ -1,0 +1,30 @@
+
+.loginbtn{
+    background-color: #8a2b06;
+    
+   
+
+} 
+
+.loginbtn:hover{
+    background-color: #561d06;
+}
+
+.rounded-start {
+    border-radius: 0.5rem !important;
+    
+
+}
+.logo{
+    height: 4rem;
+    width: 4rem;
+    padding: 0.8rem;
+}
+.logoname{
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+}
+
+.col-md-5 .col-md-7 .row{
+    height: 50%;
+}
