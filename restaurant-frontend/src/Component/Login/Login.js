@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import logo from '../Images/logo.png';
-import loginImg from '../Images/loginImg.jpg';
 import NavbarComp from '../Navbar/NavbarComp';
 import './Login.css';
 
