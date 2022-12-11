@@ -2,15 +2,11 @@ import React, { Fragment } from 'react';
 import NavbarComp from '../Navbar/NavbarComp';
 import './Login.css';
 
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const navigate = useNavigate();
 
-  const NavigateToAdminPage = () => {
-    navigate('/admin');
-  };
 
+ 
   return (
     <Fragment>
       <NavbarComp/>
@@ -42,7 +38,7 @@ function Login() {
                 </div>
                 
             </div>
-            <button className="btn btn-block text-center my-3" onClick={NavigateToAdminPage}>Log in</button>
+            <button className="btn btn-block text-center my-3">Log in</button>
             
         </form>
     </div>

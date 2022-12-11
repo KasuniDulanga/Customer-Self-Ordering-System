@@ -1,9 +1,16 @@
 import NavbarComp from '../Navbar/NavbarComp';
-import { Fragment } from 'react';
+import { Fragment} from 'react';
+import { useNavigate } from 'react-router-dom';
 import mealsImg from '../Images/meals.jpg';
 import '../Home/Home.css';
 
 function Home() {
+    const navigate = useNavigate();
+
+    const NavigateToMenuPage = () => {
+        navigate('/menu');
+    };
+
     return (
         <div className="App">
             <Fragment>
@@ -19,7 +26,7 @@ function Home() {
                         come and eat well with our delicious foods.
                     </p>
                     <div className='actions'>
-                        <button>Place Order</button>
+                        <button onClick={NavigateToMenuPage}>Place Order</button>
                     </div>
 
                 </section>
