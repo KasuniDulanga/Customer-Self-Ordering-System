@@ -16,12 +16,12 @@ function Login() {
       <NavbarComp/>
       <div className="loginBody wrapper bg-white">
       <div className="wrapper bg-white">
-        <div className="h2 text-center">Login</div>
+        <div className="h3 text-center">Login To Your Account</div>
         <form className="pt-3">
             <div className="form-group py-2">
                 <div className="input-field">
                     <span className="far fa-user p-2"></span>
-                    <input type="text" placeholder="Username" required className=""></input>
+                    <input type="email" placeholder="Email" required className=""></input>
                 </div>
             </div>
             <div className="form-group py-1 pb-2">

@@ -18,12 +18,9 @@
     padding: 30px 40px;
     box-shadow: 20px 20px 80px rgb(206, 206, 206);
 }
-.h2{
-    font-family: 'Kaushan Script', cursive;
-    font-size: 3.5rem;
+.h3{
     font-weight: bold;
-    color: #85040f;
-    font-style: italic;  
+    color: #85040f; 
 }
 .h4{
     font-family: 'Poppins', sans-serif; 

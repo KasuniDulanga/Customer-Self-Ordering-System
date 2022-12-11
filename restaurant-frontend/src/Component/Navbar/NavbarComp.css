@@ -2,8 +2,13 @@
 .navbar{
   color: white;
   background-color: #8a2b06;
-  /* font-size: medium; */
-
+  
+}
+.navbar-brand{
+  font-family: 'Kaushan Script', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;  
 }
 
 .navlink{
