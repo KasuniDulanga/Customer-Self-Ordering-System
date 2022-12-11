@@ -7,7 +7,7 @@
 }
 .loginBody{
     background-color: #eee;
-    height: 100vh;
+    height: 80vh;
     font-family: 'Poppins', sans-serif; 
     background: linear-gradient(to top, #fff 10%, rgba(234, 18, 18, 0.4) 90%) no-repeat;
 }
