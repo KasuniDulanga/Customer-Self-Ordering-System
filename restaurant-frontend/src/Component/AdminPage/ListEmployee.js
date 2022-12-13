@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import NavbarComp from '../Navbar/NavbarComp'
 import EmployeeService from '../Services/EmplyeeService'
+import editIcon from '../Images/editIcon.png'
+import deleteIcon from '../Images/deleteicon.jpg'
 import "./Admin.css";
 
 const ListEmployee = () => {
@@ -33,8 +34,8 @@ const ListEmployee = () => {
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>JobRole</th>
-                    <th>Phone number</th>
+                    <th>Job Role</th>
+                    <th>Phone Number</th>
                     <th>Address</th>
                     <th>Actions</th>
                 </thead>
@@ -43,15 +44,17 @@ const ListEmployee = () => {
                         employees.map(
                             employee =>
                                 <tr key={employee.employee_id}>
-                                    <td>{employee.employee_id}</td>
-                                    <td>{employee.firstName}</td>
-                                    <td>{employee.lastName}</td>
-                                    <td>{employee.job_role}</td>
-                                    <td>{employee.phone_no}</td>
-                                    <td>{employee.address}</td>
-                                    <td>
-                                        <Link className='btn btn-info' to={`/edit-employee/${employee.employee_id}`}>Update</Link>
-                                        <Button className='btn btn-danger mx-2' onClick={() => deleteEmployee(employee.employee_id)}>Delete</Button>
+                                    <td data-label="ID">{employee.employee_id}</td>
+                                    <td data-label="First Name">{employee.firstName}</td>
+                                    <td data-label="Last Name">{employee.lastName}</td>
+                                    <td data-label="Job Role">{employee.job_role}</td>
+                                    <td data-label="Phone Number">{employee.phone_no}</td>
+                                    <td data-label="Address">{employee.address}</td>
+                                    <td data-label="Actions">
+                                        <div>
+                                        <Link to={`/edit-employee/${employee.employee_id}`}><img src={editIcon} className='editIcon' alt='edit'/></Link>
+                                        <Link onClick={() => deleteEmployee(employee.employee_id)}><img src={deleteIcon} className='editIcon' alt='edit'/></Link>
+                                        </div>
                                     </td>
                                 </tr>
                         )
