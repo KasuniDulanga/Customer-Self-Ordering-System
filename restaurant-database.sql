@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Order` (
   `order_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `table_no` INT NOT NULL,
   `net_amount` DOUBLE NULL,
-  `status` ENUM('pending', 'accepted', 'ready', 'served', 'paid') NULL,
+  `status` VARCHAR(255) NULL,
   `customer_id` BIGINT(20) NOT NULL,
   PRIMARY KEY (`order_id`, `customer_id`),
   INDEX `fk_Order_Customer1_idx` (`customer_id` ASC) ,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Meal` (
   `category` VARCHAR(255) CHARACTER SET 'ascii' NOT NULL,
   `price` DOUBLE NOT NULL,
   `description` VARCHAR(255) NULL,
-  `serving_size` ENUM('small', 'medium', 'large') NOT NULL,
+  `serving_size` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`meal_id`))
 ENGINE = InnoDB;
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Order_Details` (
   `note` VARCHAR(255) NULL,
   `quantity` INT NOT NULL,
   PRIMARY KEY (`order_id`, `customer_id`, `meal_id`),
-  INDEX `fk_Order_has_Meal_Meal1_idx` (`meal_id` ASC) ,
+  INDEX `fk_Order_has_Meal_Meal1_idx` (`meal_id` ASC),
   INDEX `fk_Order_has_Meal_Order1_idx` (`order_id` ASC, `customer_id` ASC) ,
   CONSTRAINT `fk_Order_has_Meal_Order1`
     FOREIGN KEY (`order_id` , `customer_id`)
