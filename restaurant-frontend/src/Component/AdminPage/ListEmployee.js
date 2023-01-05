@@ -4,7 +4,6 @@ import NavbarComp from '../Navbar/NavbarComp'
 import EmployeeService from '../Services/EmplyeeService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
-
 import "./Admin.css";
 
 const ListEmployee = () => {
