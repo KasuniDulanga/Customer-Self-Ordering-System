@@ -18,13 +18,15 @@
     width: 90%;
     height: max-content;
     margin: auto;
-    margin-top: -12rem;
+    margin-top: -16rem;
     position: relative;
     background-color: #3f2f2f;
     color: white;
     border-radius: 14px;
-    padding: 1rem;
+    padding: 1.5rem;
     box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+    background-image: url("../Images/back.jfif");
+    background-size: cover;
     
   }
   

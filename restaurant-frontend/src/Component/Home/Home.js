@@ -1,7 +1,7 @@
 import NavbarComp from '../Navbar/NavbarComp';
 import { Fragment} from 'react';
 import { useNavigate } from 'react-router-dom';
-import mealsImg from '../Images/meals.jpg';
+import mealsImg from '../Images/homeimage.jpg';
 import '../Home/Home.css';
 
 function Home() {

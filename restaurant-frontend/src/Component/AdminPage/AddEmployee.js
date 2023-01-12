@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import EmployeeService from '../Services/EmplyeeService';
+import "./Admin.css";
 
 
 export const AddEmployee = () => {
@@ -75,11 +76,11 @@ export const AddEmployee = () => {
         }
     }
     return (
-        <div>
+        <div className ="addemployeebody">
             <br /><br />
-            <div className="container">
+            <div className="container addemployee">
                 <div className="row">
-                    <div className="card col-md-8 offset-md-2 offset-md-2">
+                    <div className="card col-md-6 offset-md-3 offset-md-2">
                         {
                             title()
                         }
