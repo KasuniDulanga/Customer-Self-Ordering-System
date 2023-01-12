@@ -26,13 +26,33 @@ public class RestaurantBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Meal meal = new Meal();
-
-		meal.setMealName("Chicken Fried Rice");
-		meal.setCategory("Rice");
-		meal.setDescription("Special MacFood rice");
-		meal.setPrice(1200.00);
-		mealRepo.save(meal);
+//		Meal meal1 = new Meal();
+//		meal1.setMealName("Beef Fried Rice");
+//		meal1.setCategory("Rice");
+//		meal1.setDescription("Macfood Normal");
+//		meal1.setPrice(1500.00);
+//		mealRepo.save(meal1);
+//
+//		Meal meal2 = new Meal();
+//		meal2.setMealName("Fish Fried Rice");
+//		meal2.setCategory("Rice");
+//		meal2.setDescription("Special Macfood fish with vegetable mix");
+//		meal2.setPrice(1000.00);
+//		mealRepo.save(meal2);
+//
+//		Meal meal3 = new Meal();
+//		meal3.setMealName("Chicken Noodles");
+//		meal3.setCategory("Noodles");
+//		meal3.setDescription("Special MacFood noodles");
+//		meal3.setPrice(1000.00);
+//		mealRepo.save(meal3);
+//
+//		Meal meal4 = new Meal();
+//		meal4.setMealName("Mix Noodles");
+//		meal4.setCategory("Noodles");
+//		meal4.setDescription("Special MacFood noodles without beef");
+//		meal4.setPrice(1200.00);
+//		mealRepo.save(meal4);
 
 //		Employee employee = new Employee();
 //		employee.setFirstName("Supun");

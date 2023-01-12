@@ -5,9 +5,10 @@
     box-sizing: border-box;
     
 }
+
 .loginBody{
     background-color: #eee;
-    height: 80vh;
+    height: 75vh;
     font-family: 'Poppins', sans-serif; 
     background: linear-gradient(to top, #fff 10%, rgba(234, 18, 18, 0.4) 90%) no-repeat;
 }
@@ -15,7 +16,7 @@
     max-width: 500px;
     border-radius: 10px;
     margin: 20px auto;
-    padding: 30px 40px;
+    padding: 30px 30px;
     box-shadow: 20px 20px 80px rgb(206, 206, 206);
 }
 .h3{
