@@ -3,6 +3,9 @@ package com.app.restaurant;
 // import com.app.restaurant.model.Employee;
 // import com.app.restaurant.repository.EmployeeRepository;
 // import org.springframework.beans.factory.annotation.Autowired;
+import com.app.restaurant.model.Meal;
+import com.app.restaurant.repository.MealRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,8 +20,20 @@ public class RestaurantBackendApplication implements CommandLineRunner {
 	// @Autowired
 	// private EmployeeRepository employeeRepo;
 
+	@Autowired
+	private MealRepository mealRepo;
+
+
 	@Override
 	public void run(String... args) throws Exception {
+		Meal meal = new Meal();
+
+		meal.setMealName("Chicken Fried Rice");
+		meal.setCategory("Rice");
+		meal.setDescription("Special MacFood rice");
+		meal.setPrice(1200.00);
+		mealRepo.save(meal);
+
 //		Employee employee = new Employee();
 //		employee.setFirstName("Supun");
 //		employee.setLastName("Perera");
