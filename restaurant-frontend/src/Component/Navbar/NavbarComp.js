@@ -11,7 +11,7 @@ function NavbarComp() {
     
       <Navbar className="navbar" variant='dark' expand="lg">
         <Container className ="navbarContainer">
-          <Navbar.Brand href="#home">MacFood</Navbar.Brand>
+          <Navbar.Brand href="/">MacFood</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto mb-2 mb-lg-0">

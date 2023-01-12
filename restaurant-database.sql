@@ -68,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Meal` (
   `category` VARCHAR(255) CHARACTER SET 'ascii' NOT NULL,
   `price` DOUBLE NOT NULL,
   `description` VARCHAR(255) NULL,
-  `serving_size` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`meal_id`))
 ENGINE = InnoDB;
 
@@ -93,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`Order_Details` (
   `note` VARCHAR(255) NULL,
   `quantity` INT NOT NULL,
   PRIMARY KEY (`order_id`, `customer_id`, `meal_id`),
-  INDEX `fk_Order_has_Meal_Meal1_idx` (`meal_id` ASC),
+  INDEX `fk_Order_has_Meal_Meal1_idx` (`meal_id` ASC) ,
   INDEX `fk_Order_has_Meal_Order1_idx` (`order_id` ASC, `customer_id` ASC) ,
   CONSTRAINT `fk_Order_has_Meal_Order1`
     FOREIGN KEY (`order_id` , `customer_id`)

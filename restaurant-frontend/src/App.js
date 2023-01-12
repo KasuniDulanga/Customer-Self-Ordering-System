@@ -6,7 +6,7 @@ import Login from '../src/Component/Login/Login';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ListEmployee from './Component/AdminPage/ListEmployee';
 import AddEmployee from './Component/AdminPage/AddEmployee';
-import MenuPage from './Component/Menu/MenuPage';
+import MenuPage from './Component/MenuPage/MenuPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route exact path ="/admin" element={<ListEmployee/>}></Route>
           <Route exact path ="/add-employee" element={<AddEmployee/>}></Route>
           <Route exact path ="/edit-employee/:id" element={<AddEmployee/>}></Route>
-          <Route exact path ="/menu" element={<MenuPage />}></Route>
+          <Route exact path ="/menu" element={<MenuPage/>}></Route>
         </Routes>
 
       </Router>

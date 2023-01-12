@@ -1,16 +1,12 @@
-import Card from '../MealItems/Card';
-import MealItem from '../MealItems/MealItem';
-import "../MealItems/AvailableMeals.css";
+import Card from '../UI/Card';
+import MealItem from './MealItem/MealItem';
+import classes from './AvailableMeals.module.css';
 
 const DUMMY_MEALS = [
   {
     id: 'm1',
     name: 'Sushi',
     description: 'Finest fish and veggies',
-    ingredients: [
-      "fat : 6 ",
-      "protien : 5 ",
-    ],
     price: 22.99,
   },
   {
@@ -41,12 +37,11 @@ const AvailableMeals = () => {
       name={meal.name}
       description={meal.description}
       price={meal.price}
-      ingredients={meal.ingredients}
     />
   ));
 
   return (
-    <section className="meals">
+    <section className={classes.meals}>
       <Card>
         <ul>{mealsList}</ul>
       </Card>

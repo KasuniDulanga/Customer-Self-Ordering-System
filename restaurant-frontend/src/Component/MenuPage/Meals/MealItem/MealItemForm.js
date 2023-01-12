@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
-import Input from '../MealItems/Input';
-import '../MealItems/MealItem.css';
+import Input from '../../UI/Input';
+import classes from './MealItemForm.module.css';
 
 const MealItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -26,10 +26,10 @@ const MealItemForm = (props) => {
   };
 
   return (
-    <form className="form" onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <Input
         ref={amountInputRef}
-        label='Amount'
+        label='Qnt'
         input={{
           id: 'amount_' + props.id,
           type: 'number',
