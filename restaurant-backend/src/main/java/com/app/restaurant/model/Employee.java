@@ -29,9 +29,6 @@ public class Employee {
     @Column(name="password",nullable = false)
     private String password;
 
-    @Column(name="job_role",nullable = false)
-    private String job_role;
-
     @Column(name="gmail",nullable = false)
     private String email;
 
@@ -41,7 +38,8 @@ public class Employee {
     @Column(name="address")
     private String address;
 
-
+    @Column(name="role_id",nullable = false)
+    private long roleId;
 
 
 }

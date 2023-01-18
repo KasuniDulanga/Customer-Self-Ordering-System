@@ -10,16 +10,16 @@ export const AddEmployee = () => {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [job_role, setJobRole] = useState('')
     const [address, setAddress] = useState('')
     const [phone_no, setPhoneNo] = useState('')
+    const [roleId, setRoleId] = useState('')
     const navigate = useNavigate();
     const { id } = useParams();
 
     // perform both save and update employee details
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
-        const employee = { firstName, lastName, email, password, job_role, address, phone_no }
+        const employee = { firstName, lastName, email, password, address, phone_no,roleId }
 
         // if id contains value make update employee REST API
         if (id) {
@@ -50,7 +50,7 @@ export const AddEmployee = () => {
             setLastName(response.data.lastName);
             setEmail(response.data.email);
             setPassword(response.data.password);
-            setJobRole(response.data.job_role);
+            setRoleId(response.data.roleId);
             setAddress(response.data.address);
             setPhoneNo(response.data.phone_no);
         }).catch(error => {
@@ -147,14 +147,16 @@ export const AddEmployee = () => {
                                     <label className="form-label"> Job Role :</label>
                                     <input
                                         type="text"
-                                        placeholder="Enter job role"
+                                        placeholder="Select job role"
                                         name="jon_role"
                                         className="form-control"
-                                        value={job_role}
-                                        onChange={(e) => setJobRole(e.target.value)}
+                                        value={roleId}
+                                        onChange={(e) => setRoleId(e.target.value)}
                                         required
                                     >
+                                    
                                     </input>
+                                    
                                 </div>
 
                                 <div className="form-group mb-2">

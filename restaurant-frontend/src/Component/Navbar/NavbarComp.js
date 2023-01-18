@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 
-function NavbarComp() {
+function NavbarComp(props) {
   return (
     
       <Navbar className="navbar" variant='dark' expand="lg">
@@ -14,11 +14,13 @@ function NavbarComp() {
           <Navbar.Brand href="/">MacFood</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto mb-2 mb-lg-0">
+            <Nav className="ms-auto mb-1 mb-lg-0">
 
-              <Nav.Link className="navlink" as={Link} to="/">Home</Nav.Link>
-              <Nav.Link className="navlink" as={Link} to="/login">Login</Nav.Link>
-
+              <Nav.Link className="navlink" as={Link} to="/">{props.link1}</Nav.Link>
+              <Nav.Link className="navlink" as={Link} to="/login">{props.link2}</Nav.Link>
+              <Nav.Link className="navlink" as={Link} to="/login">{props.link3}</Nav.Link>
+              <Nav.Link className="navlink" as={Link} to="/login">{props.link4}</Nav.Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

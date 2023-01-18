@@ -26,8 +26,12 @@ const ListEmployee = () => {
     return (
         <Fragment>
             <div className='adminbody'>
-            <NavbarComp />
-            
+                <NavbarComp
+                    link1="Home"
+                    link2="AboutUs"
+                    link3="Events"
+                    link4="Logout" />
+
                 <div className="cont">
                     <h3 className="text-center">List Of Emplyees</h3>
                     <Link to="/add-employee" className="addbtn btn btn-primary mb-3">Add Employee</Link>
@@ -49,7 +53,7 @@ const ListEmployee = () => {
                                             <td data-label="ID">{employee.employee_id}</td>
                                             <td data-label="First Name">{employee.firstName}</td>
                                             <td data-label="Last Name">{employee.lastName}</td>
-                                            <td data-label="Job Role">{employee.job_role}</td>
+                                            <td data-label="Job Role">{employee.roleId}</td>
                                             <td data-label="Phone Number">{employee.phone_no}</td>
                                             <td data-label="Address">{employee.address}</td>
                                             <td data-label="Actions">
@@ -64,8 +68,8 @@ const ListEmployee = () => {
                         </tbody>
 
                     </table>
-                    </div>
                 </div>
+            </div>
         </Fragment>
     )
 }

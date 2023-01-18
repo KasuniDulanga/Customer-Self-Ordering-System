@@ -45,7 +45,7 @@ public class EmployeeController {
         updateEmployee.setFirstName(employeeDetails.getFirstName());
         updateEmployee.setLastName(employeeDetails.getLastName());
         updateEmployee.setPassword(employeeDetails.getPassword());
-        updateEmployee.setJob_role(employeeDetails.getJob_role());
+        updateEmployee.setRoleId(employeeDetails.getRoleId());
         updateEmployee.setEmail(employeeDetails.getEmail());
         updateEmployee.setAddress(employeeDetails.getAddress());
         updateEmployee.setPhone_no(employeeDetails.getPhone_no());

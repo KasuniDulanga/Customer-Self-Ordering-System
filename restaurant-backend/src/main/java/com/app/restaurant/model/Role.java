@@ -12,19 +12,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="customer")
-public class Customer {
-
+@Table(name="role")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long customer_id;
+    private long role_id;
 
-    @Column(name="customer_name" , nullable = false)
-    private String customerName;
-
-    @Column(name="customer_phn" , nullable = false)
-    private String customer_phn;
-
-
+    @Column(name="role_name" , nullable = false)
+    private String roleName;
 
 }

@@ -43,7 +43,10 @@ function Login() {
  
   return (
     <Fragment>
-      <NavbarComp/>
+      <NavbarComp
+            link1 ="Home"
+            link2 ="AboutUs"
+            link3 ="Events" />
       <div className="loginBody wrapper bg-white">
       <div className="wrapper bg-white">
         <div className="h3 text-center">Login To Your Account</div>
