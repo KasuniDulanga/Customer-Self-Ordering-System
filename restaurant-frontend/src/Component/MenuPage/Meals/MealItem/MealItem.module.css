@@ -5,13 +5,26 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
 }
+.meal1{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  width: 35rem;
+}
 
+.desc{
+  margin-left: 1rem;
+}
 .meal h3 {
   margin: 0 0 0.25rem 0;
 }
 
 .description {
   font-style: italic;
+  
 }
 
 .price {
@@ -19,4 +32,42 @@
   font-weight: bold;
   color: #ad5502;
   font-size: 1.25rem;
+
+}
+
+.foodimg img{
+  border-radius: 1rem ;
+  height: 10rem;
+  width: 10rem;
+}
+
+
+/* responsive */
+@media(max-width:1200px){
+  .foodimg img{
+    border-radius: 1rem ;
+    height: 5rem;
+    width: 5rem;
+  }
+  .meal h3 {
+    font-size: small;
+  }
+  
+  .description {
+    font-size: small;
+    
+  }
+  
+  .price {
+    
+    font-size: 0.25rem;
+  
+  }
+  .meal1{
+   
+    margin-right: 1rem;
+    margin-left: 1rem;
+   
+  }
+  
 }
