@@ -1,8 +1,9 @@
-.adminbody{
+/* .adminbody{
     
-    background-image: url("../Images/back1.jfif");
+    background-image: url("../Images/back1.jpg");
     background-size: cover;
-}
+
+} */
 .card{
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
@@ -14,9 +15,21 @@
 }
 
 .cont{
-   padding-left: 3rem;
-   padding-right: 3rem;
-   min-height: 800px;
+    max-width: 150 rem;
+    min-height: 30rem;
+    width: 90%;
+    height: max-content;
+    margin: auto;
+    margin-top: 2rem;
+    position: relative;
+    background-color: #100d19e4;
+    color: white;
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+    /* background-image: url("../Images/back.jfif");
+    background-size: cover; */
+    
 }
 
 .cont h3 {
@@ -35,8 +48,9 @@
     padding: 5px;
 }
 .addbtn:hover{
-    background-color: rgb(58, 32, 32);
+    background-color:#6d2d143a;
     border: 2px solid white;
+    
 }
 
 .table{

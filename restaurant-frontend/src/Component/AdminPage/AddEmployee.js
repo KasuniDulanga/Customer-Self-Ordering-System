@@ -144,10 +144,10 @@ export const AddEmployee = () => {
                                 </div>
 
                                 <div className="form-group mb-2">
-                                    <label className="form-label"> Job Role :</label>
+                                    <label className="form-label"> Job Role : 1:Admin 2:Cook 3:Waiter</label>
                                     <input
                                         type="text"
-                                        placeholder="Select job role"
+                                        placeholder="Select job role id"
                                         name="jon_role"
                                         className="form-control"
                                         value={roleId}
