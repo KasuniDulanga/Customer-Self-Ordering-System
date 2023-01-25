@@ -5,6 +5,28 @@
   max-height: 20rem;
   overflow: auto;
 }
+.tableNo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.tableNo label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.tableNo input {
+  width: 3rem;
+  border-radius: 5px;
+  border: 1px solid rgb(98, 88, 88);
+  font: inherit;
+  padding-left: 0.5rem;
+}
+
 
 .total {
   display: flex;

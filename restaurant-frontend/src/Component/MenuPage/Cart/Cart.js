@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
@@ -35,11 +34,24 @@ const Cart = (props) => {
   );
 
   return (
+
     <Modal onClose={props.onClose}>
       {cartItems}
       <div className={classes.total}>
-        <span>Total Amount</span>
+        <span>Total Amount :</span>
         <span>{totalAmount}</span>
+      </div>
+      <div className={classes.tableNo}>
+        <span><label>Table No</label></span>
+        <span><input
+          type="number"
+          min={0}
+          max={50}
+          required
+        >
+        </input></span>
+
+
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClose}>
@@ -47,7 +59,8 @@ const Cart = (props) => {
         </button>
         {hasItems && <button className={classes.button}>Order</button>}
       </div>
-    </Modal>
+    </Modal >
+
   );
 };
 

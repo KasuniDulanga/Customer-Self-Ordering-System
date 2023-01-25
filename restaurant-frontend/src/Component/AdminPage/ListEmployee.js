@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import NavbarComp from '../Navbar/NavbarComp'
 import EmployeeService from '../Services/EmplyeeService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
 import "./Admin.css";
+import Nav from '../EmployeeNav/Nav'
 
 const ListEmployee = () => {
 
@@ -26,16 +26,12 @@ const ListEmployee = () => {
     return (
         <Fragment>
             <div className='adminbody'>
-                <NavbarComp
-                    link1="Home"
-                    link2="AboutUs"
-                    link3="Events"
-                    link4="Logout" />
+                <Nav/>
 
                 <div className="cont">
                     <h3 className="text-center">List Of Emplyees</h3>
                     <Link to="/add-employee" className="addbtn btn btn-primary mb-3">Add Employee</Link>
-                    <table className="table">
+                    <table className="table rounded shadow">
                         <thead>
                             <th>ID</th>
                             <th>First Name</th>

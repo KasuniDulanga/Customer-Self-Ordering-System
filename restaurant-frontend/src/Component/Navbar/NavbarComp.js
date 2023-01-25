@@ -19,7 +19,7 @@ function NavbarComp(props) {
               <Nav.Link className="navlink" as={Link} to="/">{props.link1}</Nav.Link>
               <Nav.Link className="navlink" as={Link} to="/login">{props.link2}</Nav.Link>
               <Nav.Link className="navlink" as={Link} to="/login">{props.link3}</Nav.Link>
-              <Nav.Link className="navlink" as={Link} to="/login">{props.link4}</Nav.Link>
+              <Nav.Link className="navlink"  onClick={props.logout}>{props.link4}</Nav.Link>
               
             </Nav>
           </Navbar.Collapse>
