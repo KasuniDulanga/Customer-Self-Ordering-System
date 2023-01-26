@@ -6,29 +6,35 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="order")
+@Table(name="mealorder")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long order_id;
+    private int id;
 
-    @Column(name="table_no" , nullable = false)
     private int tableNo;
-
-    @Column(name="net_amount",nullable = false)
-    private double totalAmount;
-
-    @Column(name="status")
+    private String orderDescription;
     private String status;
 
-    @Column(name="customer_id",nullable = false)
-    private long customerId;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = ShoppingCart.class)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private List<ShoppingCart> cartItems;
+
+
+
+
     
 }

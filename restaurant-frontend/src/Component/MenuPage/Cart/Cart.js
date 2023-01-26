@@ -41,8 +41,9 @@ const Cart = (props) => {
         <span>Total Amount :</span>
         <span>{totalAmount}</span>
       </div>
+      <form>
       <div className={classes.tableNo}>
-        <span><label>Table No</label></span>
+        <span><label>Table No :</label></span>
         <span><input
           type="number"
           min={0}
@@ -53,12 +54,32 @@ const Cart = (props) => {
 
 
       </div>
+      <div className={classes.cutomerDetails}>
+        <span><label>Name :</label></span>
+        <span><input
+          type="text"
+          placeholder="Enter name"
+          required
+        >
+        </input></span>
+      </div>
+      <div className={classes.cutomerDetails}>
+        <span><label>Mobile :</label></span>
+        <span><input
+          type="text"
+          placeholder="Enter phone number"
+          required
+        >
+        </input></span>
+      </div>
+      
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClose}>
           Close
         </button>
-        {hasItems && <button className={classes.button}>Order</button>}
+        {hasItems && <button type="submit" className={classes.button}>Order</button>}
       </div>
+      </form>
     </Modal >
 
   );

@@ -2,7 +2,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 20rem;
+  max-height: 15rem;
   overflow: auto;
 }
 .tableNo {
@@ -24,7 +24,29 @@
   border-radius: 5px;
   border: 1px solid rgb(98, 88, 88);
   font: inherit;
-  padding-left: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+.cutomerDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.cutomerDetails label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.cutomerDetails input {
+  width: 15rem;
+  border-radius: 5px;
+  border: 1px solid rgb(98, 88, 88);
+  font: inherit;
+  padding: 0.3rem;
 }
 
 
