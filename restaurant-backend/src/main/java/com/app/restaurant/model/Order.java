@@ -18,19 +18,19 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int order_id;
 
     private int tableNo;
     private String orderDescription;
     private String status;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
 
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = ShoppingCart.class)
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
     private List<ShoppingCart> cartItems;
 
 

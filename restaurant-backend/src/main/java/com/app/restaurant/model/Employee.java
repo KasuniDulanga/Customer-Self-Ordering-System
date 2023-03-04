@@ -32,7 +32,7 @@ public class Employee {
     @Column(name="gmail",nullable = false)
     private String email;
 
-    @Column(name ="phone_no")
+    @Column(name ="phone_no",nullable = false)
     private String phone_no;
 
     @Column(name="address")

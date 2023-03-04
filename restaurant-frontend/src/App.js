@@ -8,6 +8,8 @@ import ListEmployee from './Component/AdminPage/ListEmployee';
 import AddEmployee from './Component/AdminPage/AddEmployee';
 import MenuPage from './Component/MenuPage/MenuPage';
 import CookPage from './Component/CookPage/CookPage';
+import Aboutus from './Component/About/Aboutus';
+import Event from './Component/Events/Event';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route exact path ="/add-employee" element={<AddEmployee/>}></Route>
           <Route exact path ="/edit-employee/:id" element={<AddEmployee/>}></Route>
           <Route exact path ="/menu" element={<MenuPage/>}></Route>
+          <Route exact path ="/aboutus" element={<Aboutus/>}></Route>
+          <Route exact path ="/events" element={<Event/>}></Route>
         </Routes>
 
       </Router>
