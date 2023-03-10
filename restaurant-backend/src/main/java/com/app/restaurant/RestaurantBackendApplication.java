@@ -1,6 +1,7 @@
 package com.app.restaurant;
 
  import com.app.restaurant.model.Employee;
+ import com.app.restaurant.model.Order;
  import com.app.restaurant.repository.EmployeeRepository;
  import org.springframework.beans.factory.annotation.Autowired;
 import com.app.restaurant.model.Meal;
@@ -30,6 +31,9 @@ public class RestaurantBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+
+
 //		Role role1 = new Role();
 //		role1.setRoleName("Admin");
 //		roleRepo.save(role1);

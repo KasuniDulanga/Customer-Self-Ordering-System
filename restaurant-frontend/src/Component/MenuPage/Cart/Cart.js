@@ -19,29 +19,24 @@ const Cart = (props) => {
 
   const orderMeal = (e) => {
     e.preventDefault();
-    const order = { cartItems: cartCtx.items,  customerPhone, customerName, tableNo,orderDescription }
+    const order = { cartItems: cartCtx.items,customerPhone,customerName,tableNo,orderDescription }
 
     if (tableNo.trim() === '' || customerName.trim() === '' || customerPhone.trim() === '') {
       toast.error("table no or name or phone number is required !!", {
         position: toast.POSITION.TOP_CENTER
       });
-      return;
+      
 
     }
-    // else{
-    //   navigate('/');
-    //   OrderService.placeOrder(order).then((response) => {
-    //   console.log(response.data)
-    //   navigate('/menu');
+    else{
+      OrderService.placeOrder(order).then((response) => {
+      console.log(response.data)
+      navigate('/orderdetails');
 
-    // }).catch(error => {
-    //   console.log(error)
-    // })
-    // }
-
-
-
-
+    }).catch(error => {
+      console.log(error.response.data)
+    })
+    }
 
     console.log(order);
 

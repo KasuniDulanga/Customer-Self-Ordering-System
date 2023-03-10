@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const MEAL_BASE_REST_API_URL= 'http://localhost:8080/api/cart/plceorder';
+const MEAL_BASE_REST_API_URL= 'http://localhost:8080/api/cart/placeOrder';
 
 class OrderService{
     // getAllOrders(){
     //     return axios.get(MEAL_BASE_REST_API_URL)
     // }
     placeOrder(order){
-        return axios.post(MEAL_BASE_REST_API_URL)
+        return axios.post(MEAL_BASE_REST_API_URL,order)
     }
 
     // getMealById(meal_id){

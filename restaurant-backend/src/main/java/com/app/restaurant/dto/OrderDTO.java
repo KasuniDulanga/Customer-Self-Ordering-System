@@ -15,6 +15,18 @@ public class OrderDTO {
 
     private List<ShoppingCart> cartItems;
     private String customerPhone;
+
+    @Override
+    public String toString() {
+        return "OrderDTO{" +
+                "cartItems=" + cartItems +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", tableNo=" + tableNo +
+                ", orderDescription='" + orderDescription + '\'' +
+                '}';
+    }
+
     private String customerName;
     private int tableNo;
     private String orderDescription;

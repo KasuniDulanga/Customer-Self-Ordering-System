@@ -6,9 +6,13 @@ import com.app.restaurant.model.Customer;
 import com.app.restaurant.model.Order;
 import com.app.restaurant.service.CustomerService;
 import com.app.restaurant.service.OrderService;
+import com.app.restaurant.util.DateUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @CrossOrigin("*")
 @RestController
@@ -17,19 +21,26 @@ public class CartController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
     private CustomerService customerService;
 
-    public ResponseEntity<Order> getOrderDetails(@PathVariable int orderId) {
+    @GetMapping("/getorder/{order_id}")
+    public ResponseEntity<Order> getOrderDetails(@PathVariable int order_id) {
 
-        Order order = orderService.getOrderDetail(orderId);
+        Order order = orderService.getOrderDetail(order_id);
         return ResponseEntity.ok(order);
     }
     @PostMapping("/placeOrder")
     public ResponseEntity<ResponseOrderDTO> placeOrder(@RequestBody OrderDTO orderDTO){
         ResponseOrderDTO responseOrderDTO = new ResponseOrderDTO();
-        double amount = orderService.getCartAmount(orderDTO.getCartItems());
 
-        Customer customer = new Customer(orderDTO.getCustomerName(), orderDTO.getCustomerPhone());
+        System.out.println(orderDTO.toString());
+
+        Customer customer = new Customer();
+        customer.setCustomerName(orderDTO.getCustomerName());
+        customer.setCustomerPhone(orderDTO.getCustomerPhone());
+
         Integer customerIdFromdb = customerService.isCustomerPresent(customer);
         if(customerIdFromdb != null){
             customer.setCustomer_id(customerIdFromdb);
@@ -38,9 +49,21 @@ public class CartController {
             customer = customerService.saveCustomer(customer);
         }
 
-        Order order = new Order(orderDTO.getTableNo(),orderDTO.getOrderDescription(),"pending", customer, orderDTO.getCartItems());
+        Order order = new Order();
+        order.setTableNo(orderDTO.getTableNo());
+        order.setOrderDescription(orderDTO.getOrderDescription());
+        order.setStatus("Pending");
+        order.setCustomer(customer);
+        order.setCartItems(orderDTO.getCartItems());
+
         order = orderService.saveOrder(order);
 
+        double totCartAmount = orderService.getCartAmount(orderDTO.getCartItems());
+        responseOrderDTO.setAmount(totCartAmount);
+        responseOrderDTO.setDate(DateUtil.getCurrentDateTime());
+        responseOrderDTO.setInvoiceNumber(new Random().nextInt(1000));
+        responseOrderDTO.setOrderId(order.getOrder_id());
+        responseOrderDTO.setOrderDescription(orderDTO.getOrderDescription());
 
         return ResponseEntity.ok(responseOrderDTO);
     }

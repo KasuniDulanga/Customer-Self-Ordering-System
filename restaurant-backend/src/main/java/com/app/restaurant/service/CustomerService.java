@@ -5,7 +5,7 @@ import com.app.restaurant.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService {
+public class CustomerService{
     private CustomerRepository customerRepo;
 
     public CustomerService(CustomerRepository customerRepo) {
@@ -16,7 +16,7 @@ public class CustomerService {
         return customerRepo.save(customer);
     }
     //check whether a customer is a old customer or a new customer
-    public Integer isCustomerPresent(Customer customer){
+    public Integer isCustomerPresent(Customer customer) {
         Customer customer1 = customerRepo.getCustomerByCustomerPhoneAndCustomerName(customer.getCustomerPhone(),customer.getCustomerName());
         return customer1!=null ? customer1.getCustomer_id(): null ;
     }
