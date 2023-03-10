@@ -1,0 +1,52 @@
+/*--footer*/
+.footer{
+    background-color: #351f15;
+    max-width: 100vw;
+    margin-top: 20px;
+    
+  }
+  .form-control{
+    border-right: none;
+  }
+  .send-text{
+  background-color: transparent;
+  margin-top: 0 !important;
+
+  }
+  .send-text.active{
+    background-color: transparent;
+    font-size: small;
+    color: white;
+  
+  }
+  
+  .footer-page-links ul li,.social-media ul li{
+    list-style: none;
+    display: inline-block;
+    font-size: medium;
+  }
+  
+  
+  .footer-page-links ul li a,.social-media ul li a{
+    color: white;
+    padding: 0 10px;
+    text-decoration: none;
+  }
+  
+  .footer-page-links ul li a:hover,.social-media ul li a:hover{
+    color: #8a2b06;
+  }
+  .input-group-append button{
+    width: auto;
+  }
+  
+  .footer-page-links{
+    font-size: 15px;
+  }
+  
+  .copyright, .copyright a{
+    color: rgba(225, 255, 255, .8);
+    font-size: 10px;
+    text-decoration: none;
+    
+  }

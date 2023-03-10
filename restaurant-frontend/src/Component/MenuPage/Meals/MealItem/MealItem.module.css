@@ -4,6 +4,7 @@
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
+  border: 15rem;
 }
 .meal1{
   display: flex;
@@ -13,6 +14,7 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
   width: 35rem;
+  padding-top: 1rem;
 }
 
 .desc{
@@ -26,7 +28,9 @@
   font-style: italic;
   
 }
-
+.qntform{
+  padding: 1rem;
+}
 .price {
   margin-top: 0.25rem;
   font-weight: bold;
@@ -39,22 +43,24 @@
   border-radius: 1rem ;
   height: 10rem;
   width: 10rem;
+  padding: 0.5rem;
 }
 
 
 /* responsive */
-@media(max-width:1200px){
+@media(max-width:1000px){
   .foodimg img{
     border-radius: 1rem ;
     height: 5rem;
     width: 5rem;
+    
   }
   .meal h3 {
-    font-size: small;
+    font-size: medium;
   }
   
   .description {
-    font-size: small;
+    font-size: medium;
     
   }
   
@@ -68,6 +74,9 @@
     margin-right: 1rem;
     margin-left: 1rem;
    
+  }
+  .qntform{
+    font-size: medium;
   }
   
 }

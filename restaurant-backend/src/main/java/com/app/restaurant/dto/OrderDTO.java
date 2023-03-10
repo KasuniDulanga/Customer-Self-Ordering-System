@@ -12,12 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderDTO {
 
-    private String orderDescription;
+
     private List<ShoppingCart> cartItems;
     private String customerPhone;
     private String customerName;
     private int tableNo;
-
+    private String orderDescription;
 
 }
 

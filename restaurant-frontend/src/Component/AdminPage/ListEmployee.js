@@ -4,7 +4,7 @@ import EmployeeService from '../Services/EmplyeeService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
 import "./Admin.css";
-import Nav from '../EmployeeNav/Nav'
+import Nav from '../EmployeeNav/Navpage'
 
 const ListEmployee = () => {
 

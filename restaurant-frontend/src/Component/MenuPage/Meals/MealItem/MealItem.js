@@ -10,17 +10,17 @@ const MealItem = (props) => {
 
   const price = `Rs ${props.price.toFixed(2)}`;
 
-  const addToCartHandler = amount => {
+  const addToCartHandler = quantity => {
     cartCtx.addItem({
-      id: props.id,
-      name: props.name,
-      amount: amount,
-      price: props.price
+      mealId: props.id,
+      mealName: props.name,
+      quantity: quantity,
+      amount: props.price
     });
   };
 
   return (
-    <li className={classes.meal}>
+    <ul className={classes.meal}>
       <div className={classes.foodimg}>
       <img src={foodimage}  alt='food' />
       </div>
@@ -33,11 +33,11 @@ const MealItem = (props) => {
       </div>
       </li>
       
-      <div>
+      <div className={classes.qntform}>
         <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
       </div>
       
-    </li>
+    </ul>
   );
 };
 

@@ -19,6 +19,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 830px) {
@@ -29,7 +30,7 @@
 }
 @media (max-height: 1200px) {
   .modal {
-    height: 35rem;
+    height: 36rem;
     
   }
 }

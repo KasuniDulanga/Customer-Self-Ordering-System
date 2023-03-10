@@ -20,6 +20,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int order_id;
 
+    public Order(int tableNo, String orderDescription, String status, Customer customer, List<ShoppingCart> cartItems) {
+        this.tableNo = tableNo;
+        this.orderDescription = orderDescription;
+        this.status = status;
+        this.customer = customer;
+        this.cartItems = cartItems;
+    }
+
     private int tableNo;
     private String orderDescription;
     private String status;

@@ -20,7 +20,8 @@ export const AddEmployee = () => {
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
         const employee = { firstName, lastName, email, password, address, phone_no,roleId }
-
+    
+        
         // if id contains value make update employee REST API
         if (id) {
             EmployeeService.updateEmployee(id, employee).then((response) => {
@@ -43,7 +44,7 @@ export const AddEmployee = () => {
         }
 
     }
-    //useEffect used to display info in interface
+    
     useEffect(() => {
         EmployeeService.getEmployeeById(id).then((response) => {
             setFirstName(response.data.firstName);
@@ -53,9 +54,13 @@ export const AddEmployee = () => {
             setRoleId(response.data.roleId);
             setAddress(response.data.address);
             setPhoneNo(response.data.phone_no);
+
+            
+       
         }).catch(error => {
             console.log(error)
         })
+
     }, [id])
 
     const buttonSubmitOrUpdate = () => {
@@ -72,7 +77,7 @@ export const AddEmployee = () => {
             return <h2 className='text-center'>Update Employee</h2>
         }
         else {
-            return <h2 className='text-center'>Add Employee</h2>
+            return <h2 className='text-center'>Add New Employee</h2>
         }
     }
     return (
@@ -80,7 +85,7 @@ export const AddEmployee = () => {
             <br /><br />
             <div className="container addemployee">
                 <div className="row">
-                    <div className="card col-md-6 offset-md-3 offset-md-2">
+                    <div className="cardform col-md-6 offset-md-3 offset-md-2">
                         {
                             title()
                         }

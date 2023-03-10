@@ -1,10 +1,11 @@
-/* .adminbody{
+.adminbody{
     
-    background-image: url("../Images/back1.jpg");
-    background-size: cover;
+    /* background-image: url("../Images/back1.jpg");
+    background-size: cover; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-} */
-.card{
+}
+.cardform{
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
 }

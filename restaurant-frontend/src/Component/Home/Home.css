@@ -4,7 +4,10 @@
     z-index: 0;
     overflow: hidden;
   }
-  
+  .home{
+    overflow: auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
   .main-img img {
     width: 120%;
     height: 100%;

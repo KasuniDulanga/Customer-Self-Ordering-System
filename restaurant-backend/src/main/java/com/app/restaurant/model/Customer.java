@@ -26,5 +26,8 @@ public class Customer {
     private String customerPhone;
 
 
-
+    public Customer(String customerName, String customerPhone) {
+        this.customerName=customerName;
+        this.customerPhone=customerPhone;
+    }
 }

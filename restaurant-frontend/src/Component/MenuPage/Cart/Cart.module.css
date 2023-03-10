@@ -4,6 +4,7 @@
   padding: 0;
   max-height: 15rem;
   overflow: auto;
+  
 }
 .tableNo {
   display: flex;
@@ -12,6 +13,7 @@
   font-weight: bold;
   font-size: 1.3rem;
   margin: 1rem 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .tableNo label {
@@ -32,8 +34,9 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 1rem 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .cutomerDetails label {
@@ -55,8 +58,9 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 1rem 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .actions {
@@ -87,4 +91,9 @@
 .actions .button {
   background-color: #8a2b06;
   color: white;
+}
+@media (max-width: 768px) {
+  .cutomerDetails input {
+    width: 9rem;
+  }
 }

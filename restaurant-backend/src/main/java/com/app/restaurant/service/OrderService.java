@@ -40,7 +40,7 @@ public class OrderService {
                 totalCartAmount = totalCartAmount + singleCartAmount;
                 cart.setMealName(meal1.getMealName());
                 cart.setAmount(singleCartAmount);
-                mealRepo.save(meal1);
+
             }
         }
         return totalCartAmount;
