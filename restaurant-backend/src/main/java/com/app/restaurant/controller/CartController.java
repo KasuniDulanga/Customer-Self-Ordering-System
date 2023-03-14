@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Random;
 
 @CrossOrigin("*")
@@ -24,6 +25,8 @@ public class CartController {
 
     @Autowired
     private CustomerService customerService;
+
+
 
     @GetMapping("/getorder/{order_id}")
     public ResponseEntity<Order> getOrderDetails(@PathVariable int order_id) {
@@ -55,15 +58,22 @@ public class CartController {
         order.setStatus("Pending");
         order.setCustomer(customer);
         order.setCartItems(orderDTO.getCartItems());
-
+        order.setCartItems(orderDTO.getCartItems());
+        order.setDate(DateUtil.getCurrentDateTime());
+        order.setInvoiceNumber(new Random().nextInt(1000));
         order = orderService.saveOrder(order);
 
         double totCartAmount = orderService.getCartAmount(orderDTO.getCartItems());
+        responseOrderDTO.setCartItems(orderDTO.getCartItems());
+        responseOrderDTO.setCustomerName(orderDTO.getCustomerName());
+        responseOrderDTO.setTableNo(orderDTO.getTableNo());
+        responseOrderDTO.setOrderId(order.getOrder_id());
         responseOrderDTO.setAmount(totCartAmount);
         responseOrderDTO.setDate(DateUtil.getCurrentDateTime());
         responseOrderDTO.setInvoiceNumber(new Random().nextInt(1000));
-        responseOrderDTO.setOrderId(order.getOrder_id());
+
         responseOrderDTO.setOrderDescription(orderDTO.getOrderDescription());
+
 
         return ResponseEntity.ok(responseOrderDTO);
     }

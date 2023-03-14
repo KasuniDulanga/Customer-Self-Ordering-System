@@ -9,7 +9,18 @@ import LogoutModal from './LogoutModal';
 const Navpage = () => {
   const navigate = useNavigate();
   const [MsgIsShown, setMsgIsShown] = useState(false);
+  const[fix,setfix] =useState(false);
 
+  function setFixed(){
+    if(window.scrollY >= 392){
+      setfix(true);
+    }
+    else{
+      setfix(false);
+    }
+  }
+
+  window.addEventListener("scroll",setFixed);
   const gotoLoginPage = () => {
 
     navigate('/login');

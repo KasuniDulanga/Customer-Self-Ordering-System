@@ -32,6 +32,9 @@ public class Order {
     private String orderDescription;
     private String status;
 
+    private int invoiceNumber;
+    private String date;
+
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;

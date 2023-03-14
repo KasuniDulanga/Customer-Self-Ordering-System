@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoginRepository extends JpaRepository<Employee, Integer> {
-    Employee findByEmailAndPassword(String email,String password);
+    //findby can return multiple results while findOneBy will return a single results or null
+    Employee findOneByEmailIgnoreCaseAndPassword(String email,String password);
 }

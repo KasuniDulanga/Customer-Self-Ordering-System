@@ -1,15 +1,21 @@
 import React, { Fragment, useState } from 'react';
+import {EyeInvisibleOutlined ,EyeOutlined } from '@ant-design/icons';
 import { ToastContainer, toast } from 'react-toastify';
 import NavbarComp from '../Navbar/NavbarComp';
 import './Login.css';
+import UserLoginService from '../Services/UserLoginService';
+import { useNavigate } from 'react-router-dom';
 
-
-function Login() {
-
+function Login() { 
+    const[visibility,setVsibility] =useState(true);
+    const navigate = useNavigate();
+    
     const[loginDetails, setLoginDetails] =useState({
-        useremail:'',
+        email:'',
         password:''
     })
+
+    
 
     //if we change email and password 
     const handleChange=(event,field) =>{
@@ -21,7 +27,7 @@ function Login() {
 
     const handleReset=() =>{
         setLoginDetails({
-            useremail:"",
+            email:"",
             password:"",
         });
     }
@@ -31,15 +37,39 @@ function Login() {
         console.log(loginDetails);
 
         // Validation
-        if(loginDetails.useremail.trim()==='' || loginDetails.password.trim()==='' ){
+        if(loginDetails.email.trim()==='' || loginDetails.password.trim()==='' ){
             toast.error("Useremail or Password is required !!", {
                 position: toast.POSITION.TOP_CENTER
             });
             return;
         }
+
+        else{
+            UserLoginService.login(loginDetails).then((response) => {
+                console.log(response.data)
+                if(response.data === 1){
+                    navigate('/admin');
+                }
+                else if(response.data === 2){
+                    navigate('/cook');
+                }
+                else if(response.data === 3){
+                    navigate('/waiter');
+                }
+                else if(response.data === 0){
+                    toast.error("Useremail or Password is Incorrect !!", {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                }
+                
+
+            }).catch(error => {
+                console.log(error)
+            })
+        }
     }
 
-
+    
  
   return (
     <Fragment>
@@ -49,16 +79,16 @@ function Login() {
             link3 ="Events" />
       <div className="loginBody wrapper bg-white">
       <div className="wrapper bg-white">
-        <div className="h3 text-center">Login To Your Account</div>
-        <form className="pt-3" onSubmit={handleFormSubmit}>
+        <div className="h3 text-center">       Login To <br></br>Your Account    </div>
+        <form className="pt-3" >
             <div className="form-group py-2">
                 <div className="input-field">
                     <span className="far fa-user p-2"></span>
                     <input 
                         type="email" 
                         placeholder="Email" 
-                        value={loginDetails.useremail}
-                        onChange={(e) =>handleChange(e,'useremail')}
+                        value={loginDetails.email}
+                        onChange={(e) =>handleChange(e,'email')}
                         className=""></input>
                 </div>
             </div>
@@ -66,16 +96,18 @@ function Login() {
                 <div className="input-field">
                     <span className="fas fa-lock p-2"></span>
                     <input 
-                        type="password" 
+                        type={visibility ? "password" : "text" } 
                         placeholder="Password" 
                         value={loginDetails.password}
                         onChange={(e) =>handleChange(e,'password')}
                         className="">
 
                     </input>
-                    <button className="btn bg-white text-muted">
-                        <span className="far fa-eye-slash"></span>
-                    </button>
+                    <div className='eye' onClick={()=>setVsibility(!visibility)}>
+                    {
+                        visibility ?  <EyeInvisibleOutlined/> :<EyeOutlined/>
+                    }
+                    </div>
                 </div>
             </div>
             <div className="d-flex align-items-start">
@@ -87,7 +119,7 @@ function Login() {
                 </div>
                 
             </div>
-            <button type="submit" className="btn btn-block text-center my-3 mx-2">Login</button>
+            <button type="submit" className="btn btn-block text-center my-3 mx-2" onClick={handleFormSubmit}>Login</button>
             <button type="reset" className="btn btn-block text-center my-3" onClick={handleReset}>Reset</button>
             <ToastContainer/>
             

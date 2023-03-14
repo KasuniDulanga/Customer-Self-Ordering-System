@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import EmployeeService from '../Services/EmplyeeService';
-import "./Admin.css";
+import {EyeInvisibleOutlined ,EyeOutlined } from '@ant-design/icons';
+import classes from"./Admin.module.css";
 
 
 export const AddEmployee = () => {
-
+    const [visibility, setVsibility] = useState(true);
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -19,9 +20,9 @@ export const AddEmployee = () => {
     // perform both save and update employee details
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
-        const employee = { firstName, lastName, email, password, address, phone_no,roleId }
-    
-        
+        const employee = { firstName, lastName, email, password, address, phone_no, roleId }
+
+
         // if id contains value make update employee REST API
         if (id) {
             EmployeeService.updateEmployee(id, employee).then((response) => {
@@ -32,7 +33,7 @@ export const AddEmployee = () => {
         }
 
         else {
-            
+
             EmployeeService.createEmployee(employee).then((response) => {
                 console.log(response.data)
                 navigate('/admin');
@@ -44,7 +45,7 @@ export const AddEmployee = () => {
         }
 
     }
-    
+
     useEffect(() => {
         EmployeeService.getEmployeeById(id).then((response) => {
             setFirstName(response.data.firstName);
@@ -55,8 +56,8 @@ export const AddEmployee = () => {
             setAddress(response.data.address);
             setPhoneNo(response.data.phone_no);
 
-            
-       
+
+
         }).catch(error => {
             console.log(error)
         })
@@ -81,11 +82,12 @@ export const AddEmployee = () => {
         }
     }
     return (
-        <div className ="addemployeebody">
+        <div className={classes.addemployeebody}>
             <br /><br />
-            <div className="container addemployee">
+            <div className={classes.addemployee}>
                 <div className="row">
-                    <div className="cardform col-md-6 offset-md-3 offset-md-2">
+                    <div id={classes.cardform} className={"col-md-6 offset-md-3 offset-md-2"}>
+                    {/* <div className="cardform col-md-6 offset-md-3 offset-md-2"> */}
                         {
                             title()
                         }
@@ -135,9 +137,11 @@ export const AddEmployee = () => {
                                 </div>
 
                                 <div className="form-group mb-2">
+                                
                                     <label className="form-label"> Password :</label>
+                                    <div className="input-area">
                                     <input
-                                        type="password"
+                                        type={visibility ? "password" : "text"}
                                         placeholder="Enter password"
                                         name="password"
                                         className="form-control"
@@ -146,6 +150,12 @@ export const AddEmployee = () => {
                                         required
                                     >
                                     </input>
+                                    <span className='eye' onClick={() => setVsibility(!visibility)}>
+                                        {
+                                            visibility ? <EyeInvisibleOutlined /> : <EyeOutlined />
+                                        }
+                                    </span>
+                                    </div>
                                 </div>
 
                                 <div className="form-group mb-2">
@@ -159,9 +169,9 @@ export const AddEmployee = () => {
                                         onChange={(e) => setRoleId(e.target.value)}
                                         required
                                     >
-                                    
+
                                     </input>
-                                    
+
                                 </div>
 
                                 <div className="form-group mb-2">

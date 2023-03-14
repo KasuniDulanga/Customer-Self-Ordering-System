@@ -7,6 +7,7 @@ import CartContext from '../../store/cart-context';
 import OrderService from '../../Services/OrderService';
 import { useNavigate } from 'react-router-dom';
 
+
 const Cart = (props) => {
   const [tableNo, setTableNo] = useState('');
   const [customerName, setCustomerName] = useState('');

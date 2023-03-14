@@ -3,12 +3,25 @@ import { Link } from 'react-router-dom'
 import EmployeeService from '../Services/EmplyeeService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
-import "./Admin.css";
+import classes from"./Admin.module.css";
 import Nav from '../EmployeeNav/Navpage'
+import ListMeals from './ListMeals'
+import { useNavigate } from 'react-router-dom';
+import LogoutModal from '../EmployeeNav/LogoutModal';
 
 const ListEmployee = () => {
 
     const [employees, setEmployees] = useState([])
+    const [MsgIsShown, setMsgIsShown] = useState(false);
+    const navigate = useNavigate();
+
+
+    const showCartHandler = () => {
+        setMsgIsShown(true);
+    };
+    const hideMsgHandler = () => {
+        setMsgIsShown(false);
+    };
     useEffect(() => {
         EmployeeService.getAllEmployees().then((response) => {
             setEmployees(response.data)
@@ -21,18 +34,23 @@ const ListEmployee = () => {
 
     const deleteEmployee = (employeeId) => {
         console.log(employeeId)
+        navigate("/Admin")
     }
 
     return (
         <Fragment>
-            <div className='adminbody'>
-                <Nav/>
-
-                <div className="cont">
+            <div className={classes.body}>
+            <Nav />
+            <div className={classes.adminbody}>
+                
+            <br></br>
+            <br></br>
+                <div className={classes.cont}>
                     <h3 className="text-center">List Of Emplyees</h3>
-                    <Link to="/add-employee" className="addbtn btn btn-primary mb-3">Add Employee</Link>
-                    <table className="table rounded shadow">
+                    <Link to="/add-employee" id={classes.addbtn} className="addbtn btn btn-primary mb-3">Add Employee</Link>
+                    <table id ={classes.table} className="table rounded shadow">
                         <thead>
+                            <tr>
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -40,6 +58,7 @@ const ListEmployee = () => {
                             <th>Phone Number</th>
                             <th>Address</th>
                             <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {
@@ -54,8 +73,19 @@ const ListEmployee = () => {
                                             <td data-label="Address">{employee.address}</td>
                                             <td data-label="Actions">
                                                 <div>
-                                                    <Link to={`/edit-employee/${employee.employee_id}`}><img src={editIcon} className='editIcon' alt='edit' /></Link>
-                                                    <Link onClick={() => deleteEmployee(employee.employee_id)}><img src={deleteIcon} className='editIcon' alt='edit' /></Link>
+                                                    <Link to={`/edit-employee/${employee.employee_id}`}><img src={editIcon} className={classes.editIcon} alt='edit' /></Link>
+                                                    <Link onClick={showCartHandler}><img src={deleteIcon} className={classes.editIcon} alt='edit' /></Link>
+                                                    {MsgIsShown && <LogoutModal onClose={hideMsgHandler}>
+                                                        <div className="message">
+                                                            <span>Are sure you want to Delete?</span>
+                                                        </div>
+                                                        <div className="close">
+                                                            <button className='button--alt' onClick={() => deleteEmployee(employee.employee_id)}>
+                                                                Yes
+                                                            </button>
+                                                            <button className='button' onClick={hideMsgHandler}>No</button>
+                                                        </div>
+                                                    </LogoutModal>}
                                                 </div>
                                             </td>
                                         </tr>
@@ -64,7 +94,12 @@ const ListEmployee = () => {
                         </tbody>
 
                     </table>
+                    
                 </div>
+
+                <ListMeals />
+            </div>
+            
             </div>
         </Fragment>
     )

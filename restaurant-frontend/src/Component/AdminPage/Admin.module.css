@@ -1,29 +1,63 @@
-.cardform{
+.body{
+    overflow : hidden;
+    height: 39.5rem;
+    min-height: 39.5rem;
     
+}
+
+.adminbody{
+    
+    background-image: url("../Images/back1.jpg");
+    background-size: cover;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   overflow-y: scroll;
+   max-height: 700px;
+
+}
+#cardform{
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
-    min-height: 27rem;
+   
+    
 }
-.addcookbody{
+.addemployeebody{
     background-image: url("../Images/back1.jpg");
     background-size: cover;
     min-height: 800px;
 }
-
+.inpurarea{
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #400485;
+    color: #400485;
+}
+.addcook{
+    min-height: 35rem;
+}
 .cont{
     max-width: 150 rem;
     min-height: 30rem;
     width: 90%;
     height: max-content;
     margin: auto;
-    margin-top: 2rem;
+    
     position: relative;
     background-color: #100d19e4;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
     border-radius: 14px;
     padding: 2rem;
     box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
-   
+    
+    /* padding: 20px;
+    margin: 0px 10px;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+    width: 500px;
+    height: 100%;
+    border-radius: 15px; */
     /* background-image: url("../Images/back.jfif");
     background-size: cover; */
     
@@ -32,7 +66,7 @@
 .cont h3 {
     color: white;
 }
-.addbtn{
+#addbtn{
     background-color: #64492c;
    background: transparent;
    border: 2px solid white;
@@ -44,21 +78,22 @@
     width: 35px;
     padding: 5px;
 }
-.addbtn:hover{
+#addbtn:hover{
     background-color:#6d2d143a;
     border: 2px solid white;
     
 }
 
-.table{
+#table{
     border-collapse: collapse ;
     background-color: rgb(172, 213, 199);
     border: 2px solid white;
     background: transparent;
     color: white;
     
+    
 }
-.table td, .table th{
+#table td, #table th{
     padding: 12px 15px;
     text-align: center;
     border: 1px solid #ddd;
@@ -68,25 +103,25 @@
 
 /* responsive */
 @media(max-width:1200px){
-    .table thead{
+    #table thead{
         display: none;
     }
 
-    .table, .table tbody,.table tr,.table td{
+    #table, #table tbody,#table tr,#table td{
         display: block;
         width: 100%;
     }
-    .table tr{
+    #table tr{
         margin-bottom: 15px;
     }
 
-    .table td{
+    #table td{
         text-align: right;
         padding-left: 50%;
         text-align: right;
         position: relative;
     }
-    .table td::before{
+    #table td::before{
         content: attr(data-label);
         position: absolute;
         left: 0;
@@ -97,3 +132,17 @@
         text-align: left;
     }
 }
+
+::-webkit-scrollbar {
+    width: 10em;
+  }
+   
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 1px;
+  }

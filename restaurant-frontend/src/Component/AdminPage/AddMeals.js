@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import MealService from '../Services/MealService';
-import "./CookPage";
+import classes from "../AdminPage/mealAdding.module.css";
 
 
 export const AddMeals = () => {
@@ -74,16 +74,16 @@ export const AddMeals = () => {
         }
     }
     return (
-        <div className ="addcookbody">
+        <div className ={classes.addemployeebody}>
             <br /><br /><br/>
-            <div className="container addcook">
+            <div className={classes.addcook}>
                 <div className="row">
-                    <div className="cardform col-md-6 offset-md-3 offset-md-2">
+                    <div id={classes.cardform} className="col-md-6 offset-md-3 offset-md-2">
                         {
                             title()
                         }
 
-                        <div className="card-body">
+                        <div className={classes.cardbody}>
                             <form>
                                 <div className="form-group mb-2">
                                     <label className="form-label"> Meal Name :</label>
@@ -146,8 +146,9 @@ export const AddMeals = () => {
                                     buttonSubmitOrUpdate()
                                 }
                                 <Link to="/cook" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
+                                
                             </form>
-
+                            <br></br>
                         </div>
                     </div>
                 </div>

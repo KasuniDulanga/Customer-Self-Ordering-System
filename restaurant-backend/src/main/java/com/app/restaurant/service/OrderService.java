@@ -1,5 +1,7 @@
 package com.app.restaurant.service;
 
+import com.app.restaurant.exception.ResourceNotFoundException;
+import com.app.restaurant.model.Employee;
 import com.app.restaurant.model.Meal;
 import com.app.restaurant.model.Order;
 import com.app.restaurant.model.ShoppingCart;
@@ -20,11 +22,36 @@ public class OrderService {
         this.mealRepo = mealRepo;
     }
 
+    public List<Order> getAllPendingOrders(){
+        return orderRepo.findAllByStatusIgnoreCase("pending");
+    }
+
+    public List<Order> getAllAcceptedOrders(){
+        return orderRepo.findAllByStatusIgnoreCase("accepted");
+    }
+
     public Order getOrderDetail(int orderId) {
         Optional<Order> order = this.orderRepo.findById(orderId);
         return order.isPresent() ? order.get() : null;
     }
 
+//    public Order changeOrderStatus(int orderId,String status){
+//        Order updateOrder = orderRepo.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +orderId));
+//        updateOrder.setStatus(status);
+//
+//        orderRepo.save(updateOrder);
+//
+//        return updateOrder;
+//    }
+
+    public Order changeOrderStatus(int orderId,String status){
+        Order updateOrder = orderRepo.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +orderId));
+        updateOrder.setStatus(status);
+
+        orderRepo.save(updateOrder);
+
+        return updateOrder;
+    }
     public double getCartAmount(List<ShoppingCart> shoppingCartList) {
 
         double totalCartAmount = 0f;

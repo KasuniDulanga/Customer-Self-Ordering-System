@@ -1,14 +1,14 @@
 import { Fragment} from 'react';
-import './CookPage.css';
+import './CookPage.module.css';
 import Nav from '../EmployeeNav/Navpage';
-import ListMeals from '../CookPage/ListMeals';
+import ListPendingMeals from './ListPendingMeals';
 const CookPage = () => {
  
 
   return (
     <Fragment>
       <Nav/>
-      <ListMeals/>
+      <ListPendingMeals/>
     </Fragment>
   );
 };

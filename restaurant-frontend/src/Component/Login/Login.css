@@ -22,6 +22,7 @@
 .h3{
     font-weight: bold;
     color: #85040f; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .h4{
     font-family: 'Poppins', sans-serif; 
@@ -49,11 +50,8 @@ input{
     padding: 0px 2px;
     font-family: 'Poppins', sans-serif; 
 }
-.fa-eye-slash.btn{
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
+
+
 a{
     text-decoration: none;
     color: #400485;

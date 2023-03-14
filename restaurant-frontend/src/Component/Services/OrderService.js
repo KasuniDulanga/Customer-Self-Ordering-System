@@ -1,25 +1,29 @@
 import axios from "axios";
 
 const MEAL_BASE_REST_API_URL= 'http://localhost:8080/api/cart/placeOrder';
+const ORDER_BASE_REST_API_URL= 'http://localhost:8080/api/order';
 
 class OrderService{
-    // getAllOrders(){
-    //     return axios.get(MEAL_BASE_REST_API_URL)
-    // }
+
     placeOrder(order){
         return axios.post(MEAL_BASE_REST_API_URL,order)
     }
 
-    // getMealById(meal_id){
-    //     return axios.get(MEAL_BASE_REST_API_URL + '/' + meal_id);
-    // }
+    getAllPendingOrders(){
+        return axios.get(ORDER_BASE_REST_API_URL + '/pendingOrders')
+    }
 
-    // updateMeal(meal_id,meal){
-    //     return axios.put(MEAL_BASE_REST_API_URL + '/' + meal_id,meal);
-    // }
+    getAllAcceptedOrders(){
+        return axios.get(ORDER_BASE_REST_API_URL + '/acceptedOrders')
+    }
 
-    // deleteMeal(meal_id){
-    //     return axios.delete(MEAL_BASE_REST_API_URL + '/' + meal_id);
-    // }
+    changeOrderStatus(orderId,status){
+        return axios.put(ORDER_BASE_REST_API_URL + '/' + orderId,status)
+    }
+    
+
+    
+
+    
 }
 export default new OrderService();

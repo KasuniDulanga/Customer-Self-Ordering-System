@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import MealService from '../Services/MealService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
-import "./CookPage.css";
+import classes from "../AdminPage/Admin.module.css";
 
 const ListMeals = () => {
 
@@ -24,19 +24,22 @@ const ListMeals = () => {
 
     return (
         <Fragment>
-            <div className='cookbody'>
+            
+            <br></br>
+                <div className={classes.cont}>
                 
-                <div className="cont">
                     <h3 className="text-center">List Of Meals</h3>
-                    <Link to="/add-meal" className="addbtn btn btn-primary mb-3">Add New Meal</Link>
-                    <table className="table rounded shadow">
+                    <Link to="/add-meal" id={classes.addbtn} className="addbtn btn btn-primary mb-3">Add New Meal</Link>
+                    <table id ={classes.table} className="table rounded shadow">
                         <thead>
+                            <tr>
                             <th>ID</th>
                             <th>Meal Name</th>
                             <th>Category</th>
                             <th>Price</th>
                             <th>Description</th>
                             <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {
@@ -51,8 +54,8 @@ const ListMeals = () => {
                         
                                             <td data-label="Actions">
                                                 <div>
-                                                    <Link to={`/edit-meal/${meals.meal_id}`}><img src={editIcon} className='editIcon' alt='edit' /></Link>
-                                                    <Link onClick={() => deleteMeal(meals.meal_id)}><img src={deleteIcon} className='editIcon' alt='edit' /></Link>
+                                                    <Link to={`/edit-meal/${meals.meal_id}`}><img src={editIcon} className={classes.editIcon} alt='edit' /></Link>
+                                                    <Link onClick={() => deleteMeal(meals.meal_id)}><img src={deleteIcon} className={classes.editIcon}  alt='edit' /></Link>
                                                 </div>
                                             </td>
                                         </tr>
@@ -62,7 +65,7 @@ const ListMeals = () => {
 
                     </table>
                 </div>
-            </div>
+                <br></br><br></br>
         </Fragment>
     )
 }
