@@ -28,7 +28,7 @@ public class OrderController {
 
     @PutMapping("{id}")
     public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@RequestBody OrderStatus status){
-        System.out.println(status.getStatus());
+
         return ResponseEntity.ok(orderService.changeOrderStatus(id,status.getStatus()));
 
 
