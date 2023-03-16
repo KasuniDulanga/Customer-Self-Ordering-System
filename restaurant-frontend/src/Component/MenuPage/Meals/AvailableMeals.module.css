@@ -4,7 +4,7 @@
   margin: 2rem auto;
   animation: meals-appear 1s ease-out forwards;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .meals ul {

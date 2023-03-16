@@ -12,7 +12,7 @@ import Event from './Component/Events/Event';
 import AddMeals from './Component/AdminPage/AddMeals';
 import OrderDetails from './Component/OrderDetails/OrderDetails';
 import Admin from './Component/AdminPage/Admin';
-import WaiterPage from './Component/WaiterPage/WaiterPage';
+import Waiter from './Component/WaiterPage/Waiter';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route exact path ="/edit-meal/:id" element={<AddMeals/>}></Route>
           
           <Route exact path ="/cook" element={<CookPage/>}></Route>
-          <Route exact path ="/waiter" element={<WaiterPage/>}></Route>
+          <Route exact path ="/waiter" element={<Waiter/>}></Route>
           
           <Route exact path ="/menu" element={<MenuPage/>}></Route>
           <Route exact path ="/aboutus" element={<Aboutus/>}></Route>

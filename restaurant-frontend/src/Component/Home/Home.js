@@ -37,7 +37,9 @@ function Home() {
 
                 </section>
                 <br></br>
+                <div className="footer">
                 <Footer/>
+                </div>
                 </div>
             </Fragment>
 

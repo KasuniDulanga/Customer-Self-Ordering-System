@@ -17,6 +17,13 @@ class OrderService{
         return axios.get(ORDER_BASE_REST_API_URL + '/acceptedOrders')
     }
 
+    getAllReadyOrders(){
+        return axios.get(ORDER_BASE_REST_API_URL + '/readyOrders')
+    }
+
+    getAllWaiterAcceptedOrders(){
+        return axios.get(ORDER_BASE_REST_API_URL + '/waiterAcceptedOrders')
+    }
     changeOrderStatus(orderId,status){
         return axios.put(ORDER_BASE_REST_API_URL + '/' + orderId,status)
     }

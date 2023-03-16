@@ -2,7 +2,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 15rem;
+  max-height: 11rem;
   overflow: auto;
   
 }
@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 1rem 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -19,6 +19,7 @@
 .tableNo label {
   font-weight: bold;
   margin-right: 1rem;
+  
 }
 
 .tableNo input {
@@ -27,6 +28,7 @@
   border: 1px solid rgb(98, 88, 88);
   font: inherit;
   padding-left: 0.3rem;
+  height: fit-content;
 }
 
 .cutomerDetails {
@@ -37,6 +39,7 @@
   font-size: 1rem;
   margin: 1rem 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
 }
 
 .cutomerDetails label {
@@ -49,7 +52,9 @@
   border-radius: 5px;
   border: 1px solid rgb(98, 88, 88);
   font: inherit;
+  font-size: small;
   padding: 0.3rem;
+
 }
 
 
@@ -58,7 +63,7 @@
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 1rem 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

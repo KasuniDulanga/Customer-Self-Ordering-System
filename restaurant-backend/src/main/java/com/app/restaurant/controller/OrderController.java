@@ -26,6 +26,20 @@ public class OrderController {
         return orderService.getAllAcceptedOrders();
     }
 
+    @GetMapping("/readyOrders")
+    public List<Order> getAllReadyOrders(){
+        return orderService.getAllReadyOrders();
+    }
+
+    @GetMapping("/waiterAcceptedOrders")
+    public List<Order> getAllWaiterAcceptedOrders(){
+        return orderService.getAllWaiterAcceptedOrders();
+    }
+    @GetMapping("/servedOrders")
+    public List<Order> getAllServedOrders(){
+        return orderService.getAllServedOrders();
+    }
+
     @PutMapping("{id}")
     public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@RequestBody OrderStatus status){
 

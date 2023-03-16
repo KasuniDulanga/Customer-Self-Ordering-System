@@ -12,8 +12,8 @@ export default function Event() {
         link2="AboutUs"
         link3="Events"
         link4="Login" />
-      <br></br>
-      <div class="container text-center pb-4">
+      <div className='withoutnavbar'>
+      <div className="container text-center pb-4">
         <div className="slide">
           <div className="card-box">
 
@@ -182,6 +182,7 @@ export default function Event() {
       <br></br>
       <br></br>
       <br></br>
+      </div>
       <Footer />
     </Fragment>
   )

@@ -40,6 +40,7 @@ const ListPendingMeals = () => {
   // ];
   const [pendingMeals, setPendingMeals] = useState([]);
   const [acceptedMeals, setAcceptedMeals] = useState([]);
+  const [readyMeals, setReadyMeals] = useState([]);
   useEffect(() => {
     OrderService.getAllPendingOrders()
       .then((response) => {
@@ -47,7 +48,7 @@ const ListPendingMeals = () => {
         // console.log(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data);
       });
 
     OrderService.getAllAcceptedOrders()
@@ -56,8 +57,9 @@ const ListPendingMeals = () => {
         // console.log(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data);
       });
+
 
     // database access to get pending meals and accepted meals for a specific cook
     // using the response "pendingMeals" and accepted meals should be update
@@ -69,7 +71,7 @@ const ListPendingMeals = () => {
     e.preventDefault();
 
     // console.log(orderId);
-    /*This will be changed from the database access only for demo*/
+    // /*This will be changed from the database access only for demo*/
     const acceptedMeal = pendingMeals.filter((meal) => {
       return meal.order_id === orderId;
     }); // return a array of meals which have order id of orderId
@@ -78,14 +80,12 @@ const ListPendingMeals = () => {
     }); // return a array of meals which haven't order id of orderId
 
     // var content = new StringContent("accepted", Encoding.UTF8, "application/json");
-    OrderService.changeOrderStatus(orderId, {status:"accepted"}).then((response) => {
-       console.log(response.data)
+    OrderService.changeOrderStatus(orderId, { status: "accepted" }).then((response) => {
+      console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
     });
     const newAcceptedMeals = [...acceptedMeals, acceptedMeal[0]]; // add accepted meals to existing accepted meal list
-
-    
 
     setPendingMeals(newPendingMeals);
     setAcceptedMeals(newAcceptedMeals);
@@ -93,36 +93,45 @@ const ListPendingMeals = () => {
 
   const onDone = (e, orderId) => {
     e.preventDefault();
-    // this database access should change status of the order of specific orderId
-    // response is pending meals and accepted meals for a specific cook
-    // using the response "pendingMeals" and accepted meals should be update
-    console.log(orderId);
+
+    const readyMeal = acceptedMeals.filter((meal) => {
+      return meal.order_id === orderId;
+    });
     /*This should be changed from the database access only for demo*/
     const newAcceptedMeals = acceptedMeals.filter((meal) => {
       return meal.orderId !== orderId;
     }); // return a array of meals which haven't order id of orderId
+
+    OrderService.changeOrderStatus(orderId, { status: "ready" }).then((response) => {
+      console.log(response.data)
+    }).catch(error => {
+      console.log(error.response.data)
+    });
+    const newReadyMeals = [...readyMeals, readyMeal[0]]; // add accepted meals to existing accepted meal list
+
     setAcceptedMeals(newAcceptedMeals);
+    setReadyMeals(newReadyMeals);
   };
 
   return (
     <Fragment>
       <div className={classes.cardbody}>
         <div className={classes.cardinner}>
-          <h1 style={{ paddingBottom: "5px" }}>Pending Orders</h1>
+          <h2 style={{ paddingBottom: "5px" }}>Pending Orders</h2>
           <div className={classes.doubleinner}>
             {pendingMeals.length === 0 ? (
               <div
                 className="card-details"
                 style={{ textAlign: "center", marginTop: "165px" }}
               >
-                <h1
+                <h2
                   style={{
                     fontFamily: "'Kaushan Script', cursive",
                     color: "#8a2b06",
                   }}
                 >
                   No Pending Orders
-                </h1>
+                </h2>
               </div>
             ) : (
               pendingMeals.map((meal) => (
@@ -137,21 +146,21 @@ const ListPendingMeals = () => {
           </div>
         </div>
         <div className={classes.cardinner}>
-          <h1 style={{ paddingBottom: "5px" }}>Accepted Orders</h1>
+          <h2 style={{ paddingBottom: "5px" }}>Accepted Orders</h2>
           <div className={classes.doubleinner}>
             {acceptedMeals.length === 0 ? (
               <div
                 className="card-details"
                 style={{ textAlign: "center", marginTop: "165px" }}
               >
-                <h1
+                <h2
                   style={{
                     fontFamily: "'Kaushan Script', cursive",
                     color: "#8a2b06",
                   }}
                 >
                   No Accepted Orders
-                </h1>
+                </h2>
               </div>
             ) : (acceptedMeals.map((meal) => (
               <Card1

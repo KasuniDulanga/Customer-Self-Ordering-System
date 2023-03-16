@@ -27,7 +27,7 @@ const MealItem = (props) => {
       
       <li className={classes.meal1}>
       <div className={classes.desc}>
-        <h3>{props.name}</h3>
+        <h4>{props.name}</h4>
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{price}</div>
       </div>

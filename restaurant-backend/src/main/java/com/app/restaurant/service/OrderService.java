@@ -30,19 +30,23 @@ public class OrderService {
         return orderRepo.findAllByStatusIgnoreCase("accepted");
     }
 
+    public List<Order> getAllReadyOrders(){
+        return orderRepo.findAllByStatusIgnoreCase("ready");
+    }
+
+    public List<Order> getAllWaiterAcceptedOrders(){
+        return orderRepo.findAllByStatusIgnoreCase("waiteraccepted");
+    }
+
+    public List<Order> getAllServedOrders(){
+        return orderRepo.findAllByStatusIgnoreCase("served");
+    }
+
     public Order getOrderDetail(int orderId) {
         Optional<Order> order = this.orderRepo.findById(orderId);
         return order.isPresent() ? order.get() : null;
     }
 
-//    public Order changeOrderStatus(int orderId,String status){
-//        Order updateOrder = orderRepo.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +orderId));
-//        updateOrder.setStatus(status);
-//
-//        orderRepo.save(updateOrder);
-//
-//        return updateOrder;
-//    }
 
     public Order changeOrderStatus(int orderId,String status){
         Order updateOrder = orderRepo.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +orderId));
