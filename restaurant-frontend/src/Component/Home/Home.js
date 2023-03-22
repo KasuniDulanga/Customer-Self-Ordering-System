@@ -35,12 +35,9 @@ function Home() {
                         <button onClick={NavigateToMenuPage}>Place Order</button>
                     </div>
 
-                </section>
-                <br></br>
-                <div className="footer">
+                </section> 
+                </div>
                 <Footer/>
-                </div>
-                </div>
             </Fragment>
 
 

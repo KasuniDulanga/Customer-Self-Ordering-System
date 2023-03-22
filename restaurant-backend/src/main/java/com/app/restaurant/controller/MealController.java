@@ -21,6 +21,7 @@ public class MealController {
 
     @GetMapping
     public List<Meal> getAllMeals(){
+
         return mealRepo.findAll();
     }
 

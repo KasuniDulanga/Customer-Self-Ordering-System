@@ -10,8 +10,8 @@ const WaiterPage = () => {
   const [waiterAcceptedMeals, setWaiterAcceptedMeals] = useState([]);
   const [servedMeals, setServedMeals] = useState([]);
   useEffect(() => {
-  
-    OrderService.getAllReadyOrders()
+    const interval = setInterval(() => {
+      OrderService.getAllReadyOrders()
       .then((response) => {
         setReadyMeals(response.data);
         // console.log(response.data);
@@ -28,6 +28,10 @@ const WaiterPage = () => {
       .catch((error) => {
         console.log(error.response.data);
       });
+    }, 1000);
+
+    return () => clearInterval(interval);
+    
 
   }, []);
 

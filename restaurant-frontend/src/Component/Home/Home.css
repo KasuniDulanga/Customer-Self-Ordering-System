@@ -1,28 +1,28 @@
 .main-img {
     width: 100%;
-    height: 27rem;
+    height: 30.9rem;
     z-index: 0;
     overflow-x: hidden;
   }
 
   .home{
-    overflow: auto;
+    
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
   .main-img img {
     width: 120%;
-    height: 100%;
+    height:80%;
     object-fit: cover;
     transform: rotateZ(-5deg) translateY(-5rem) translateX(-1rem);
   }
 
   .summary {
     text-align: center;
-    max-width: 45rem;
+    max-width: 40rem;
     width: 90%;
     height: max-content;
     margin: auto;
-    margin-top: -18rem;
+    margin-top: -22.7rem;
     position: relative;
     background-color: #3f2f2f;
     color: white;
@@ -78,12 +78,13 @@
       .summary {
         width: 70%;
         height: 200%;
-      
+        margin-top: -15.7rem;
         
       }
 
       .footer{
         margin-top: 151px;
+        
       }
       
      

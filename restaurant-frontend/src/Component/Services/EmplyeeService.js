@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const EMPLOYEE_BASE_REST_API_URL= 'http://localhost:8080/api/employee';
+const ROLE_BASE_REST_API_URL= 'http://localhost:8080/api/role';
 
 class EmployeeService{
     getAllEmployees(){
@@ -22,6 +23,11 @@ class EmployeeService{
     deleteEmployee(employee_id){
         return axios.delete(EMPLOYEE_BASE_REST_API_URL + '/' + employee_id);
     }
+
+    getRoleName(roleId){
+        return axios.get(ROLE_BASE_REST_API_URL+ '/' + roleId)
+    }
+
 }
 
 export default new EmployeeService();

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import NavbarComp from '../Navbar/NavbarComp';
 import './Login.css';
 import UserLoginService from '../Services/UserLoginService';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 function Login() { 
     const[visibility,setVsibility] =useState(true);
@@ -38,9 +38,11 @@ function Login() {
 
         // Validation
         if(loginDetails.email.trim()==='' || loginDetails.password.trim()==='' ){
+            
             toast.error("Useremail or Password is required !!", {
                 position: toast.POSITION.TOP_CENTER
             });
+            
             return;
         }
 
@@ -57,6 +59,7 @@ function Login() {
                     navigate('/waiter');
                 }
                 else if(response.data === 0){
+                    handleReset();
                     toast.error("Useremail or Password is Incorrect !!", {
                         position: toast.POSITION.TOP_CENTER
                     });

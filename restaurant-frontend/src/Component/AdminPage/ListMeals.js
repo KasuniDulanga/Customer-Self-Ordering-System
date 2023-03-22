@@ -9,13 +9,19 @@ const ListMeals = () => {
 
     const [meals, setMeals] = useState([])
     useEffect(() => {
-        MealService.getAllMeals().then((response) => {
-            setMeals(response.data)
-            console.log(response.data)
-        }).catch(error => {
-            console.log(error);
-        })
 
+        const interval = setInterval(() => {
+            MealService.getAllMeals().then((response) => {
+                setMeals(response.data)
+                // console.log(response.data)
+            }).catch(error => {
+                console.log(error);
+            })
+    
+          }, 1000);
+      
+          return () => clearInterval(interval);
+        
     }, [])
 
     const deleteMeal = (mealId) => {

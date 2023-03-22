@@ -22,7 +22,7 @@ export const AddMeals = () => {
         // if id contains value make update employee REST API
         if (id) {
             MealService.updateMeal(id, meal).then((response) => {
-                navigate('/cook')
+                navigate('/admin')
             }).catch(error => {
                 console.log(error)
             })
@@ -32,7 +32,7 @@ export const AddMeals = () => {
             
             MealService.createMeal(meal).then((response) => {
                 console.log(response.data)
-                navigate('/cook');
+                navigate('/admin');
 
             }).catch(error => {
                 console.log(error)
@@ -43,16 +43,21 @@ export const AddMeals = () => {
     }
     
     useEffect(() => {
-        MealService.getMealById(id).then((response) => {
-            setMealName(response.data.mealName);
-            setCategory(response.data.category);
-            setPrice(response.data.price);
-            setDescription(response.data.description);
-            
+        const interval = setInterval(() => {
+            MealService.getMealById(id).then((response) => {
+                setMealName(response.data.mealName);
+                setCategory(response.data.category);
+                setPrice(response.data.price);
+                setDescription(response.data.description);
+                
+           
+            }).catch(error => {
+                console.log(error)
+            })
+          }, 1000);
+      
+          return () => clearInterval(interval);
        
-        }).catch(error => {
-            console.log(error)
-        })
 
     }, [id])
 

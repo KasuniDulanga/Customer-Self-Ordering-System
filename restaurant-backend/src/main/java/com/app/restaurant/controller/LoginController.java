@@ -16,7 +16,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping
+    @PostMapping //sending data from frontend to backend
     public ResponseEntity<Integer> login(@RequestBody LoginRequestDTO loginRequestDTO ){
 
         Integer roleId = loginService.login(loginRequestDTO);

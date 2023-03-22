@@ -1,8 +1,5 @@
 .body{
     overflow : hidden;
-    height: 39.5rem;
-    min-height: 39.5rem;
-    
 }
 
 .adminbody{
@@ -11,19 +8,21 @@
     background-size: cover;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    overflow-y: scroll;
-   max-height: 700px;
+   max-height: 619px;
+  
 
 }
 #cardform{
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
-   
+   border-radius: 10px;
     
 }
 .addemployeebody{
     background-image: url("../Images/back1.jpg");
     background-size: cover;
-    min-height: 800px;
+    min-height: 900px;
+    overflow: hidden;
 }
 .inpurarea{
     border-radius: 5px;
@@ -31,9 +30,10 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    border: 1px solid #400485;
-    color: #400485;
+   
+    
 }
+
 .addcook{
     min-height: 35rem;
 }
@@ -102,7 +102,7 @@
 }
 
 /* responsive */
-@media(max-width:1200px){
+@media(max-width:900px){
     #table thead{
         display: none;
     }
@@ -132,9 +132,14 @@
         text-align: left;
     }
 }
+@media(max-width:768px){
+    .adminbody{
+        max-height: 100%; 
+    }
+}
 
 ::-webkit-scrollbar {
-    width: 10em;
+    width: 5em;
   }
    
   ::-webkit-scrollbar-track {

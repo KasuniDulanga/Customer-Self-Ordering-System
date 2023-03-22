@@ -179,11 +179,8 @@ export default function Event() {
           </div>
         </div>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
       </div>
-      <Footer />
+     
     </Fragment>
   )
 }

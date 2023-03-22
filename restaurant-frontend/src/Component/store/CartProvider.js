@@ -87,9 +87,11 @@ const CartProvider = (props) => {
   }, [cartState.items]);
   
   return (
+   
     <CartContext.Provider value={cartContext}>
       {props.children}
     </CartContext.Provider>
+    
   );
 };
 

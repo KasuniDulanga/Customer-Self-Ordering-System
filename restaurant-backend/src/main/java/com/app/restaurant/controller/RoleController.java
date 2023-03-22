@@ -1,27 +1,29 @@
 package com.app.restaurant.controller;
 
-import com.app.restaurant.model.Meal;
 import com.app.restaurant.model.Role;
-import com.app.restaurant.repository.MealRepository;
-import com.app.restaurant.repository.RoleRepository;
+import com.app.restaurant.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {
+
     @Autowired
-    RoleRepository roleRepo;
+    public RoleService roleService;
 
     @GetMapping
     public List<Role> getAllRoles(){
-        return roleRepo.findAll();
+        return roleService.getAllRoles();
     }
+    @GetMapping("{id}")
+    public String getRoleName(@PathVariable int id){
+        return roleService.getRoleName(id);
+    }
+
 
 }

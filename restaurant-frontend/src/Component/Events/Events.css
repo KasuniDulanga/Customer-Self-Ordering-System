@@ -1,6 +1,6 @@
 .withoutnavbar{
   overflow-y: scroll;
-  height: 460.7px;
+  height: 620.7px;
   margin-top: 0%;
 }
 .card{
@@ -106,14 +106,14 @@
   outline: 1px solid slategrey;
   border-radius: 1px;
 }
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .withoutnavbar {
     height:382.7px;
   }
-} */
-@media(max-width:768px){
+}
+/* @media(max-width:768px){
   .withoutnavbar {
     height:100%;
     overflow-y: scroll;
   }
-}
+} */

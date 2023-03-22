@@ -17,13 +17,15 @@ function MenuPage() {
   };
 
   return (
+    // <section className='menuback'  style={{ backgroundColor: "black",background:"cover",margin:"0rem" }}>
     <CartProvider>
+      
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
+      <Meals />
+      
     </CartProvider>
+    // </section>
   );
 };
 

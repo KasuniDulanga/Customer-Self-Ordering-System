@@ -15,7 +15,7 @@ export const AddEmployee = () => {
     const [phone_no, setPhoneNo] = useState('')
     const [roleId, setRoleId] = useState('')
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { id } = useParams(); //retrive id from the URL
 
     // perform both save and update employee details
     const saveOrUpdateEmployee = (e) => {
@@ -47,21 +47,27 @@ export const AddEmployee = () => {
     }
 
     useEffect(() => {
-        EmployeeService.getEmployeeById(id).then((response) => {
-            setFirstName(response.data.firstName);
-            setLastName(response.data.lastName);
-            setEmail(response.data.email);
-            setPassword(response.data.password);
-            setRoleId(response.data.roleId);
-            setAddress(response.data.address);
-            setPhoneNo(response.data.phone_no);
 
-
-
-        }).catch(error => {
-            console.log(error)
-        })
-
+        // const interval = setInterval(() => {
+            EmployeeService.getEmployeeById(id).then((response) => {
+                setFirstName(response.data.firstName);
+                setLastName(response.data.lastName);
+                setEmail(response.data.email);
+                setPassword(response.data.password);
+                setRoleId(response.data.roleId);
+                setAddress(response.data.address);
+                setPhoneNo(response.data.phone_no);
+    
+    
+    
+            }).catch(error => {
+                console.log(error)
+            })
+    
+        //   }, 1000);
+      
+        //   return () => clearInterval(interval);
+        
     }, [id])
 
     const buttonSubmitOrUpdate = () => {
@@ -86,7 +92,7 @@ export const AddEmployee = () => {
             <br /><br />
             <div className={classes.addemployee}>
                 <div className="row">
-                    <div id={classes.cardform} className={"col-md-6 offset-md-3 offset-md-2"}>
+                    <div id={classes.cardform} className="col-md-6 offset-md-3 offset-md-2">
                     {/* <div className="cardform col-md-6 offset-md-3 offset-md-2"> */}
                         {
                             title()
@@ -140,7 +146,8 @@ export const AddEmployee = () => {
                                 
                                     <label className="form-label"> Password :</label>
                                     <div className="input-area">
-                                    <input
+                                    <ul style={{ display: "inline", listStyleType: "none"}}>
+                                        <li style={{ display: "inline"}}><input
                                         type={visibility ? "password" : "text"}
                                         placeholder="Enter password"
                                         name="password"
@@ -149,12 +156,14 @@ export const AddEmployee = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
                                     >
-                                    </input>
-                                    <span className='eye' onClick={() => setVsibility(!visibility)}>
+                                    </input></li>
+                                    
+                                    <li style={{ display: "inline"}}><span className='eye' onClick={() => setVsibility(!visibility)}>
                                         {
                                             visibility ? <EyeInvisibleOutlined /> : <EyeOutlined />
                                         }
-                                    </span>
+                                    </span></li>
+                                    </ul>
                                     </div>
                                 </div>
 

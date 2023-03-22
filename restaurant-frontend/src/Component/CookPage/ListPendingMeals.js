@@ -3,6 +3,7 @@ import OrderService from "../Services/OrderService";
 import classes from "./CookPage.module.css";
 import Card1 from "./Card1";
 
+
 const ListPendingMeals = () => {
   // const mockPendingMeals = [
   //   {
@@ -41,25 +42,32 @@ const ListPendingMeals = () => {
   const [pendingMeals, setPendingMeals] = useState([]);
   const [acceptedMeals, setAcceptedMeals] = useState([]);
   const [readyMeals, setReadyMeals] = useState([]);
+  
+
   useEffect(() => {
-    OrderService.getAllPendingOrders()
-      .then((response) => {
-        setPendingMeals(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
-
-    OrderService.getAllAcceptedOrders()
-      .then((response) => {
-        setAcceptedMeals(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
-
+   
+  
+      const interval = setInterval(() => {
+        OrderService.getAllPendingOrders()
+        .then((response) => {
+          setPendingMeals(response.data);
+          // console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+  
+      OrderService.getAllAcceptedOrders()
+        .then((response) => {
+          setAcceptedMeals(response.data);
+          // console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+      }, 1000);
+  
+      return () => clearInterval(interval);
 
     // database access to get pending meals and accepted meals for a specific cook
     // using the response "pendingMeals" and accepted meals should be update
@@ -89,6 +97,7 @@ const ListPendingMeals = () => {
 
     setPendingMeals(newPendingMeals);
     setAcceptedMeals(newAcceptedMeals);
+    
   };
 
   const onDone = (e, orderId) => {
@@ -111,6 +120,7 @@ const ListPendingMeals = () => {
 
     setAcceptedMeals(newAcceptedMeals);
     setReadyMeals(newReadyMeals);
+    
   };
 
   return (

@@ -69,6 +69,7 @@ const Cart = (props) => {
 
   return (
     <Fragment>
+      
       <Modal onClose={props.onClose}>
         {cartItems}
         <div className={classes.total}>
@@ -134,6 +135,7 @@ const Cart = (props) => {
         </form>
       </Modal >
       <ToastContainer />
+     
     </Fragment>
   );
 };

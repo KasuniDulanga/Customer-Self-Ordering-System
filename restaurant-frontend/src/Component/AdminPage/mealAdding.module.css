@@ -1,14 +1,17 @@
-.cardform{
+.addemployeebody{
+    background-image: url("../Images/back1.jpg");
+    background-size: cover;
+    min-height: 800px;
+    overflow: hidden;
+}
+#cardform{
     
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
     min-height: 27rem;
+    border-radius: 10px;
 }
-.addcookbody{
-    background-image: url("../Images/back1.jpg");
-    background-size: cover;
-    min-height: 800px;
-}
+
 
 .contmeal{
     max-width: 150 rem;
