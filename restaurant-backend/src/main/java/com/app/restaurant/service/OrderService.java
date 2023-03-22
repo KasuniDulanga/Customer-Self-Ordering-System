@@ -7,6 +7,7 @@ import com.app.restaurant.model.Order;
 import com.app.restaurant.model.ShoppingCart;
 import com.app.restaurant.repository.MealRepository;
 import com.app.restaurant.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,11 @@ import java.util.Optional;
 
 @Service
 public class OrderService {
+
+    @Autowired
     private OrderRepository orderRepo;
+
+    @Autowired
     private MealRepository mealRepo;
 
     public OrderService(OrderRepository orderRepo, MealRepository mealRepo) {

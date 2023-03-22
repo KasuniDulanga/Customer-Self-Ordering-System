@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {  useNavigate } from 'react-router-dom';
 import "../Footer/Footer.css"
+import CommentService from '../Services/CommentService';
 
 export default function Footer() {
+  const [comment,setComment] = useState('');
+  const navigate = useNavigate();
+
+  const createComment = () => {
+    CommentService.createComment(comment).then((response) => {
+      console.log(response.data)
+      navigate('/');
+
+  }).catch(error => {
+      console.log(error)
+  })
+  }
+
   return (
     <footer className="footer text-center">
       <div className="container-fluid">
@@ -24,9 +39,15 @@ export default function Footer() {
           <div className="col-md-4 mb-2">
             <div className="form">
             <div className="input-group input-group-sm w-75 mx-auto">
-              <input type="text" className="form-control shadow-none send-text" placeholder="Comments" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+              <input 
+              type="text" 
+              className="form-control shadow-none send-text" 
+              placeholder="Comments"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              ></input>
               <div className="input-group-append input-group-sm">
-                <button className="btn btn-outline-light shadow-none send-text" type="button"><i className="fas fa-paper-plane"></i></button>
+                <button className="btn btn-outline-light shadow-none send-text" type="button" onClick={(e) => createComment(e)}><i className="fas fa-paper-plane"></i></button>
               </div>
             </div>
           </div>

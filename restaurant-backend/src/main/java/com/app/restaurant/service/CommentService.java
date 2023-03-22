@@ -3,12 +3,14 @@ package com.app.restaurant.service;
 import com.app.restaurant.model.Comments;
 import com.app.restaurant.repository.CommentRepository;
 import org.hibernate.mapping.Column;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CommentService {
+    @Autowired
     private CommentRepository commentRepo;
 
     public Comments createComment(String comment){

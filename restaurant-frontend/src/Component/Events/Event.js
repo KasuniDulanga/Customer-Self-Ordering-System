@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import "../Events/Events.css";
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import NavbarComp from '../Navbar/NavbarComp';
 import mealsImg from '../Images/EventsImages/event1.png';
 import mealsImg2 from '../Images/EventsImages/event2.jpg';
