@@ -77,6 +77,7 @@
     height: 35px;
     width: 35px;
     padding: 5px;
+    border-radius: 12px;
 }
 #addbtn:hover{
     background-color:#6d2d143a;

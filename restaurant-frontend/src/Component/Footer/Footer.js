@@ -7,10 +7,12 @@ export default function Footer() {
   const [comment,setComment] = useState('');
   const navigate = useNavigate();
 
-  const createComment = () => {
-    CommentService.createComment(comment).then((response) => {
+  const createComment = (e) => {
+    console.log({comment :comment}); //String cannot directly pass to back end , therefore created string object
+    CommentService.createComment({ comment: comment }).then((response) => {
       console.log(response.data)
       navigate('/');
+      setComment('');
 
   }).catch(error => {
       console.log(error)

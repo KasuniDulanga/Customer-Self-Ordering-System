@@ -1,7 +1,7 @@
 package com.app.restaurant.controller;
 
+import com.app.restaurant.dto.OrderStatusDTO;
 import com.app.restaurant.model.Order;
-import com.app.restaurant.model.OrderStatus;
 import com.app.restaurant.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +41,7 @@ public class OrderController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@RequestBody OrderStatus status){
+    public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@RequestBody OrderStatusDTO status){
 
         return ResponseEntity.ok(orderService.changeOrderStatus(id,status.getStatus()));
 

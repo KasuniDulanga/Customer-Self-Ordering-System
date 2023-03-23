@@ -1,5 +1,6 @@
 package com.app.restaurant.controller;
 
+import com.app.restaurant.dto.CommentDTO;
 import com.app.restaurant.model.Comments;
 import com.app.restaurant.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class CommentController {
         return commentService.getAllComments();
     }
     @PostMapping
-    public Comments createComment(@RequestBody String comment){
-        return commentService.createComment(comment);
+    public Comments createComment(@RequestBody CommentDTO comment){
+        return commentService.createComment(comment.getComment());
     }
 
 

@@ -1,10 +1,10 @@
-package com.app.restaurant.model;
+package com.app.restaurant.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderStatus {
+public class OrderStatusDTO {
     String status;
 }

@@ -84,14 +84,14 @@
 }
 
 .socials ul li a{
-    color: rgb(151, 121, 121);
+    color: white;
     
     
 } 
 .socials ul li a :hover{
   
     
-    color: black;
+    color: #8a2b06;
 } 
 ::-webkit-scrollbar {
   width: 0.6em;
