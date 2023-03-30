@@ -10,18 +10,20 @@ export const AddMeals = () => {
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [image, setImage] = useState(null)
     const navigate = useNavigate();
     const { id } = useParams();
 
     // perform both save and update employee details
     const saveOrUpdateMeal = (e) => {
         e.preventDefault();
-        const meal = { mealName,category,price,description }
-    
+        // const meal = { mealName,category,price,description}
+        
         
         // if id contains value make update employee REST API
         if (id) {
-            MealService.updateMeal(id, meal).then((response) => {
+           
+            MealService.updateMealImage(id,image,mealName,category,price,description).then((response) => {
                 navigate('/admin')
             }).catch(error => {
                 console.log(error)
@@ -30,7 +32,7 @@ export const AddMeals = () => {
 
         else {
             
-            MealService.createMeal(meal).then((response) => {
+            MealService.createMeal(image,mealName,category,price,description).then((response) => {
                 console.log(response.data)
                 navigate('/admin');
 
@@ -43,7 +45,7 @@ export const AddMeals = () => {
     }
     
     useEffect(() => {
-        const interval = setInterval(() => {
+
             MealService.getMealById(id).then((response) => {
                 setMealName(response.data.mealName);
                 setCategory(response.data.category);
@@ -54,9 +56,7 @@ export const AddMeals = () => {
             }).catch(error => {
                 console.log(error)
             })
-          }, 1000);
-      
-          return () => clearInterval(interval);
+        
        
 
     }, [id])
@@ -145,12 +145,25 @@ export const AddMeals = () => {
                                     >
                                     </input>
                                 </div>
+
+                                <div className="form-group mb-2">
+                                    <label className="form-label"> Meal image :</label>
+                                    <input
+                                        type="file"
+                                        placeholder="Upload meal image"
+                                        name="image"
+                                        className="form-control"
+                                        onChange={(e) => setImage(e.target.files[0])}
+                                        
+                                    >
+                                    </input>
+                                </div>
                                 <br></br>
                                
                                 {
                                     buttonSubmitOrUpdate()
                                 }
-                                <Link to="/cook" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
+                                <Link to="/admin" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
                                 
                             </form>
                             <br></br>

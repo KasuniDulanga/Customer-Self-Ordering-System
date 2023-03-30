@@ -45,6 +45,7 @@ const AvailableMeals = () => {
       name={meal.mealName}
       description={meal.description}
       price={meal.price}
+      image={meal.image}
     />
   ));
 

@@ -53,10 +53,10 @@ const ListMeals = () => {
                                     meals =>
                                         <tr key={meals.meal_id}>
                                             <td data-label="ID">{meals.meal_id}</td>
-                                            <td data-label="First Name">{meals.mealName}</td>
-                                            <td data-label="Last Name">{meals.category}</td>
-                                            <td data-label="Job Role">{meals.price}</td>
-                                            <td data-label="Phone Number">{meals.description}</td>
+                                            <td data-label="Meal Name">{meals.mealName}</td>
+                                            <td data-label="Category">{meals.category}</td>
+                                            <td data-label="price">{meals.price}</td>
+                                            <td data-label="description">{meals.description}</td>
                         
                                             <td data-label="Actions">
                                                 <div>

@@ -7,7 +7,7 @@ import foodimage from '../../../Images/food.jpg';
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
-
+  const base64Image = `${props.image}`;
   const price = `Rs ${props.price.toFixed(2)}`;
 
   const addToCartHandler = quantity => {
@@ -22,7 +22,7 @@ const MealItem = (props) => {
   return (
     <ul className={classes.meal}>
       <div className={classes.foodimg}>
-      <img src={foodimage}  alt='food' />
+      <img src={`data:image;base64,${base64Image}`}  alt='food' />
       </div>
       
       <li className={classes.meal1}>

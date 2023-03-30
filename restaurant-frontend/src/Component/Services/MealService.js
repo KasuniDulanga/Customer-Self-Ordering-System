@@ -6,16 +6,33 @@ class MealService{
     getAllMeals(){
         return axios.get(MEAL_BASE_REST_API_URL)
     }
-    createMeal(meal){
-        return axios.post(MEAL_BASE_REST_API_URL,meal)
+    createMeal(image,mealName,category,price,description){
+        let formData =new FormData();
+        formData.append("image",image);
+        formData.append("mealName",mealName);
+        formData.append("price",price);
+        formData.append("category",category);
+        formData.append("desc",description);
+
+        return axios.post(MEAL_BASE_REST_API_URL ,formData);
+    
     }
 
     getMealById(meal_id){
         return axios.get(MEAL_BASE_REST_API_URL + '/' + meal_id);
     }
 
-    updateMeal(meal_id,meal){
-        return axios.put(MEAL_BASE_REST_API_URL + '/' + meal_id,meal);
+
+    updateMealImage(meal_id,image,mealName,category,price,description){
+        let formData =new FormData();
+        formData.append("image",image);
+        formData.append("mealName",mealName);
+        formData.append("price",price);
+        formData.append("category",category);
+        formData.append("desc",description);
+        console.log(image);
+     
+        return axios.put(MEAL_BASE_REST_API_URL + '/' + meal_id,formData);
     }
 
     deleteMeal(meal_id){

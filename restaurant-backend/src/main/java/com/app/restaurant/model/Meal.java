@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -11,7 +12,6 @@ import java.sql.Blob;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="meal")
 public class Meal {
@@ -32,5 +32,8 @@ public class Meal {
     @Column(name="description")
     private String description;
 
+    @Lob
+    @Column(name ="image" ,columnDefinition = "MEDIUMBLOB")
+    private String image;
 
 }

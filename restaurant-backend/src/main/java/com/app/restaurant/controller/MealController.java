@@ -1,15 +1,21 @@
 package com.app.restaurant.controller;
 
 
+import com.app.restaurant.dto.MealDTO;
 import com.app.restaurant.exception.ResourceNotFoundException;
 import com.app.restaurant.model.Meal;
 import com.app.restaurant.repository.MealRepository;
+import com.app.restaurant.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -17,51 +23,52 @@ import java.util.List;
 public class MealController {
 
     @Autowired
-    MealRepository mealRepo;
+    MealService mealService;
 
     @GetMapping
     public List<Meal> getAllMeals(){
-
-        return mealRepo.findAll();
+        return mealService.getAllMeals();
     }
 
     //build create meal REST API
     @PostMapping
-    public Meal createMeal(@RequestBody Meal meal) {
-        return mealRepo.save(meal);
+    public Meal createMeal(@RequestParam("image") MultipartFile file,
+                           @RequestParam("mealName") String mealName,
+                           @RequestParam("price") double price,
+                           @RequestParam("category") String category,
+                           @RequestParam("desc") String description) throws IOException {
+
+        return mealService.createMeal(file,mealName,price,category,description);
     }
 
     //build get meal by id REST API
     @GetMapping("{id}")
     public ResponseEntity<Meal> getMealById(@PathVariable int id){
-        Meal meal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
 
-        return ResponseEntity.ok(meal);
+        return ResponseEntity.ok(mealService.getMealById(id));
     }
 
     //build update meal REST API
     @PutMapping("{id}")
-    public ResponseEntity<Meal> updateMeal(@PathVariable int id,@RequestBody Meal mealDetails){
-        Meal updateMeal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
+    public ResponseEntity<String> updateMealImage(@PathVariable int id,@RequestParam("image") MultipartFile file,
+                                                  @RequestParam("mealName") String mealName,
+                                                  @RequestParam("price") double price,
+                                                  @RequestParam("category") String category,
+                                                  @RequestParam("desc") String description) throws IOException {
+        String imageFileName = StringUtils.cleanPath(file.getOriginalFilename());
+        System.out.println("imagepath "+imageFileName);
 
-        updateMeal.setMealName(mealDetails.getMealName());
-        updateMeal.setCategory(mealDetails.getCategory());
-        updateMeal.setPrice(mealDetails.getPrice());
-        updateMeal.setDescription(mealDetails.getDescription());
+        mealService.updateMeal(id,file,mealName,price,category,description);
 
-        mealRepo.save(updateMeal);
-        return ResponseEntity.ok(updateMeal);
+        return ResponseEntity.ok("working");
 
     }
 
     // build delete meal REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteMeal(@PathVariable int id){
-        Meal meal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
+    public ResponseEntity<Map<String,Boolean>> deleteMeal(@PathVariable int id){
 
-        mealRepo.delete(meal);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.ok(mealService.deleteMeal(id));
     }
 
 }

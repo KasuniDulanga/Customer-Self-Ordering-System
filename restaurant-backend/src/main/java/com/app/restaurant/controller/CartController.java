@@ -38,7 +38,7 @@ public class CartController {
     public ResponseEntity<ResponseOrderDTO> placeOrder(@RequestBody OrderDTO orderDTO){
         ResponseOrderDTO responseOrderDTO = new ResponseOrderDTO();
 
-        System.out.println(orderDTO.toString());
+//        System.out.println(orderDTO.toString());
 
         Customer customer = new Customer();
         customer.setCustomerName(orderDTO.getCustomerName());
