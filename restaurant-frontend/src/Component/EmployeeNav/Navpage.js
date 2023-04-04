@@ -34,7 +34,7 @@ const Navpage = () => {
             <Nav className="ms-auto mb-1 mb-lg-0">
 
               <Nav.Link className="navlink" as={Link} to="/">Home</Nav.Link>
-              <Nav.Link className="navlink" as={Link} to="/aboutus">AboutUs</Nav.Link>
+              {/* <Nav.Link className="navlink" as={Link} to="/aboutus">AboutUs</Nav.Link> */}
               <Nav.Link className="navlink" as={Link} to="/events">Events</Nav.Link>
               <Nav.Link className="navlink" as={Link} onClick={showCartHandler}>Logout</Nav.Link>
               

@@ -1,7 +1,7 @@
 import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import MealService from '../../Services/MealService';
 
 // const DUMMY_MEALS = [
@@ -24,16 +24,14 @@ const AvailableMeals = () => {
   const [Meals, setMeals] = useState([])
   
   useEffect(() =>{
-    const interval = setInterval(() => {
+    
       MealService.getAllMeals().then((response) => {
         setMeals(response.data)
         // console.log(response.data)
       }).catch(error => {
         console.log(error);
       })
-    }, 1000);
-
-    return () => clearInterval(interval);
+  
     
   },[])
 
@@ -50,13 +48,13 @@ const AvailableMeals = () => {
   ));
 
   return (
-    
-    <section className={classes.meals}>
+    <Fragment>
+    {Meals.length ? (<section className={classes.meals}>
       <Card>
         <ul>{mealsList}</ul>
       </Card>
-    </section>
-    
+    </section>) : null}
+  </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from 'react';
+import { React, Fragment, useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
@@ -6,6 +6,7 @@ import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 import OrderService from '../../Services/OrderService';
 import { useNavigate } from 'react-router-dom';
+import OrderContext from '../../OrderDetails/OrderContext';
 
 
 const Cart = (props) => {
@@ -17,26 +18,38 @@ const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const totalAmount = `Rs ${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
-
+  const { setorderctx } = useContext(OrderContext);
   const orderMeal = (e) => {
     e.preventDefault();
-    const order = { cartItems: cartCtx.items,customerPhone,customerName,tableNo,orderDescription }
+    const order = { cartItems: cartCtx.items, customerPhone, customerName, tableNo, orderDescription }
 
     if (tableNo.trim() === '' || customerName.trim() === '' || customerPhone.trim() === '') {
       toast.error("table no or name or phone number is required !!", {
         position: toast.POSITION.TOP_CENTER
       });
-      
+
 
     }
-    else{
+    else {
+      //Order id get as a response
       OrderService.placeOrder(order).then((response) => {
-      console.log(response.data)
-      navigate('/orderdetails');
+        console.log(response.data);
 
-    }).catch(error => {
-      console.log(error.response.data)
-    })
+        if (response.data != null) {
+            localStorage.setItem("macfood_order_ID",`${response.data}`)
+            OrderService.getOrderDetails(response.data).then((orderRes) => {
+              setorderctx(orderRes.data);
+              navigate('/orderdetails');
+            }).catch(error => {
+              console.log(error.orderRes.data)
+            })
+          
+        }
+
+
+      }).catch(error => {
+        console.log(error.response.data)
+      })
     }
 
     console.log(order);
@@ -69,7 +82,7 @@ const Cart = (props) => {
 
   return (
     <Fragment>
-      
+
       <Modal onClose={props.onClose}>
         {cartItems}
         <div className={classes.total}>
@@ -130,12 +143,12 @@ const Cart = (props) => {
             <button className={classes['button--alt']} onClick={props.onClose}>
               Close
             </button>
-            {hasItems && <button type="submit" className={classes.button} onClick={orderMeal}>Order</button>}
+            {hasItems && <button type="submit" className={classes.button} onClick={orderMeal}>Checkout</button>}
           </div>
         </form>
       </Modal >
       <ToastContainer />
-     
+
     </Fragment>
   );
 };

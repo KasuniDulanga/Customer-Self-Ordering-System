@@ -1,0 +1,33 @@
+.OrderedMeal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #8a2b06;
+    padding: 0.2rem 0;
+    margin: 0.5rem 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+ 
+  
+  .summary {
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #8a2b06;
+  }
+  
+  .quantity {
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 0.1rem 0.5rem;
+    border-radius: 6px;
+    color: #363636;
+  }
+  
+ 

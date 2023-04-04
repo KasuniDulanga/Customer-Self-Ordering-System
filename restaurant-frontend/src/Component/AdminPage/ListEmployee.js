@@ -37,22 +37,14 @@ const ListEmployee = () => {
         }, 1000);
 
         return () => clearInterval(interval);
-       
-            // EmployeeService.getRoleName(roleId).then((response) => {
-            //     setRoleName(response.data)
-            //     // console.log(response.data)
-            // }).catch(error => {
-            //     console.log(error);
-            // })
-    
-            
-       
+
+
 
     }, [])
 
 
-    
-  
+
+
     const deleteEmployee = (employeeId) => {
         console.log(employeeId)
         navigate("/Admin")

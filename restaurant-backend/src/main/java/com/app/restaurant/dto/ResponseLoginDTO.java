@@ -14,6 +14,9 @@ public class ResponseLoginDTO {
     private String message;
     private Integer status;
 
+    private int roleId;
+    private int employeeId;
+
     public ResponseLoginDTO() {
         this.status = HttpStatus.OK.value();
         this.date=date;

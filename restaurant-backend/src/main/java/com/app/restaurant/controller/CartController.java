@@ -35,7 +35,7 @@ public class CartController {
         return ResponseEntity.ok(order);
     }
     @PostMapping("/placeOrder")
-    public ResponseEntity<ResponseOrderDTO> placeOrder(@RequestBody OrderDTO orderDTO){
+    public ResponseEntity<Integer> placeOrder(@RequestBody OrderDTO orderDTO){
         ResponseOrderDTO responseOrderDTO = new ResponseOrderDTO();
 
 //        System.out.println(orderDTO.toString());
@@ -58,23 +58,24 @@ public class CartController {
         order.setStatus("Pending");
         order.setCustomer(customer);
         order.setCartItems(orderDTO.getCartItems());
-        order.setCartItems(orderDTO.getCartItems());
         order.setDate(DateUtil.getCurrentDateTime());
         order.setInvoiceNumber(new Random().nextInt(1000));
-        order = orderService.saveOrder(order);
 
         double totCartAmount = orderService.getCartAmount(orderDTO.getCartItems());
-        responseOrderDTO.setCartItems(orderDTO.getCartItems());
-        responseOrderDTO.setCustomerName(orderDTO.getCustomerName());
-        responseOrderDTO.setTableNo(orderDTO.getTableNo());
-        responseOrderDTO.setOrderId(order.getOrder_id());
-        responseOrderDTO.setAmount(totCartAmount);
-        responseOrderDTO.setDate(DateUtil.getCurrentDateTime());
-        responseOrderDTO.setInvoiceNumber(new Random().nextInt(1000));
+        order.setTotalAmount(totCartAmount);
+        order = orderService.saveOrder(order);
 
-        responseOrderDTO.setOrderDescription(orderDTO.getOrderDescription());
+//
+//        responseOrderDTO.setCartItems(orderDTO.getCartItems());
+//        responseOrderDTO.setCustomerName(orderDTO.getCustomerName());
+//        responseOrderDTO.setTableNo(orderDTO.getTableNo());
+//        responseOrderDTO.setOrderId(order.getOrder_id());
+//        responseOrderDTO.setAmount(totCartAmount);
+//        responseOrderDTO.setDate(DateUtil.getCurrentDateTime());
+//        responseOrderDTO.setInvoiceNumber(new Random().nextInt(1000));
+//        responseOrderDTO.setOrderDescription(orderDTO.getOrderDescription());
 
 
-        return ResponseEntity.ok(responseOrderDTO);
+        return ResponseEntity.ok(order.getOrder_id());
     }
 }

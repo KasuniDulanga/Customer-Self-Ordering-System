@@ -1,9 +1,11 @@
 import NavbarComp from '../Navbar/NavbarComp';
+import { Nav } from 'react-bootstrap';
 import { Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import mealsImg from '../Images/homeimage.jpg';
 import '../Home/Home.css';
 import Footer from '../Footer/Footer';
+import Notification from '../Navbar/Notification';
 
 function Home() {
     const navigate = useNavigate();
@@ -12,14 +14,16 @@ function Home() {
         navigate('/menu');
     };
 
+    const loc_storage_order_ID =localStorage.getItem("macfood_order_ID");
     return (
+        
         <div className="App">
             <Fragment>
                 <NavbarComp
                     link1="Home"
-                    link2 ="AboutUs"
                     link3 ="Events"
-                    link4="Login" />
+                    link4="Login" 
+                    statusButton = {loc_storage_order_ID ?  (<Nav.Link className='bg-brown' as={Link} to="/orderdetails"><Notification/></Nav.Link>): null}/>
                 <div className='home'>
                 <div className='main-img'>
                     <img src={mealsImg} alt='A table full of delicious food!' />
@@ -43,6 +47,7 @@ function Home() {
 
 
         </div>
+         
     );
 }
 

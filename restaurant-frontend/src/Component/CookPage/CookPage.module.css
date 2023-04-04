@@ -1,6 +1,6 @@
 .cardbody{
     padding: 30px;
-    height: 31rem;
+    height: 65rem;
     display: flex;
     justify-content: center;
     color: whitesmoke;
@@ -16,7 +16,7 @@
     margin: 0px 10px;
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     width: 500px;
-    height: 1000px;
+    height: 45rem;
     border-radius: 15px;
 }
 

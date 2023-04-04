@@ -5,6 +5,7 @@ import com.app.restaurant.model.Employee;
 import com.app.restaurant.model.Meal;
 import com.app.restaurant.model.Order;
 import com.app.restaurant.model.ShoppingCart;
+import com.app.restaurant.repository.EmployeeRepository;
 import com.app.restaurant.repository.MealRepository;
 import com.app.restaurant.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,28 +23,37 @@ public class OrderService {
     @Autowired
     private MealRepository mealRepo;
 
-    public OrderService(OrderRepository orderRepo, MealRepository mealRepo) {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public OrderService(OrderRepository orderRepo, MealRepository mealRepo,
+                        EmployeeRepository employeeRepository) {
         this.orderRepo = orderRepo;
         this.mealRepo = mealRepo;
+        this.employeeRepository = employeeRepository;
     }
 
     public List<Order> getAllPendingOrders(){
         return orderRepo.findAllByStatusIgnoreCase("pending");
     }
 
-    public List<Order> getAllAcceptedOrders(){
-        return orderRepo.findAllByStatusIgnoreCase("accepted");
+    public List<Order> getAllAcceptedOrders(int id){
+        Employee emp = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
+        return orderRepo.findAllByStatusIgnoreCaseAndCook("accepted",emp);
     }
 
     public List<Order> getAllReadyOrders(){
         return orderRepo.findAllByStatusIgnoreCase("ready");
     }
 
-    public List<Order> getAllWaiterAcceptedOrders(){
-        return orderRepo.findAllByStatusIgnoreCase("waiteraccepted");
+    public List<Order> getAllWaiterAcceptedOrders(int id){
+        Employee emp = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
+        System.out.print(emp.getFirstName());
+        return orderRepo.findAllByStatusIgnoreCaseAndWaiter("waiteraccepted",emp);
+
     }
 
-    public List<Order> getAllServedOrders(){
+    public List<Order> getAllServedOrders(int id){
         return orderRepo.findAllByStatusIgnoreCase("served");
     }
 
@@ -53,12 +63,18 @@ public class OrderService {
     }
 
 
-    public Order changeOrderStatus(int orderId,String status){
+    public Order changeOrderStatus(int orderId,String status,int id){
         Order updateOrder = orderRepo.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +orderId));
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order not exist with id " +id));
+
         updateOrder.setStatus(status);
+        if(employee.getRoleId() == 2)
+            updateOrder.setCook(employee);
+
+        if(employee.getRoleId() == 3)
+            updateOrder.setWaiter(employee);
 
         orderRepo.save(updateOrder);
-
         return updateOrder;
     }
     public double getCartAmount(List<ShoppingCart> shoppingCartList) {

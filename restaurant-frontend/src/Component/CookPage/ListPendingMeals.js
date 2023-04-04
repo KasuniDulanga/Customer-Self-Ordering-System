@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
+import {useParams } from 'react-router-dom';
 import OrderService from "../Services/OrderService";
 import classes from "./CookPage.module.css";
 import Card1 from "./Card1";
 
 
 const ListPendingMeals = () => {
+  const { id } = useParams();
   // const mockPendingMeals = [
   //   {
   //     meal: "MacFoods Special",
@@ -46,7 +48,7 @@ const ListPendingMeals = () => {
 
   useEffect(() => {
    
-  
+      
       const interval = setInterval(() => {
         OrderService.getAllPendingOrders()
         .then((response) => {
@@ -57,7 +59,7 @@ const ListPendingMeals = () => {
           console.log(error.response.data);
         });
   
-      OrderService.getAllAcceptedOrders()
+      OrderService.getAllAcceptedOrders(id)
         .then((response) => {
           setAcceptedMeals(response.data);
           // console.log(response.data);
@@ -73,30 +75,20 @@ const ListPendingMeals = () => {
     // using the response "pendingMeals" and accepted meals should be update
     // setPendingMeals(mockPendingMeals);
     // setAcceptedMeals(mockAcceptedMeals);
-  }, []);
+  }, [id]);
 
   const onAccept = (e, orderId) => {
     e.preventDefault();
 
-    // console.log(orderId);
-    // /*This will be changed from the database access only for demo*/
-    const acceptedMeal = pendingMeals.filter((meal) => {
-      return meal.order_id === orderId;
-    }); // return a array of meals which have order id of orderId
-    const newPendingMeals = pendingMeals.filter((meal) => {
-      return meal.order_id !== orderId;
-    }); // return a array of meals which haven't order id of orderId
+   
 
-    // var content = new StringContent("accepted", Encoding.UTF8, "application/json");
-    OrderService.changeOrderStatus(orderId, { status: "accepted" }).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "accepted" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
     });
-    const newAcceptedMeals = [...acceptedMeals, acceptedMeal[0]]; // add accepted meals to existing accepted meal list
 
-    setPendingMeals(newPendingMeals);
-    setAcceptedMeals(newAcceptedMeals);
+    
     
   };
 
@@ -111,7 +103,7 @@ const ListPendingMeals = () => {
       return meal.orderId !== orderId;
     }); // return a array of meals which haven't order id of orderId
 
-    OrderService.changeOrderStatus(orderId, { status: "ready" }).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "ready" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)

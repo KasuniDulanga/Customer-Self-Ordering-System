@@ -71,24 +71,47 @@
     background-color: #8a2b06;
     color: white;
   }
-  @media(max-width:768px){
+  @media(max-width:767px){
     .main-img {
       height: 100%;
     }
       .summary {
         width: 70%;
         height: 200%;
-        margin-top: -15.7rem;
+        margin-top: -20.7rem;
         
       }
+      /* .summary h1{
+        font-size: 35px;
+      } */
 
       .footer{
         margin-top: 151px;
         
-      }
-      
-     
-  
+      } 
 }
+
+
+@media screen and (max-width:424px) {
+  .summary h1{
+    font-size: 2.1rem;
+  }
+  .summary {
+    margin-top: -20rem;
+    
+  }
+  
+} 
+
+@media screen and (max-width:319px) {
+  .summary h1{
+    font-size: 2.1rem;
+  }
+  .summary {
+    margin-top: -17rem;
+    
+  }
+  
+} 
   
   

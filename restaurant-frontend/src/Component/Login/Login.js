@@ -47,18 +47,20 @@ function Login() {
         }
 
         else{
+            //get roleid and employeeid as a response
             UserLoginService.login(loginDetails).then((response) => {
                 console.log(response.data)
-                if(response.data === 1){
-                    navigate('/admin');
+                
+                if(response.data.roleId === 1){
+                    navigate('/admin/' + response.data.employeeId);
                 }
-                else if(response.data === 2){
-                    navigate('/cook');
+                else if(response.data.roleId === 2){
+                    navigate('/cook/' + response.data.employeeId);
                 }
-                else if(response.data === 3){
-                    navigate('/waiter');
+                else if(response.data.roleId === 3){
+                    navigate('/waiter/'+ response.data.employeeId);
                 }
-                else if(response.data === 0){
+                else if(response.data.roleId === 0){
                     handleReset();
                     toast.error("Useremail or Password is Incorrect !!", {
                         position: toast.POSITION.TOP_CENTER
@@ -78,7 +80,6 @@ function Login() {
     <Fragment>
       <NavbarComp
             link1 ="Home"
-            link2 ="AboutUs"
             link3 ="Events" />
       <div className="loginBody wrapper bg-white">
       <div className="wrapper bg-white">

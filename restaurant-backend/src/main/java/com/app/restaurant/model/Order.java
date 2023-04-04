@@ -31,7 +31,7 @@ public class Order {
     private int tableNo;
     private String orderDescription;
     private String status;
-
+    private double totalAmount;
     private int invoiceNumber;
     private String date;
 
@@ -44,7 +44,13 @@ public class Order {
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
     private List<ShoppingCart> cartItems;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "cook_id", referencedColumnName = "employee_id")
+    private Employee cook;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "waiter_id", referencedColumnName = "employee_id")
+    private Employee waiter;
 
 
     

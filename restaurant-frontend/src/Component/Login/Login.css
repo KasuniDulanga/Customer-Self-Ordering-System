@@ -123,9 +123,13 @@ a:hover{
     }
 }
 @media(max-width:424px){
+    .loginBody{
+        height: 65vh;
+      
+    }
     .wrapper{
         padding: 30px 10px;
-        margin: 5px;
+        margin: 23px;
     }
     .option {
         position: relative;
@@ -145,9 +149,9 @@ a:hover{
         font-size: 0.95rem;
     }
 }
-@media(max-width: 768px){
+/* @media(max-width: 768px){
     .loginBody{
         height: 65vh;
         margin-top: 5rem;
     }
-}
+} */

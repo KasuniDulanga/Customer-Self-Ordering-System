@@ -19,27 +19,31 @@ public class LoginService {
     @Autowired
     LoginRepository loginRepo;
 
-    public Integer login(LoginRequestDTO loginRequestDTO){
+    public ResponseLoginDTO login(LoginRequestDTO loginRequestDTO){
         ResponseLoginDTO newLoginResponse = new ResponseLoginDTO();
 
         // verify user exist with given email and password
         Employee user = loginRepo.findOneByEmailIgnoreCaseAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword());
-        int roleId = 0;
 
         if (user == null){
             newLoginResponse.setMessage("User login failed");
             newLoginResponse.setDate(DateUtil.getCurrentDateTime());
-            roleId = 0;
+            newLoginResponse.setRoleId(0);
+            newLoginResponse.setEmployeeId(0);
+
 
 
         }else{
             newLoginResponse.setMessage("User logged in");
             newLoginResponse.setDate(DateUtil.getCurrentDateTime());
-            roleId =Math.toIntExact(user.getRoleId());
+            newLoginResponse.setRoleId((int) user.getRoleId());
+            newLoginResponse.setEmployeeId(user.getEmployee_id());
+
+
 
         }
 
-        return roleId ;
+        return newLoginResponse ;
 
 
     }

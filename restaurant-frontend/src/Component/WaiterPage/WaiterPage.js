@@ -2,10 +2,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import OrderService from "../Services/OrderService";
 import classes from "../CookPage/CookPage.module.css";
 import Card1 from "../CookPage/Card1.js";
-
+import {useParams } from 'react-router-dom';
 
 const WaiterPage = () => {
-  
+  const { id } = useParams();
   const [readyMeals, setReadyMeals] = useState([]);
   const [waiterAcceptedMeals, setWaiterAcceptedMeals] = useState([]);
   const [servedMeals, setServedMeals] = useState([]);
@@ -20,7 +20,7 @@ const WaiterPage = () => {
         console.log(error.response.data);
       });
 
-      OrderService.getAllWaiterAcceptedOrders()
+      OrderService.getAllWaiterAcceptedOrders(id)
       .then((response) => {
         setWaiterAcceptedMeals(response.data);
         // console.log(response.data);
@@ -33,30 +33,18 @@ const WaiterPage = () => {
     return () => clearInterval(interval);
     
 
-  }, []);
+  }, [id]);
 
   const onWaiterAccepted = (e, orderId) => {
     e.preventDefault();
 
-    // console.log(orderId);
-    // /*This will be changed from the database access only for demo*/
-    const waiterAcceptedMeal = readyMeals.filter((meal) => {
-      return meal.order_id === orderId;
-    }); // return a array of meals which have order id of orderId
-    const newReadyMeals = readyMeals.filter((meal) => {
-      return meal.order_id !== orderId;
-    }); // return a array of meals which haven't order id of orderId
-
-    // var content = new StringContent("accepted", Encoding.UTF8, "application/json");
-    OrderService.changeOrderStatus(orderId, { status: "waiteraccepted" }).then((response) => {
+  
+    OrderService.changeOrderStatus(orderId, { status: "waiteraccepted" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
     });
-    const newWaiterAcceptedMeals = [...waiterAcceptedMeals, waiterAcceptedMeal[0]]; // add accepted meals to existing accepted meal list
-
-    setReadyMeals(newReadyMeals);
-    setWaiterAcceptedMeals(newWaiterAcceptedMeals);
+  
   };
 
   const onServed = (e, orderId) => {
@@ -70,7 +58,7 @@ const WaiterPage = () => {
       return meal.orderId !== orderId;
     }); // return a array of meals which haven't order id of orderId
 
-    OrderService.changeOrderStatus(orderId, { status: "served" }).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "served" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)

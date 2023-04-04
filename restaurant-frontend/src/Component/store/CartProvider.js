@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer } from 'react';
 
 import CartContext from './cart-context';
 
@@ -80,12 +80,8 @@ const CartProvider = (props) => {
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
-  //add data in local storage
-  useEffect(() => {
-    localStorage.setItem("mealCart", JSON.stringify(cartState.items));
-    
-  }, [cartState.items]);
-  
+
+
   return (
    
     <CartContext.Provider value={cartContext}>

@@ -21,9 +21,9 @@ public class OrderController {
         return orderService.getAllPendingOrders();
     }
 
-    @GetMapping("/acceptedOrders")
-    public List<Order> getAllAcceptedOrders(){
-        return orderService.getAllAcceptedOrders();
+    @GetMapping("/acceptedOrders/{id}")
+    public List<Order> getAllAcceptedOrders(@PathVariable int id){
+        return orderService.getAllAcceptedOrders(id);
     }
 
     @GetMapping("/readyOrders")
@@ -31,19 +31,19 @@ public class OrderController {
         return orderService.getAllReadyOrders();
     }
 
-    @GetMapping("/waiterAcceptedOrders")
-    public List<Order> getAllWaiterAcceptedOrders(){
-        return orderService.getAllWaiterAcceptedOrders();
+    @GetMapping("/waiterAcceptedOrders/{id}")
+    public List<Order> getAllWaiterAcceptedOrders(@PathVariable int id){
+        return orderService.getAllWaiterAcceptedOrders(id);
     }
     @GetMapping("/servedOrders")
-    public List<Order> getAllServedOrders(){
-        return orderService.getAllServedOrders();
+    public List<Order> getAllServedOrders(@RequestBody int id){
+        return orderService.getAllServedOrders(id);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@RequestBody OrderStatusDTO status){
-
-        return ResponseEntity.ok(orderService.changeOrderStatus(id,status.getStatus()));
+    @PutMapping("{id}/{emp_id}")
+    public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@PathVariable int emp_id,@RequestBody OrderStatusDTO status){
+        System.out.print(emp_id);
+        return ResponseEntity.ok(orderService.changeOrderStatus(id,status.getStatus(),emp_id));
 
 
     }

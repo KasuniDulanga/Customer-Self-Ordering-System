@@ -31,9 +31,8 @@ const ListMeals = () => {
     return (
         <Fragment>
             
-            <br></br>
+            <br></br><br></br>
                 <div className={classes.cont}>
-                
                     <h3 className="text-center">List Of Meals</h3>
                     <Link to="/add-meal" id={classes.addbtn} className="addbtn btn btn-primary mb-3">Add New Meal</Link>
                     <table id ={classes.table} className="table rounded shadow">

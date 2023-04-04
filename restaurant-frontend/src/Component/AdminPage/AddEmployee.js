@@ -89,7 +89,6 @@ export const AddEmployee = () => {
     }
     return (
         <div className={classes.addemployeebody}>
-            <br /><br />
             <div className={classes.addemployee}>
                 <div className="row">
                     <div id={classes.cardform} className="col-md-6 offset-md-3 offset-md-2">
@@ -141,13 +140,13 @@ export const AddEmployee = () => {
                                     >
                                     </input>
                                 </div>
-
+                                <br></br>
                                 <div className="form-group mb-2">
                                 
                                     <label className="form-label"> Password :</label>
-                                    <div className="input-area">
-                                    <ul style={{ display: "inline", listStyleType: "none"}}>
-                                        <li style={{ display: "inline"}}><input
+                                    
+                                        <li className={classes.input1} style={{ display: "inline-block",paddingLeft:"1rem",width:"22rem"}}>
+                                        <input 
                                         type={visibility ? "password" : "text"}
                                         placeholder="Enter password"
                                         name="password"
@@ -158,20 +157,20 @@ export const AddEmployee = () => {
                                     >
                                     </input></li>
                                     
-                                    <li style={{ display: "inline"}}><span className='eye' onClick={() => setVsibility(!visibility)}>
+                                    <li style={{ display: "inline-block", paddingLeft:"1rem"}} ><span className='eye' onClick={() => setVsibility(!visibility)}>
                                         {
                                             visibility ? <EyeInvisibleOutlined /> : <EyeOutlined />
                                         }
                                     </span></li>
-                                    </ul>
-                                    </div>
+                    
+                                
                                 </div>
-
+                                <br></br>
                                 <div className="form-group mb-2">
-                                    <label className="form-label"> Job Role : 1:Admin 2:Cook 3:Waiter</label>
+                                    <label className="form-label"> Job Role : 1 : Admin  2 : Cook 3 : Waiter</label>
                                     <input
                                         type="text"
-                                        placeholder="Select job role id"
+                                        placeholder="Enter job role id"
                                         name="jon_role"
                                         className="form-control"
                                         value={roleId}
@@ -209,13 +208,14 @@ export const AddEmployee = () => {
                                     >
                                     </input>
                                 </div>
-
+                                <br></br>
                                 {
                                     buttonSubmitOrUpdate()
                                 }
                                 <Link to="/admin" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
+                                
                             </form>
-
+                            <br></br>
                         </div>
                     </div>
                 </div>

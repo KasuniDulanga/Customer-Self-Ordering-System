@@ -4,183 +4,30 @@ import "../Events/Events.css";
 import NavbarComp from '../Navbar/NavbarComp';
 import mealsImg from '../Images/EventsImages/event1.png';
 import mealsImg2 from '../Images/EventsImages/event2.jpg';
+import EventCard from './EventCard';
+
+
 export default function Event() {
   return (
     <Fragment>
       <NavbarComp
         link1="Home"
-        link2="AboutUs"
         link3="Events"
         link4="Login" />
-      <div className='withoutnavbar'>
-      <div className="container text-center pb-4">
+      <div className='withoutNavbar'>
+      <div className="containerr text-center pb-4">
         <div className="slide">
           <div className="card-box">
-
-            <div className="">
-              <div className="profile-area">
-                <div className="container">
-                  <div className="card">
-                    <div className="img1"><img src={mealsImg} alt='A table full of delicious food!'></img></div>
-                    <div className="main-text">
-                      <h2>Food Fiesta</h2>
-                      <p>20th march</p>
-                      <p>At Dehivala</p>
-                    </div>
-                    <div className="socials">
-                      <ul>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="">
-              <div className="profile-area">
-                <div className="container">
-                  <div className="card">
-                    <div className="img1"><img src={mealsImg2} alt='A table full of delicious food!'></img></div>
-                    <div className="main-text">
-                      <h2>Food Fiesta</h2>
-                      <p>20th march</p>
-                      <p>At Dehivala</p>
-                    </div>
-                    <div className="socials">
-                      <ul>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="">
-              <div className="profile-area">
-                <div className="container">
-                  <div className="card">
-                    <div className="img1"><img src={mealsImg} alt='A table full of delicious food!'></img></div>
-                    <div className="main-text">
-                      <h2>Food Fiesta</h2>
-                      <p>20th march</p>
-                      <p>At Dehivala</p>
-                    </div>
-                    <div className="socials">
-                      <ul>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="">
-              <div className="profile-area">
-                <div className="container">
-                  <div className="card">
-                    <div className="img1"><img src={mealsImg} alt='A table full of delicious food!'></img></div>
-                    <div className="main-text">
-                      <h2>Food Fiesta</h2>
-                      <p>20th march</p>
-                      <p>At Dehivala</p>
-                    </div>
-                    <div className="socials">
-                      <ul>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className="profile-area">
-                <div className="container">
-                  <div className="card">
-                    <div className="img1"><img src={mealsImg} alt='A table full of delicious food!'></img></div>
-                    <div className="main-text">
-                      <h2>Food Fiesta</h2>
-                      <p>20th march</p>
-                      <p>At Dehivala</p>
-                    </div>
-                    <div className="socials">
-                      <ul>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                          <a href="/" target="_blank"><i className="fab fa-linkedin"></i></a>
-                        </li>
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <EventCard eventName='Food Fiesta' venue='At Dehivala' date='20th march' eventImage={mealsImg}/>
+            <EventCard eventName='Food Fiesta' venue='At Dehivala' date='20th march' eventImage={mealsImg}/>
+            <EventCard eventName='Food Fiesta' venue='At Dehivala' date='20th march' eventImage={mealsImg2}/>
+            <EventCard eventName='Food Fiesta' venue='At Dehivala' date='20th march' eventImage={mealsImg}/>
+            <EventCard eventName='Food Fiesta' venue='At Dehivala' date='20th march' eventImage={mealsImg2}/>
           </div>
         </div>
       </div>
       </div>
-     
+ 
     </Fragment>
   )
 }
