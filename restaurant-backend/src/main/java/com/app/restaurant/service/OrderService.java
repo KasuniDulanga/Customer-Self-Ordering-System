@@ -48,13 +48,12 @@ public class OrderService {
 
     public List<Order> getAllWaiterAcceptedOrders(int id){
         Employee emp = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
-        System.out.print(emp.getFirstName());
-        return orderRepo.findAllByStatusIgnoreCaseAndWaiter("waiteraccepted",emp);
+        return orderRepo.findAllByStatusIgnoreCaseAndWaiter("served",emp);
 
     }
 
     public List<Order> getAllServedOrders(int id){
-        return orderRepo.findAllByStatusIgnoreCase("served");
+        return orderRepo.findAllByStatusIgnoreCase("billed");
     }
 
     public Order getOrderDetail(int orderId) {

@@ -39,7 +39,7 @@ const WaiterPage = () => {
     e.preventDefault();
 
   
-    OrderService.changeOrderStatus(orderId, { status: "waiteraccepted" },id).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "served" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
@@ -58,7 +58,7 @@ const WaiterPage = () => {
       return meal.orderId !== orderId;
     }); // return a array of meals which haven't order id of orderId
 
-    OrderService.changeOrderStatus(orderId, { status: "served" },id).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "billed" },id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
@@ -94,7 +94,7 @@ const WaiterPage = () => {
               readyMeals.map((meal) => (
                 <Card1
                   mealDetails={meal}
-                  buttonName={"Accept"}
+                  buttonName={"Served"}
                   onClickFunction={onWaiterAccepted}
                   key={meal.order_id}
                 />
@@ -123,7 +123,7 @@ const WaiterPage = () => {
               waiterAcceptedMeals.map((meal) => (
                 <Card1
                   mealDetails={meal}
-                  buttonName={"Served"}
+                  buttonName={"Billed"}
                   onClickFunction={onServed}
                   key={meal.order_id}
                 />

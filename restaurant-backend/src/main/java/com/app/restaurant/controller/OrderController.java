@@ -35,14 +35,13 @@ public class OrderController {
     public List<Order> getAllWaiterAcceptedOrders(@PathVariable int id){
         return orderService.getAllWaiterAcceptedOrders(id);
     }
-    @GetMapping("/servedOrders")
+    @GetMapping("/billedOrders")
     public List<Order> getAllServedOrders(@RequestBody int id){
         return orderService.getAllServedOrders(id);
     }
 
     @PutMapping("{id}/{emp_id}")
     public ResponseEntity<Order> changeOrderStatus(@PathVariable int id,@PathVariable int emp_id,@RequestBody OrderStatusDTO status){
-        System.out.print(emp_id);
         return ResponseEntity.ok(orderService.changeOrderStatus(id,status.getStatus(),emp_id));
 
 

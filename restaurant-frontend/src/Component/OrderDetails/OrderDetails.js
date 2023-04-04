@@ -20,7 +20,7 @@ export default function OrderDetails(props) {
     OrderService.getOrderDetails(parseInt(orderId)).then((orderRes) => {
       setorderctx(orderRes.data);
 
-      if(orderRes.data.status === "served"){
+      if(orderRes.data.status === "billed"){
         localStorage.removeItem("macfood_order_ID");
         navigate('/',{ replace: true })
       }
