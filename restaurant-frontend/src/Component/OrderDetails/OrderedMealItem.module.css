@@ -4,14 +4,14 @@
     align-items: center;
     border-bottom: 1px solid #8a2b06;
     padding: 0.2rem 0;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
   }
  
   
   .summary {
-    width: 10rem;
+   
     display: flex;
     justify-content: space-between;
     align-items: center;

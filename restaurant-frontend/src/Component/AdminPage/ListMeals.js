@@ -4,10 +4,18 @@ import MealService from '../Services/MealService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
 import classes from "../AdminPage/Admin.module.css";
+import LogoutModal from '../EmployeeNav/LogoutModal';
 
 const ListMeals = () => {
 
     const [meals, setMeals] = useState([])
+    const [MsgIsShown, setMsgIsShown] = useState(false);
+    const showCartHandler = () => {
+        setMsgIsShown(true);
+    };
+    const hideMsgHandler = () => {
+        setMsgIsShown(false);
+    };
     useEffect(() => {
 
         const interval = setInterval(() => {
@@ -25,7 +33,15 @@ const ListMeals = () => {
     }, [])
 
     const deleteMeal = (mealId) => {
-        console.log(mealId)
+        MealService.deleteMeal(mealId).then((response) => {
+            console.log(response.data)
+            setMsgIsShown(false);
+            // navigate("/admin/" + id)
+
+           
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     return (
@@ -60,7 +76,18 @@ const ListMeals = () => {
                                             <td data-label="Actions">
                                                 <div>
                                                     <Link to={`/edit-meal/${meals.meal_id}`}><img src={editIcon} className={classes.editIcon} alt='edit' /></Link>
-                                                    <Link onClick={() => deleteMeal(meals.meal_id)}><img src={deleteIcon} className={classes.editIcon}  alt='edit' /></Link>
+                                                    <Link onClick={showCartHandler}><img src={deleteIcon} className={classes.editIcon}  alt='edit' /></Link>
+                                                    {MsgIsShown && <LogoutModal onClose={hideMsgHandler}>
+                                                            <div className="message">
+                                                                <span>Are sure you want to delete meal ?</span>
+                                                            </div>
+                                                            <div className="close">
+                                                                <button className='button--alt' onClick={() => deleteMeal(meals.meal_id)}>
+                                                                    Yes
+                                                                </button>
+                                                                <button className='button' onClick={hideMsgHandler}>No</button>
+                                                            </div>
+                                                        </LogoutModal>}
                                                 </div>
                                             </td>
                                         </tr>

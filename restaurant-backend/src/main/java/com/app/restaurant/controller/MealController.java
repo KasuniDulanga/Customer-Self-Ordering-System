@@ -4,6 +4,7 @@ package com.app.restaurant.controller;
 import com.app.restaurant.dto.MealDTO;
 import com.app.restaurant.exception.ResourceNotFoundException;
 import com.app.restaurant.model.Meal;
+import com.app.restaurant.model.MealIngredient;
 import com.app.restaurant.repository.MealRepository;
 import com.app.restaurant.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +31,7 @@ public class MealController {
     public List<Meal> getAllMeals(){
         return mealService.getAllMeals();
     }
+
 
     //build create meal REST API
     @PostMapping
@@ -55,6 +58,7 @@ public class MealController {
                                                   @RequestParam("price") double price,
                                                   @RequestParam("category") String category,
                                                   @RequestParam("desc") String description) throws IOException {
+
         String imageFileName = StringUtils.cleanPath(file.getOriginalFilename());
         System.out.println("imagepath "+imageFileName);
 
@@ -63,6 +67,21 @@ public class MealController {
         return ResponseEntity.ok("working");
 
     }
+//    @PutMapping("{id}")
+//    public ResponseEntity<String> updateMealImage(@PathVariable int id,@RequestBody List<MealIngredient> mealIngredients ,@RequestParam("image") MultipartFile file,
+//                                                  @RequestParam("mealName") String mealName,
+//                                                  @RequestParam("price") double price,
+//                                                  @RequestParam("category") String category,
+//                                                  @RequestParam("desc") String description) throws IOException {
+//
+//        String imageFileName = StringUtils.cleanPath(file.getOriginalFilename());
+//        System.out.println("imagepath "+imageFileName);
+//
+//        mealService.updateMeal(id,file,mealName,price,category,description,mealIngredients);
+//
+//        return ResponseEntity.ok("working");
+//
+//    }
 
     // build delete meal REST API
     @DeleteMapping("{id}")

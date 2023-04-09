@@ -1,11 +1,15 @@
 package com.app.restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 @Getter
@@ -23,5 +27,8 @@ public class Ingredient {
     @Column(name="ingredient_name" , nullable = false)
     private String ingredientName;
 
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<MealIngredient> mealIngredients = new ArrayList<>();
 
 }

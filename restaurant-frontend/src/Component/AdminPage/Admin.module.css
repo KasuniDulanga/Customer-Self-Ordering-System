@@ -7,11 +7,11 @@
     background-image: url("../Images/back1.jpg");
     background-size: cover;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-   overflow-y: scroll;
-   max-height: 619px;
+  
   
 
 }
+
 #cardform{
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
     color: white;
@@ -23,7 +23,7 @@
 .addemployeebody{
     background-image: url("../Images/back1.jpg");
     background-size: cover;
-    min-height: 900px;
+    min-height: 1500px;
     overflow: hidden;
     padding-left:5rem;
     padding-right: 5rem;
@@ -137,7 +137,14 @@
     
 }
 
-::-webkit-scrollbar {
+@media(max-width:768px){
+    .adminbody{
+        max-height: 100%; 
+    }
+    
+}
+
+/* ::-webkit-scrollbar {
     width: 5em;
   }
    
@@ -149,4 +156,4 @@
     background-color: darkgrey;
     outline: 1px solid slategrey;
     border-radius: 1px;
-  }
+  } */

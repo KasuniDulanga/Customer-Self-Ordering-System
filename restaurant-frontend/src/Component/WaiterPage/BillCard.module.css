@@ -1,0 +1,50 @@
+.carddetails{
+    background: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7));
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px 0px;
+    color: black;
+    text-align: left;
+}
+
+.carddetails li{
+    list-style-type: none;
+    margin-top: 8px;
+    margin-left: 1px;
+   
+}
+
+.carddetails ul{
+    
+    margin-top: 25px;
+   
+}
+.carddetails h6{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    margin-left: 18px;
+}
+.buttoncookcard{
+    width: 100px;
+    height: 45px;
+    background-color: aqua;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #372924;
+    transition: background-color 175ms ease-out 150ms;
+    margin-right: 5px;
+}
+
+.buttoncookcard:hover{
+    background-color: rgba(0,0,0,0.7);
+    cursor: pointer;
+}
+
+.buttoncookcard p {
+    position: relative;
+    top: 10px;
+    font-family: 'Kaushan Script', cursive;
+    font-size: medium;
+    font-weight: bold;
+    color: whitesmoke;
+}

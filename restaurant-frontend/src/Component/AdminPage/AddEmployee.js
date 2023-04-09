@@ -26,7 +26,7 @@ export const AddEmployee = () => {
         // if id contains value make update employee REST API
         if (id) {
             EmployeeService.updateEmployee(id, employee).then((response) => {
-                navigate('/admin')
+                navigate(-1)
             }).catch(error => {
                 console.log(error)
             })
@@ -36,7 +36,7 @@ export const AddEmployee = () => {
 
             EmployeeService.createEmployee(employee).then((response) => {
                 console.log(response.data)
-                navigate('/admin');
+                navigate(-1);
 
             }).catch(error => {
                 console.log(error)
@@ -191,6 +191,7 @@ export const AddEmployee = () => {
                                         className="form-control"
                                         value={address}
                                         onChange={(e) => setAddress(e.target.value)}
+                                        required
                                     >
                                     </input>
                                 </div>
@@ -204,6 +205,7 @@ export const AddEmployee = () => {
                                         className="form-control"
                                         value={phone_no}
                                         onChange={(e) => setPhoneNo(e.target.value)}
+                                        required
 
                                     >
                                     </input>
@@ -212,7 +214,7 @@ export const AddEmployee = () => {
                                 {
                                     buttonSubmitOrUpdate()
                                 }
-                                <Link to="/admin" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
+                                <Link to={-1} className="canclebtn btn btn-danger mx-3"> Cancel </Link>
                                 
                             </form>
                             <br></br>

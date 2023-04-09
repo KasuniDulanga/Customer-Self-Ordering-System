@@ -39,7 +39,7 @@ const Cart = (props) => {
             localStorage.setItem("macfood_order_ID",`${response.data}`)
             OrderService.getOrderDetails(response.data).then((orderRes) => {
               setorderctx(orderRes.data);
-              navigate('/orderdetails');
+              navigate('/orderdetails',{ replace: true });
             }).catch(error => {
               console.log(error.orderRes.data)
             })

@@ -50,7 +50,7 @@ public class EmployeeService {
 
     public Map<String,Boolean> deleteEmployee(int id){
         Employee employee =employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
-
+        System.out.println("service claas");
         employeeRepo.delete(employee);
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import OrderService from "../Services/OrderService";
 import classes from "../CookPage/CookPage.module.css";
 import Card1 from "../CookPage/Card1.js";
+import BillCard from "./BillCard";
 import {useParams } from 'react-router-dom';
 
 const WaiterPage = () => {
@@ -35,7 +36,7 @@ const WaiterPage = () => {
 
   }, [id]);
 
-  const onWaiterAccepted = (e, orderId) => {
+  const onServed = (e, orderId) => {
     e.preventDefault();
 
   
@@ -47,7 +48,7 @@ const WaiterPage = () => {
   
   };
 
-  const onServed = (e, orderId) => {
+  const onBilled = (e, orderId) => {
     e.preventDefault();
 
     const servedMeal = waiterAcceptedMeals.filter((meal) => {
@@ -95,7 +96,7 @@ const WaiterPage = () => {
                 <Card1
                   mealDetails={meal}
                   buttonName={"Served"}
-                  onClickFunction={onWaiterAccepted}
+                  onClickFunction={onServed}
                   key={meal.order_id}
                 />
               ))
@@ -121,10 +122,11 @@ const WaiterPage = () => {
               </div>
             ) : (
               waiterAcceptedMeals.map((meal) => (
-                <Card1
+                <BillCard
                   mealDetails={meal}
-                  buttonName={"Billed"}
-                  onClickFunction={onServed}
+                  buttonName={"Payed"}
+                  buttonName1={"Print"}
+                  onClickFunction={onBilled}
                   key={meal.order_id}
                 />
               ))

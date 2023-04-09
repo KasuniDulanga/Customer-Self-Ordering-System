@@ -1,5 +1,6 @@
 package com.app.restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,9 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -35,5 +38,11 @@ public class Meal {
     @Lob
     @Column(name ="image" ,columnDefinition = "MEDIUMBLOB")
     private String image;
+
+    @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL)
+    private List<MealIngredient> mealIngredients = new ArrayList<>();
+
+
+
 
 }

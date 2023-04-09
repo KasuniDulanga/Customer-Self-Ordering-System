@@ -24,7 +24,7 @@ export const AddMeals = () => {
         if (id) {
            
             MealService.updateMealImage(id,image,mealName,category,price,description).then((response) => {
-                navigate('/admin')
+                navigate(-1)
             }).catch(error => {
                 console.log(error)
             })
@@ -34,7 +34,7 @@ export const AddMeals = () => {
             
             MealService.createMeal(image,mealName,category,price,description).then((response) => {
                 console.log(response.data)
-                navigate('/admin');
+                navigate(-1);
 
             }).catch(error => {
                 console.log(error)
@@ -46,6 +46,7 @@ export const AddMeals = () => {
     
     useEffect(() => {
 
+        if(id){
             MealService.getMealById(id).then((response) => {
                 setMealName(response.data.mealName);
                 setCategory(response.data.category);
@@ -57,7 +58,7 @@ export const AddMeals = () => {
                 console.log(error)
             })
         
-       
+        }
 
     }, [id])
 
@@ -163,7 +164,7 @@ export const AddMeals = () => {
                                 {
                                     buttonSubmitOrUpdate()
                                 }
-                                <Link to="/admin" className="canclebtn btn btn-danger mx-3"> Cancel </Link>
+                                <Link to={-1} className="canclebtn btn btn-danger mx-3"> Cancel </Link>
                                 
                             </form>
                             <br></br>

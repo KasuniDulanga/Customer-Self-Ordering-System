@@ -6,8 +6,9 @@ import deleteIcon from '../Images/deleteicon.jpg'
 import classes from "./Admin.module.css";
 import Nav from '../EmployeeNav/Navpage'
 import ListMeals from './ListMeals'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import LogoutModal from '../EmployeeNav/LogoutModal';
+
 
 const ListEmployee = () => {
 
@@ -15,6 +16,7 @@ const ListEmployee = () => {
     const [MsgIsShown, setMsgIsShown] = useState(false);
     // const [roleName, setRoleName] = useState([]);
     const navigate = useNavigate();
+    const { id } = useParams();
 
 
     const showCartHandler = () => {
@@ -47,7 +49,16 @@ const ListEmployee = () => {
 
     const deleteEmployee = (employeeId) => {
         console.log(employeeId)
-        navigate("/Admin")
+        EmployeeService.deleteEmployee(employeeId).then((response) => {
+            console.log(response.data)
+            setMsgIsShown(false);
+            // navigate("/admin/" + id)
+
+           
+        }).catch(error => {
+            console.log(error);
+        })
+        
     }
 
     return (
@@ -90,7 +101,7 @@ const ListEmployee = () => {
                                                         <Link onClick={showCartHandler}><img src={deleteIcon} className={classes.editIcon} alt='edit' /></Link>
                                                         {MsgIsShown && <LogoutModal onClose={hideMsgHandler}>
                                                             <div className="message">
-                                                                <span>Are sure you want to Delete?</span>
+                                                                <span>Are sure you want to delete employee ?</span>
                                                             </div>
                                                             <div className="close">
                                                                 <button className='button--alt' onClick={() => deleteEmployee(employee.employee_id)}>

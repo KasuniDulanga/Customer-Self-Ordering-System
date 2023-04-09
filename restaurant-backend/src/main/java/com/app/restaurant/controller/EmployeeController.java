@@ -68,6 +68,7 @@ public class EmployeeController {
     // build delete employee REST API
     @DeleteMapping("{id}")
     public ResponseEntity<Map<String,Boolean>> deleteEmployee(@PathVariable int id){
+        System.out.println(id);
         return ResponseEntity.ok(employeeService.deleteEmployee(id));
     }
 
