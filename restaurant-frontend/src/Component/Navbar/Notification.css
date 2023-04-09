@@ -46,15 +46,7 @@
     transform-origin: 50% 4px;
 }
 
-@media screen and (max-width: 768px) {
-    .placeholder{
-        width: 0px;
-    }
-    .notifier-text{
-        margin-left: 15px;
-        margin-right: 0px;
-    }
-}
+
   
 @-webkit-keyframes ring {
     0% { -webkit-transform: rotateZ(0); }
