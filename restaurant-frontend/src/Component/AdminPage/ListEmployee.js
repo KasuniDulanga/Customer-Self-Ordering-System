@@ -6,7 +6,6 @@ import deleteIcon from '../Images/deleteicon.jpg'
 import classes from "./Admin.module.css";
 import Nav from '../EmployeeNav/Navpage'
 import ListMeals from './ListMeals'
-import { useNavigate,useParams } from 'react-router-dom';
 import LogoutModal from '../EmployeeNav/LogoutModal';
 
 
@@ -15,8 +14,8 @@ const ListEmployee = () => {
     const [employees, setEmployees] = useState([]);
     const [MsgIsShown, setMsgIsShown] = useState(false);
     // const [roleName, setRoleName] = useState([]);
-    const navigate = useNavigate();
-    const { id } = useParams();
+   
+    
 
 
     const showCartHandler = () => {

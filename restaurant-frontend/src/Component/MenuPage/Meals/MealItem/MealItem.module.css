@@ -1,3 +1,9 @@
+.ingredients{
+  padding: 0.5rem;
+  box-shadow: 0 1px 2px rgba(142, 141, 141, 0.25);
+  border-radius: 14px;
+  background-color: white;
+}
 .meal {
   display: flex;
   justify-content: space-between;
