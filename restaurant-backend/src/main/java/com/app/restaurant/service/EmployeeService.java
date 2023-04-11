@@ -1,5 +1,6 @@
 package com.app.restaurant.service;
 
+import com.app.restaurant.dto.EmployeeDTO;
 import com.app.restaurant.exception.ResourceNotFoundException;
 import com.app.restaurant.model.Employee;
 import com.app.restaurant.repository.EmployeeRepository;
@@ -20,6 +21,9 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepo;
 
+    @Autowired
+    private RoleService roleService;
+
     public List<Employee> getAllEmployees(){
         return employeeRepo.findAll();
     }
@@ -28,9 +32,18 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 
-    public Employee getEmployeeById(int id){
-        Employee employee =employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
-        return employee;
+    public EmployeeDTO getEmployeeById(int id){
+        Employee emp =employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
+        EmployeeDTO empDTO =new EmployeeDTO();
+        empDTO.setEmployee_id(emp.getEmployee_id());
+        empDTO.setFirstName(emp.getFirstName());
+        empDTO.setLastName(emp.getLastName());
+        empDTO.setEmail(emp.getEmail());
+        empDTO.setPhone_no(emp.getPhone_no());
+        empDTO.setAddress(emp.getAddress());
+        empDTO.setRoleName(roleService.getRoleName((int) emp.getRoleId()));
+
+        return empDTO;
     }
 
     public Employee updateEmployee(int id,Employee employeeDetails){

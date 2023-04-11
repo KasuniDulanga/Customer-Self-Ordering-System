@@ -1,13 +1,16 @@
+.cardbodycont{
+  background-image: url("../Images/back1.jpg");
+  background-size: cover;
+  height: 65rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 .cardbody{
     padding: 30px;
-    height: 65rem;
+    font-family: 'Kaushan Script', cursive;
     display: flex;
     justify-content: center;
     color: whitesmoke;
     text-align: center;
-    background-image: url("../Images/back1.jpg");
-    background-size: cover;
-    font-family: 'Kaushan Script', cursive;
     overflow-y: scroll;
 }
 

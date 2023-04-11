@@ -4,13 +4,27 @@ import classes from "../CookPage/CookPage.module.css";
 import Card1 from "../CookPage/Card1.js";
 import BillCard from "./BillCard";
 import {useParams } from 'react-router-dom';
+import EmployeeService from "../Services/EmplyeeService";
+import UserCard from "../EmployeeLog/UserCard";
 
 const WaiterPage = () => {
   const { id } = useParams();
+  const [logEmployee, setLogEmployee] = useState('');
   const [readyMeals, setReadyMeals] = useState([]);
   const [waiterAcceptedMeals, setWaiterAcceptedMeals] = useState([]);
   const [servedMeals, setServedMeals] = useState([]);
   useEffect(() => {
+
+    if (id) {
+      EmployeeService.getEmployeeById(id).then((response) => {
+        setLogEmployee(response.data)
+
+        // console.log(response.data)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+
     const interval = setInterval(() => {
       OrderService.getAllReadyOrders()
       .then((response) => {
@@ -72,7 +86,15 @@ const WaiterPage = () => {
 
   return (
     <Fragment>
-      
+      <div className={classes.cardbodycont}>
+        <br></br>
+        <UserCard
+          Id={logEmployee.employee_id}
+          fName={logEmployee.firstName}
+          lName={logEmployee.lastName}
+          Role={logEmployee.roleName}
+
+        />
       <div className={classes.cardbody}>
         <div className={classes.cardinner}>
           <h2 style={{ paddingBottom: "5px" }}>Ready Orders</h2>
@@ -133,6 +155,7 @@ const WaiterPage = () => {
             )}
           </div>
         </div>
+      </div>
       </div>
     </Fragment>
   );

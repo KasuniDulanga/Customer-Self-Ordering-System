@@ -39,4 +39,8 @@ public class MealIngredientController {
     public void addMealIngredient(@PathVariable int id,@RequestBody List<MealIngredientDTO> listIngredient){
         mealingredientService.addMealIngredient(id,listIngredient);
     }
+    @PutMapping("{id}")
+    public void updateMealIngredient(@PathVariable int id,@RequestBody List<MealIngredientDTO> listIngredient){
+        mealingredientService.updateMealIngredient(id,listIngredient);
+    }
 }

@@ -35,14 +35,32 @@ public class MealIngredientService {
     public void addMealIngredient(int id,List<MealIngredientDTO> listIngredient){
         Meal meal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
 
-        for(MealIngredientDTO l : listIngredient){
-            Ingredient ing = ingredientRepo.findById(l.getIngredient_id()).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id "));
-            MealIngredient newMealIngredient = new MealIngredient();
-            newMealIngredient.setMeal(meal);
-            newMealIngredient.setIngredient(ing);
-            newMealIngredient.setValue(l.getValue());
+        for(MealIngredientDTO l : listIngredient) {
+            if (l.getValue() != 0) {
+                Ingredient ing = ingredientRepo.findById(l.getIngredient_id()).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id "));
+                MealIngredient newMealIngredient = new MealIngredient();
+                newMealIngredient.setMeal(meal);
+                newMealIngredient.setIngredient(ing);
+                newMealIngredient.setValue(l.getValue());
 
-            mealingredientrepo.save(newMealIngredient);
+                mealingredientrepo.save(newMealIngredient);
+            }
+        }
+    }
+
+    public void updateMealIngredient(int id,List<MealIngredientDTO> listIngredient){
+        Meal meal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
+
+        for(MealIngredientDTO l : listIngredient) {
+            if (l.getValue() != 0) {
+                Ingredient ing = ingredientRepo.findById(l.getIngredient_id()).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id "));
+                MealIngredient newMealIngredient = new MealIngredient();
+                newMealIngredient.setMeal(meal);
+                newMealIngredient.setIngredient(ing);
+                newMealIngredient.setValue(l.getValue());
+
+                mealingredientrepo.save(newMealIngredient);
+            }
         }
     }
 }

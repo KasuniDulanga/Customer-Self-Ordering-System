@@ -24,7 +24,7 @@ const MealItem = (props) => {
   useEffect(() => {
 
     if (props.id) {
-      MealIngredientService.MealIngredientService(props.id).then((response) => {
+      MealIngredientService.getAllIngredientByMealId(props.id).then((response) => {
         setIngredient(response.data)
         console.log(response.data)
       }).catch(error => {

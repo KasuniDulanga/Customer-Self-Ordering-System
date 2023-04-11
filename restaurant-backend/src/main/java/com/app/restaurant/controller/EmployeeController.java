@@ -53,7 +53,7 @@ public class EmployeeController {
 
     //build get employee by id REST API
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable int id){
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable int id){
 
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }

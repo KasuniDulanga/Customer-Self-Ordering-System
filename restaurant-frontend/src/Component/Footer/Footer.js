@@ -30,7 +30,7 @@ export default function Footer() {
                   <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="/aboutus">About</a>
+                  <a href="/">About</a>
                 </li>
                 <li>
                   <a href="/" rel="noreferrer">Terms</a>
@@ -56,20 +56,7 @@ export default function Footer() {
           </div>
           <div className="col-md-4">
             <div className="social-media row">
-              {/* <ul className="mb-0">
-              <li>
-                <a href="https://twitter.com/learnWitheNET?t=SgIQqCTq5IBygEoVj4AjLA&s=08" target="_blank" rel="noreferrer"><i className="fab fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/Enet.RSLUP" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/enet.rslup/" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
-              </li>
-              <li>
-                <a href="/" target="_blank"><i className="fas fa-globe-asia"></i></a>
-              </li>
-            </ul> */}
+          
               <div className="text-center copyright  pt-2 pb-3">© 2023 Copyright:<a href="/"> MacFood</a>
               </div>
             </div>

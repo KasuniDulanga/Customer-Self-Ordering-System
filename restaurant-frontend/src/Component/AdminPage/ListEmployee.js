@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import EmployeeService from '../Services/EmplyeeService'
 import editIcon from '../Images/editIcon.png'
 import deleteIcon from '../Images/deleteicon.jpg'
@@ -7,6 +7,8 @@ import classes from "./Admin.module.css";
 import Nav from '../EmployeeNav/Navpage'
 import ListMeals from './ListMeals'
 import LogoutModal from '../EmployeeNav/LogoutModal';
+import UserCard from '../EmployeeLog/UserCard'
+
 
 
 const ListEmployee = () => {
@@ -14,8 +16,9 @@ const ListEmployee = () => {
     const [employees, setEmployees] = useState([]);
     const [MsgIsShown, setMsgIsShown] = useState(false);
     // const [roleName, setRoleName] = useState([]);
-   
-    
+    const [logEmployee, setLogEmployee] = useState('');
+    const { id } = useParams();
+
 
 
     const showCartHandler = () => {
@@ -25,6 +28,17 @@ const ListEmployee = () => {
         setMsgIsShown(false);
     };
     useEffect(() => {
+
+        if (id) {
+            EmployeeService.getEmployeeById(id).then((response) => {
+                setLogEmployee(response.data)
+
+                // console.log(response.data)
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+
         const interval = setInterval(() => {
             EmployeeService.getAllEmployees().then((response) => {
                 setEmployees(response.data)
@@ -34,14 +48,13 @@ const ListEmployee = () => {
                 console.log(error);
             })
 
-
         }, 1000);
 
         return () => clearInterval(interval);
 
 
 
-    }, [])
+    }, [id])
 
 
 
@@ -53,19 +66,27 @@ const ListEmployee = () => {
             setMsgIsShown(false);
             // navigate("/admin/" + id)
 
-           
+
         }).catch(error => {
             console.log(error);
         })
-        
+
     }
 
     return (
         <Fragment>
             <div className={classes.body}>
                 <Nav />
-                <div className={classes.adminbody}>
 
+                <div className={classes.adminbody}>
+                    <br></br>
+                    <UserCard
+                        Id={logEmployee.employee_id}
+                        fName={logEmployee.firstName}
+                        lName={logEmployee.lastName}
+                        Role={logEmployee.roleName}
+
+                    />
                     <br></br>
                     <br></br>
                     <div className={classes.cont}>

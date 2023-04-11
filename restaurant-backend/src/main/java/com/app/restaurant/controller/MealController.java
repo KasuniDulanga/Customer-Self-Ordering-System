@@ -1,14 +1,8 @@
 package com.app.restaurant.controller;
 
-
-import com.app.restaurant.dto.MealDTO;
-import com.app.restaurant.exception.ResourceNotFoundException;
 import com.app.restaurant.model.Meal;
-import com.app.restaurant.model.MealIngredient;
-import com.app.restaurant.repository.MealRepository;
 import com.app.restaurant.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -35,13 +29,13 @@ public class MealController {
 
     //build create meal REST API
     @PostMapping
-    public Meal createMeal(@RequestParam("image") MultipartFile file,
+    public ResponseEntity<Meal> createMeal(@RequestParam("image") MultipartFile file,
                            @RequestParam("mealName") String mealName,
                            @RequestParam("price") double price,
                            @RequestParam("category") String category,
                            @RequestParam("desc") String description) throws IOException {
 
-        return mealService.createMeal(file,mealName,price,category,description);
+        return ResponseEntity.ok(mealService.createMeal(file,mealName,price,category,description));
     }
 
     //build get meal by id REST API
@@ -53,35 +47,20 @@ public class MealController {
 
     //build update meal REST API
     @PutMapping("{id}")
-    public ResponseEntity<String> updateMealImage(@PathVariable int id,@RequestParam("image") MultipartFile file,
+    public ResponseEntity<Meal> updateMealImage(@PathVariable int id,@RequestParam("image") MultipartFile file,
                                                   @RequestParam("mealName") String mealName,
                                                   @RequestParam("price") double price,
                                                   @RequestParam("category") String category,
                                                   @RequestParam("desc") String description) throws IOException {
 
-        String imageFileName = StringUtils.cleanPath(file.getOriginalFilename());
-        System.out.println("imagepath "+imageFileName);
-
-        mealService.updateMeal(id,file,mealName,price,category,description);
-
-        return ResponseEntity.ok("working");
-
-    }
-//    @PutMapping("{id}")
-//    public ResponseEntity<String> updateMealImage(@PathVariable int id,@RequestBody List<MealIngredient> mealIngredients ,@RequestParam("image") MultipartFile file,
-//                                                  @RequestParam("mealName") String mealName,
-//                                                  @RequestParam("price") double price,
-//                                                  @RequestParam("category") String category,
-//                                                  @RequestParam("desc") String description) throws IOException {
-//
 //        String imageFileName = StringUtils.cleanPath(file.getOriginalFilename());
 //        System.out.println("imagepath "+imageFileName);
-//
-//        mealService.updateMeal(id,file,mealName,price,category,description,mealIngredients);
-//
-//        return ResponseEntity.ok("working");
-//
-//    }
+
+
+
+        return ResponseEntity.ok( mealService.updateMeal(id,file,mealName,price,category,description));
+
+    }
 
     // build delete meal REST API
     @DeleteMapping("{id}")

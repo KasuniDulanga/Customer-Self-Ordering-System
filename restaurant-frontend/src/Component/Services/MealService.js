@@ -13,7 +13,6 @@ class MealService{
         formData.append("price",price);
         formData.append("category",category);
         formData.append("desc",description);
-
         return axios.post(MEAL_BASE_REST_API_URL ,formData);
     
     }

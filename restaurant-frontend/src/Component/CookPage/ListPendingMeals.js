@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import OrderService from "../Services/OrderService";
+import EmployeeService from "../Services/EmplyeeService";
 import classes from "./CookPage.module.css";
 import Card1 from "./Card1";
-
+import UserCard from "../EmployeeLog/UserCard";
 
 const ListPendingMeals = () => {
+  const [logEmployee, setLogEmployee] = useState('');
   const { id } = useParams();
   // const mockPendingMeals = [
   //   {
@@ -44,13 +46,21 @@ const ListPendingMeals = () => {
   const [pendingMeals, setPendingMeals] = useState([]);
   const [acceptedMeals, setAcceptedMeals] = useState([]);
   const [readyMeals, setReadyMeals] = useState([]);
-  
+
 
   useEffect(() => {
-   
-      
-      const interval = setInterval(() => {
-        OrderService.getAllPendingOrders()
+
+    if (id) {
+      EmployeeService.getEmployeeById(id).then((response) => {
+        setLogEmployee(response.data)
+
+        // console.log(response.data)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+    const interval = setInterval(() => {
+      OrderService.getAllPendingOrders()
         .then((response) => {
           setPendingMeals(response.data);
           // console.log(response.data);
@@ -58,7 +68,7 @@ const ListPendingMeals = () => {
         .catch((error) => {
           console.log(error.response.data);
         });
-  
+
       OrderService.getAllAcceptedOrders(id)
         .then((response) => {
           setAcceptedMeals(response.data);
@@ -67,9 +77,10 @@ const ListPendingMeals = () => {
         .catch((error) => {
           console.log(error.response.data);
         });
-      }, 1000);
-  
-      return () => clearInterval(interval);
+    }, 1000);
+
+    return () => clearInterval(interval);
+
 
     // database access to get pending meals and accepted meals for a specific cook
     // using the response "pendingMeals" and accepted meals should be update
@@ -80,16 +91,16 @@ const ListPendingMeals = () => {
   const onAccept = (e, orderId) => {
     e.preventDefault();
 
-   
 
-    OrderService.changeOrderStatus(orderId, { status: "accepted" },id).then((response) => {
+
+    OrderService.changeOrderStatus(orderId, { status: "accepted" }, id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
     });
 
-    
-    
+
+
   };
 
   const onDone = (e, orderId) => {
@@ -103,7 +114,7 @@ const ListPendingMeals = () => {
       return meal.orderId !== orderId;
     }); // return a array of meals which haven't order id of orderId
 
-    OrderService.changeOrderStatus(orderId, { status: "ready" },id).then((response) => {
+    OrderService.changeOrderStatus(orderId, { status: "ready" }, id).then((response) => {
       console.log(response.data)
     }).catch(error => {
       console.log(error.response.data)
@@ -112,67 +123,79 @@ const ListPendingMeals = () => {
 
     setAcceptedMeals(newAcceptedMeals);
     setReadyMeals(newReadyMeals);
-    
+
   };
 
   return (
     <Fragment>
-      <div className={classes.cardbody}>
-        <div className={classes.cardinner}>
-          <h2 style={{ paddingBottom: "5px" }}>Pending Orders</h2>
-          <div className={classes.doubleinner}>
-            {pendingMeals.length === 0 ? (
-              <div
-                className="card-details"
-                style={{ textAlign: "center", marginTop: "165px" }}
-              >
-                <h2
-                  style={{
-                    fontFamily: "'Kaushan Script', cursive",
-                    color: "#8a2b06",
-                  }}
+
+      <div className={classes.cardbodycont}>
+        <br></br>
+        <UserCard
+          Id={logEmployee.employee_id}
+          fName={logEmployee.firstName}
+          lName={logEmployee.lastName}
+          Role={logEmployee.roleName}
+
+        />
+        <div className={classes.cardbody}>
+          <br></br>
+          <div className={classes.cardinner}>
+            <h2 style={{ paddingBottom: "5px" }}>Pending Orders</h2>
+            <div className={classes.doubleinner}>
+              {pendingMeals.length === 0 ? (
+                <div
+                  className="card-details"
+                  style={{ textAlign: "center", marginTop: "165px" }}
                 >
-                  No Pending Orders
-                </h2>
-              </div>
-            ) : (
-              pendingMeals.map((meal) => (
+                  <h2
+                    style={{
+                      fontFamily: "'Kaushan Script', cursive",
+                      color: "#8a2b06",
+                    }}
+                  >
+                    No Pending Orders
+                  </h2>
+                </div>
+              ) : (
+                pendingMeals.map((meal) => (
+                  <Card1
+                    mealDetails={meal}
+                    buttonName={"Accept"}
+                    onClickFunction={onAccept}
+                    key={meal.order_id}
+                  />
+                ))
+              )}
+            </div>
+          </div>
+          <div className={classes.cardinner}>
+            <h2 style={{ paddingBottom: "5px" }}>Accepted Orders</h2>
+            <div className={classes.doubleinner}>
+              {acceptedMeals.length === 0 ? (
+                <div
+                  className="card-details"
+                  style={{ textAlign: "center", marginTop: "165px" }}
+                >
+                  <h2
+                    style={{
+                      fontFamily: "'Kaushan Script', cursive",
+                      color: "#8a2b06",
+                    }}
+                  >
+                    No Accepted Orders
+                  </h2>
+                </div>
+              ) : (acceptedMeals.map((meal) => (
                 <Card1
                   mealDetails={meal}
-                  buttonName={"Accept"}
-                  onClickFunction={onAccept}
+                  buttonName={"Done"}
+                  onClickFunction={onDone}
                   key={meal.order_id}
                 />
               ))
-            )}
-          </div>
-        </div>
-        <div className={classes.cardinner}>
-          <h2 style={{ paddingBottom: "5px" }}>Accepted Orders</h2>
-          <div className={classes.doubleinner}>
-            {acceptedMeals.length === 0 ? (
-              <div
-                className="card-details"
-                style={{ textAlign: "center", marginTop: "165px" }}
-              >
-                <h2
-                  style={{
-                    fontFamily: "'Kaushan Script', cursive",
-                    color: "#8a2b06",
-                  }}
-                >
-                  No Accepted Orders
-                </h2>
-              </div>
-            ) : (acceptedMeals.map((meal) => (
-              <Card1
-                mealDetails={meal}
-                buttonName={"Done"}
-                onClickFunction={onDone}
-                key={meal.order_id}
-              />
-            ))
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
