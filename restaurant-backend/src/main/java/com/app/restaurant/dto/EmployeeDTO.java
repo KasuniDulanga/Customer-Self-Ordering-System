@@ -13,6 +13,7 @@ public class EmployeeDTO {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String phone_no;
     private String address;
     private String roleName;

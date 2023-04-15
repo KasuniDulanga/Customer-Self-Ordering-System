@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 export const AddMeals = () => {
     // const [value, setValue] = useState([])
+    // const [MsgIsShown, setMsgIsShown] = useState(false);
+
     const [ingredientvalue1, setIngredientvalue1] = useState(0);
     const [ingredientvalue2, setIngredientvalue2] = useState(0);
     const [ingredientvalue3, setIngredientvalue3] = useState(0);
@@ -54,6 +56,7 @@ export const AddMeals = () => {
 
           
             MealService.updateMealImage(id,image, mealName, category, price, description).then((response) => {
+                console.log(response.data)
                 if (response.data != null) {
                     MealIngredientService.updateMealIngredient(response.data.meal_id, listmealIngredient).then(() => {
                         navigate(-1)

@@ -29,7 +29,6 @@ class MealService{
         formData.append("price",price);
         formData.append("category",category);
         formData.append("desc",description);
-        console.log(image);
      
         return axios.put(MEAL_BASE_REST_API_URL + '/' + meal_id,formData);
     }

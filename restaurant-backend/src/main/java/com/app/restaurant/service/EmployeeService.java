@@ -5,11 +5,8 @@ import com.app.restaurant.exception.ResourceNotFoundException;
 import com.app.restaurant.model.Employee;
 import com.app.restaurant.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,8 +25,17 @@ public class EmployeeService {
         return employeeRepo.findAll();
     }
 
-    public Employee createEmployee(Employee employee){
-        return employeeRepo.save(employee);
+    public Employee createEmployee(EmployeeDTO employeedto){
+        Employee newEmployee = new Employee();
+        newEmployee.setFirstName(employeedto.getFirstName());
+        newEmployee.setLastName(employeedto.getLastName());
+        newEmployee.setEmail(employeedto.getEmail());
+        newEmployee.setPassword(employeedto.getPassword());
+        newEmployee.setPhone_no(employeedto.getPhone_no());
+        newEmployee.setAddress(employeedto.getAddress());
+        newEmployee.setRoleId(roleService.getRoleID(employeedto.getRoleName()));
+
+        return employeeRepo.save(newEmployee);
     }
 
     public EmployeeDTO getEmployeeById(int id){
@@ -39,20 +45,22 @@ public class EmployeeService {
         empDTO.setFirstName(emp.getFirstName());
         empDTO.setLastName(emp.getLastName());
         empDTO.setEmail(emp.getEmail());
+        empDTO.setPassword(emp.getPassword());
         empDTO.setPhone_no(emp.getPhone_no());
         empDTO.setAddress(emp.getAddress());
         empDTO.setRoleName(roleService.getRoleName((int) emp.getRoleId()));
 
+
         return empDTO;
     }
 
-    public Employee updateEmployee(int id,Employee employeeDetails){
+    public Employee updateEmployee(int id,EmployeeDTO employeeDetails){
         Employee updateEmployee =employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id " +id));
 
         updateEmployee.setFirstName(employeeDetails.getFirstName());
         updateEmployee.setLastName(employeeDetails.getLastName());
         updateEmployee.setPassword(employeeDetails.getPassword());
-        updateEmployee.setRoleId(employeeDetails.getRoleId());
+        updateEmployee.setRoleId(roleService.getRoleID(employeeDetails.getRoleName()));
         updateEmployee.setEmail(employeeDetails.getEmail());
         updateEmployee.setAddress(employeeDetails.getAddress());
         updateEmployee.setPhone_no(employeeDetails.getPhone_no());

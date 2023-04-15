@@ -26,7 +26,7 @@ const MealItem = (props) => {
     if (props.id) {
       MealIngredientService.getAllIngredientByMealId(props.id).then((response) => {
         setIngredient(response.data)
-        console.log(response.data)
+        // console.log(response.data)
       }).catch(error => {
         console.log(error);
       })

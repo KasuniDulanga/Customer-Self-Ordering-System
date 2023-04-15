@@ -50,16 +50,31 @@ public class MealIngredientService {
 
     public void updateMealIngredient(int id,List<MealIngredientDTO> listIngredient){
         Meal meal =mealRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id " +id));
-
+        System.out.print(meal.getMeal_id());
         for(MealIngredientDTO l : listIngredient) {
             if (l.getValue() != 0) {
                 Ingredient ing = ingredientRepo.findById(l.getIngredient_id()).orElseThrow(() -> new ResourceNotFoundException("Meal not exist with id "));
-                MealIngredient newMealIngredient = new MealIngredient();
-                newMealIngredient.setMeal(meal);
-                newMealIngredient.setIngredient(ing);
-                newMealIngredient.setValue(l.getValue());
+                MealIngredient updateMealIngredient = mealingredientrepo.findByMealAndIngredient(meal,ing);
 
-                mealingredientrepo.save(newMealIngredient);
+                if(updateMealIngredient == null){
+                    MealIngredient newMealIngredient = new MealIngredient();
+                    newMealIngredient.setMeal(meal);
+                    newMealIngredient.setIngredient(ing);
+                    newMealIngredient.setValue(l.getValue());
+
+                    mealingredientrepo.save(newMealIngredient);
+
+                }
+
+                else{
+                    updateMealIngredient.setMeal(meal);
+                    updateMealIngredient.setIngredient(ing);
+                    updateMealIngredient.setValue(l.getValue());
+                    mealingredientrepo.save(updateMealIngredient);
+                }
+
+
+
             }
         }
     }

@@ -24,8 +24,8 @@ class EmployeeService{
         return axios.delete(EMPLOYEE_BASE_REST_API_URL + '/' + employee_id);
     }
 
-    getRoleName(roleId){
-        return axios.get(ROLE_BASE_REST_API_URL+ '/' + roleId)
+    getAllRoles(){
+        return axios.get(ROLE_BASE_REST_API_URL);
     }
 
 }

@@ -20,10 +20,7 @@ public class RoleController {
     public List<Role> getAllRoles(){
         return roleService.getAllRoles();
     }
-    @GetMapping("{id}")
-    public String getRoleName(@PathVariable int id){
-        return roleService.getRoleName(id);
-    }
+
 
 
 }

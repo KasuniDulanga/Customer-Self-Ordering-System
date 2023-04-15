@@ -23,7 +23,7 @@
 .addemployeebody{
     background-image: url("../Images/back1.jpg");
     background-size: cover;
-    min-height: 1500px;
+    min-height: 2000px;
     overflow: hidden;
     padding-left:5rem;
     padding-right: 5rem;
@@ -49,20 +49,15 @@
     padding: 1rem;
     box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
     
-    /* padding: 20px;
-    margin: 0px 10px;
-    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-    width: 500px;
-    height: 100%;
-    border-radius: 15px; */
-    /* background-image: url("../Images/back.jfif");
-    background-size: cover; */
-    
 }
 
 .cont h3 {
     color: white;
 }
+h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 #addbtn{
     background-color: #64492c;
    background: transparent;
@@ -97,6 +92,12 @@
     border: 1px solid #ddd;
     
    
+}
+
+.input1{
+    display: inline-block;
+    padding-left: 1rem;
+    width: 22rem;
 }
 
 /* responsive */
@@ -136,9 +137,35 @@
     .adminbody{
         max-height: 100%; 
     }
+     
+}
+@media(max-width:1024px){
+    .input1{
+        width: 11rem;
+    }
     
     
 }
+
+@media(max-width:375px){
+    .input1{
+        width: 9rem;
+    }
+    
+    
+}
+
+@media(min-width:1440px){
+    .adminbody{
+        min-height: 2000px; 
+    }
+    .input1{
+        width: 25rem;
+    }
+    
+}
+
+
 
 /* ::-webkit-scrollbar {
     width: 5em;

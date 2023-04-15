@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MealIngredientrepository extends JpaRepository<MealIngredient,MealIngredientKey> {
     List<MealIngredient> findAllByMeal(Meal meal);
+    MealIngredient findByMealAndIngredient(Meal meal,Ingredient ingredient);
+
 }

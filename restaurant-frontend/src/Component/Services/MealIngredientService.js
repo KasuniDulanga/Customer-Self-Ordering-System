@@ -17,25 +17,7 @@ class MealIngredientService{
     }
 
 
-    // createEmployee(employee){
-    //     return axios.post(EMPLOYEE_BASE_REST_API_URL,employee)
-    // }
 
-    // getEmployeeById(employee_id){
-    //     return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + employee_id);
-    // }
-
-    // updateEmployee(employee_id,employee){
-    //     return axios.put(EMPLOYEE_BASE_REST_API_URL + '/' + employee_id,employee);
-    // }
-
-    // deleteEmployee(employee_id){
-    //     return axios.delete(EMPLOYEE_BASE_REST_API_URL + '/' + employee_id);
-    // }
-
-    // getRoleName(roleId){
-    //     return axios.get(ROLE_BASE_REST_API_URL+ '/' + roleId)
-    // }
 
 }
 

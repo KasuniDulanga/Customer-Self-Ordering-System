@@ -19,8 +19,6 @@ const ListEmployee = () => {
     const [logEmployee, setLogEmployee] = useState('');
     const { id } = useParams();
 
-
-
     const showCartHandler = () => {
         setMsgIsShown(true);
     };

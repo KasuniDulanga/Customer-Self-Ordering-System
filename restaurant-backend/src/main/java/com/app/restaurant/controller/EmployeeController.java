@@ -34,6 +34,7 @@ public class EmployeeController {
             empDTO.setFirstName(emp.getFirstName());
             empDTO.setLastName(emp.getLastName());
             empDTO.setEmail(emp.getEmail());
+            empDTO.setPassword(emp.getPassword());
             empDTO.setPhone_no(emp.getPhone_no());
             empDTO.setAddress(emp.getAddress());
             empDTO.setRoleName(roleService.getRoleName((int) emp.getRoleId()));
@@ -47,8 +48,8 @@ public class EmployeeController {
 
     //build create employee REST API
     @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeService.createEmployee(employee);
+    public Employee createEmployee(@RequestBody EmployeeDTO employeedto) {
+        return employeeService.createEmployee(employeedto);
     }
 
     //build get employee by id REST API
@@ -60,7 +61,7 @@ public class EmployeeController {
 
     //build update employee REST API
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable int id,@RequestBody Employee employeeDetails){
+    public ResponseEntity<Employee> updateEmployee(@PathVariable int id,@RequestBody EmployeeDTO employeeDetails){
         return ResponseEntity.ok(employeeService.updateEmployee(id,employeeDetails));
 
     }

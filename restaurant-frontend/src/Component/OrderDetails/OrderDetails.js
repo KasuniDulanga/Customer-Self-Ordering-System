@@ -93,11 +93,11 @@ export default function OrderDetails(props) {
             </div>
             <div className={classes.detailinner}>
               <span>Order Status :</span>
-              <span>{orderctx.status}</span>
+              <span className={classes.status}>{orderctx.status}</span>
             </div>
           </div>
           <div className={classes.actions}>
-            <button type="submit" className={classes.button} >Order Cancel</button>
+            <button type="submit" className={classes.button} >Send Bill</button>
             {/* {orderCancle && <button type="submit" className={classes.button} >Order Cancle</button>} */}
           </div>
 
