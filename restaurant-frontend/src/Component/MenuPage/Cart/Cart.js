@@ -7,7 +7,7 @@ import CartContext from '../../store/cart-context';
 import OrderService from '../../Services/OrderService';
 import { useNavigate } from 'react-router-dom';
 import OrderContext from '../../OrderDetails/OrderContext';
-
+import LogoutModal from '../../EmployeeNav/LogoutModal';
 
 const Cart = (props) => {
   const [tableNo, setTableNo] = useState('');
@@ -19,41 +19,50 @@ const Cart = (props) => {
   const totalAmount = `Rs ${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
   const { setorderctx } = useContext(OrderContext);
-  const orderMeal = (e) => {
-    e.preventDefault();
-    const order = { cartItems: cartCtx.items, customerPhone, customerName, tableNo, orderDescription }
+  const [MsgIsShown, setMsgIsShown] = useState(false);
+
+  const showCartHandler = () => {
 
     if (tableNo.trim() === '' || customerName.trim() === '' || customerPhone.trim() === '') {
-      toast.error("table no or name or phone number is required !!", {
+      toast.error("Table no, name and Phone number is required !!", {
         position: toast.POSITION.TOP_CENTER
       });
 
 
     }
     else {
-      //Order id get as a response
-      OrderService.placeOrder(order).then((response) => {
-        console.log(response.data);
-
-        if (response.data != null) {
-            localStorage.setItem("macfood_order_ID",`${response.data}`)
-            OrderService.getOrderDetails(response.data).then((orderRes) => {
-              setorderctx(orderRes.data);
-              navigate('/orderdetails',{ replace: true });
-            }).catch(error => {
-              console.log(error.orderRes.data)
-            })
-          
-        }
-
-
-      }).catch(error => {
-        console.log(error.response.data)
-      })
+      setMsgIsShown(true);
     }
 
-    console.log(order);
+  };
+  const hideMsgHandler = () => {
+    setMsgIsShown(false);
+  };
 
+  const orderMeal = (e) => {
+    e.preventDefault();
+    const order = { cartItems: cartCtx.items, customerPhone, customerName, tableNo, orderDescription }
+
+
+    //Order id get as a response
+    OrderService.placeOrder(order).then((response) => {
+      console.log(response.data);
+
+      if (response.data != null) {
+        localStorage.setItem("macfood_order_ID", `${response.data}`)
+        OrderService.getOrderDetails(response.data).then((orderRes) => {
+          setorderctx(orderRes.data);
+          navigate('/orderdetails', { replace: true });
+        }).catch(error => {
+          console.log(error.orderRes.data)
+        })
+
+      }
+
+
+    }).catch(error => {
+      console.log(error.response.data)
+    })
 
   }
 
@@ -143,10 +152,21 @@ const Cart = (props) => {
             <button className={classes['button--alt']} onClick={props.onClose}>
               Close
             </button>
-            {hasItems && <button type="submit" className={classes.button} onClick={orderMeal}>Place Order</button>}
+            {hasItems && <button type="submit" className={classes.button} onClick={showCartHandler}>Place Order</button>}
           </div>
         </form>
       </Modal >
+      {MsgIsShown && <LogoutModal onClose={hideMsgHandler}>
+        <div className="message">
+          <span>Confirm your order?</span>
+        </div>
+        <div className="close">
+          <button className='button--alt' onClick={orderMeal}>
+            Yes
+          </button>
+          <button className='button' onClick={hideMsgHandler}>No</button>
+        </div>
+      </LogoutModal>}
       <ToastContainer />
 
     </Fragment>

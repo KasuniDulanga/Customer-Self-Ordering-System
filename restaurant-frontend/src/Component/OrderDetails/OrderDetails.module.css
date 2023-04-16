@@ -1,13 +1,14 @@
 .orderdetailscontainer{
   margin: 3rem 10rem ;
   align-items: center;
+  
 }
 .modal {
   
     background-color: white;
     padding: 3rem;
     border-radius: 6px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 15px rgba(244, 20, 4, 0.25);
     padding-top: 1rem;
     
   }

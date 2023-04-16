@@ -69,6 +69,7 @@ export default function OrderDetails(props) {
         statusButton={<Nav.Link className='bg-brown' as={Link} to="/orderdetails">
           <Notification />
         </Nav.Link>} />
+      
       {orderctx ? (<div className={classes.orderdetailscontainer}>
         <div className={classes.modal}>
 
