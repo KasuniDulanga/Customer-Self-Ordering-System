@@ -5,7 +5,7 @@ import OrderedMealItem from "../OrderDetails/OrderedMealItem";
 function BillCard(props) {
   const mealDetails = props.mealDetails;
   const buttonName = props.buttonName;
-  const buttonName1 = props.buttonName1;
+
   const onClickFunction = props.onClickFunction;
 
 

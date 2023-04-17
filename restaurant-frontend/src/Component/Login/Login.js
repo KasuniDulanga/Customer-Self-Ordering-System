@@ -33,7 +33,7 @@ function Login() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(loginDetails);
+   
 
     // Validation
     if (
