@@ -7,7 +7,7 @@ import CartContext from '../../store/cart-context';
 import OrderService from '../../Services/OrderService';
 import { useNavigate } from 'react-router-dom';
 import OrderContext from '../../OrderDetails/OrderContext';
-import LogoutModal from '../../EmployeeNav/LogoutModal';
+import ConfirmModal from './ConfirmModal';
 
 const Cart = (props) => {
   const [tableNo, setTableNo] = useState('');
@@ -21,8 +21,8 @@ const Cart = (props) => {
   const { setorderctx } = useContext(OrderContext);
   const [MsgIsShown, setMsgIsShown] = useState(false);
 
-  const showCartHandler = () => {
-
+  const showCartHandler = (e) => {
+    e.preventDefault();
     if (tableNo.trim() === '' || customerName.trim() === '' || customerPhone.trim() === '') {
       toast.error("Table no, name and Phone number is required !!", {
         position: toast.POSITION.TOP_CENTER
@@ -35,9 +35,7 @@ const Cart = (props) => {
     }
 
   };
-  const hideMsgHandler = () => {
-    setMsgIsShown(false);
-  };
+ 
 
   const orderMeal = (e) => {
     e.preventDefault();
@@ -66,6 +64,9 @@ const Cart = (props) => {
 
   }
 
+  const hideMsgHandler = () => {
+    setMsgIsShown(false);
+  };
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
   };
@@ -156,7 +157,8 @@ const Cart = (props) => {
           </div>
         </form>
       </Modal >
-      {MsgIsShown && <LogoutModal onClose={hideMsgHandler}>
+      <ToastContainer />
+      {MsgIsShown && <ConfirmModal onClose={hideMsgHandler}>
         <div className="message">
           <span>Confirm your order?</span>
         </div>
@@ -166,9 +168,7 @@ const Cart = (props) => {
           </button>
           <button className='button' onClick={hideMsgHandler}>No</button>
         </div>
-      </LogoutModal>}
-      <ToastContainer />
-
+      </ConfirmModal>}
     </Fragment>
   );
 };

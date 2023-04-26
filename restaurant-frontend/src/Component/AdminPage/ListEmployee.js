@@ -6,6 +6,7 @@ import deleteIcon from '../Images/deleteicon.jpg'
 import classes from "./Admin.module.css";
 import Nav from '../EmployeeNav/Navpage'
 import ListMeals from './ListMeals'
+import ListComments from './ListComments';
 import LogoutModal from '../EmployeeNav/LogoutModal';
 import UserCard from '../EmployeeLog/UserCard'
 
@@ -140,6 +141,7 @@ const ListEmployee = () => {
                     </div>
 
                     <ListMeals />
+                    <ListComments />
                 </div>
 
             </div>

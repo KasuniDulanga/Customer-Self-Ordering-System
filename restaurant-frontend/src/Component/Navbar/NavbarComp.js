@@ -19,9 +19,9 @@ function NavbarComp(props) {
             <Notification/>
           </Nav.Link> */}
           <Nav.Link as={Link} to="/">{props.link1}</Nav.Link>
-          {/* <Nav.Link as={Link} to="/aboutus">{props.link2}</Nav.Link> */}
           <Nav.Link as={Link} to="/events">{props.link3}</Nav.Link>
           <Nav.Link as={Link} to="/login">{props.link4}</Nav.Link>
+          
           
         </Nav>
       </Navbar.Collapse>

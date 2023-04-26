@@ -33,7 +33,7 @@ function Login() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-   
+
 
     // Validation
     if (
@@ -58,10 +58,11 @@ function Login() {
           } else if (response.data.roleId === 3) {
             navigate("/waiter/" + response.data.employeeId);
           } else if (response.data.roleId === 0) {
-            handleReset();
+            
             toast.error("Useremail or Password is Incorrect !!", {
               position: toast.POSITION.TOP_CENTER,
             });
+            handleReset();
           }
         })
         .catch((error) => {
@@ -74,71 +75,71 @@ function Login() {
     <Fragment>
       <NavbarComp link1="Home" link3="Events" />
       {/* <div style={{ display: "flex", height: "90vh", alignItems: "center" }}> */}
-        <div className="loginBody wrapper">
-          <div className="wrapper bg-white">
-            <div className="h3 text-center">
-              {" "}
-              Login To <br></br>Your Account{" "}
-            </div>
-            <form className="pt-3">
-              <div className="form-group py-2">
-                <div className="input-field">
-                  <span className="far fa-user p-2"></span>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={loginDetails.email}
-                    onChange={(e) => handleChange(e, "email")}
-                    className=""
-                  ></input>
-                </div>
-              </div>
-              <div className="form-group py-1 pb-2">
-                <div className="input-field">
-                  <span className="fas fa-lock p-2"></span>
-                  <input
-                    type={visibility ? "password" : "text"}
-                    placeholder="Password"
-                    value={loginDetails.password}
-                    onChange={(e) => handleChange(e, "password")}
-                    className=""
-                  ></input>
-                  <div
-                    className="eye"
-                    onClick={() => setVsibility(!visibility)}
-                  >
-                    {visibility ? <EyeInvisibleOutlined /> : <EyeOutlined />}
-                  </div>
-                </div>
-              </div>
-              <div className="d-flex align-items-start">
-                <div className="remember">
-                  <label className="option text-muted">
-                    {" "}
-                    Remember me
-                    <input type="radio" name="radio"></input>
-                    <span className="checkmark"></span>
-                  </label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="btn btn-block text-center my-3 mx-2"
-                onClick={handleFormSubmit}
-              >
-                Login
-              </button>
-              <button
-                type="reset"
-                className="btn btn-block text-center my-3"
-                onClick={handleReset}
-              >
-                Reset
-              </button>
-              <ToastContainer />
-            </form>
+      <div className="loginBody wrapper">
+        <div className="wrapper bg-white">
+          <div className="h3 text-center">
+            {" "}
+            Login To <br></br>Your Account{" "}
           </div>
+          <form className="pt-3">
+            <div className="form-group py-2">
+              <div className="input-field">
+                <span className="far fa-user p-2"></span>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={loginDetails.email}
+                  onChange={(e) => handleChange(e, "email")}
+                  className=""
+                ></input>
+              </div>
+            </div>
+            <div className="form-group py-1 pb-2">
+              <div className="input-field">
+                <span className="fas fa-lock p-2"></span>
+                <input
+                  type={visibility ? "password" : "text"}
+                  placeholder="Password"
+                  value={loginDetails.password}
+                  onChange={(e) => handleChange(e, "password")}
+                  className=""
+                ></input>
+                <div
+                  className="eye"
+                  onClick={() => setVsibility(!visibility)}
+                >
+                  {visibility ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                </div>
+              </div>
+            </div>
+            <div className="d-flex align-items-start">
+              <div className="remember">
+                <label className="option text-muted">
+                  {" "}
+                  Remember me
+                  <input type="radio" name="radio"></input>
+                  <span className="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="btn btn-block text-center my-3 mx-2"
+              onClick={handleFormSubmit}
+            >
+              Login
+            </button>
+            <button
+              type="reset"
+              className="btn btn-block text-center my-3"
+              onClick={handleReset}
+            >
+              Reset
+            </button>
+            <ToastContainer />
+          </form>
         </div>
+      </div>
       {/* </div> */}
     </Fragment>
   );

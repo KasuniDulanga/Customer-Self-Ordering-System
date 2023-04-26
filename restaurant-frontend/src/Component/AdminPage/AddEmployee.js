@@ -236,7 +236,7 @@ export const AddEmployee = () => {
                                         buttonSubmitOrUpdate()
                                     }
                                     <Link to={-1} className="canclebtn btn btn-danger mx-3"> Cancel </Link>
-
+                                     <button type="button" class="btn btn-primary" style={{width : "120px" ,height:"120px", color:"black", fontSize:"larger"}}>clear</button>
                                 </form>
                                 <br></br>
                             </div>

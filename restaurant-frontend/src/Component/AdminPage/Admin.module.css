@@ -71,6 +71,14 @@ h3{
     padding: 5px;
     border-radius: 12px;
 }
+
+
+.textbtn{
+    height: 80px;
+    width: 80px;
+    background-color: blue;
+    font-size: larger;
+}
 #addbtn:hover{
     background-color:#6d2d143a;
     border: 2px solid white;

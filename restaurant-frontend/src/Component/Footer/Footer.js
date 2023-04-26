@@ -1,25 +1,42 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import {  useNavigate } from 'react-router-dom';
 import "../Footer/Footer.css"
 import CommentService from '../Services/CommentService';
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Footer() {
   const [comment,setComment] = useState('');
   const navigate = useNavigate();
 
   const createComment = (e) => {
-    console.log({comment :comment}); //String cannot directly pass to back end , therefore created string object
-    CommentService.createComment({ comment: comment }).then((response) => {
-      console.log(response.data)
-      navigate('/');
-      setComment('');
+    
+    //String cannot directly pass to back end , therefore created string object
+    if(comment !== ''){
+      CommentService.createComment({ comment: comment }).then((response) => {
+        console.log(response.data)
+        toast.success("Comment Added Successfully", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        navigate('/');
+        setComment('');
+  
+    }).catch(error => {
+        console.log(error)
+    })
+    }
 
-  }).catch(error => {
-      console.log(error)
-  })
+    else{
+    
+        toast.error("Empty Comment", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        navigate('/');
+    }
+
   }
 
   return (
+    <Fragment>
     <footer className="footer text-center">
       <div className="container-fluid">
         <div className="row pt-4">
@@ -34,6 +51,9 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="/" rel="noreferrer">Terms</a>
+                </li>
+                <li>
+                  <a href="/" rel="noreferrer">address</a>
                 </li>
               </ul>
             </div>
@@ -65,5 +85,7 @@ export default function Footer() {
 
       </div>
     </footer>
+    <ToastContainer />
+    </Fragment>
   )
 }
